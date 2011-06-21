@@ -1,0 +1,10 @@
+h1. To run any example, just call:
+
+@boo/booi N.boo@ [where N is the problem number]
+
+h1. Bad performance ones:
+
+The ones below just have poor performance (although they give the answer in less than 1 minute).
+
+* 3
+* 5
