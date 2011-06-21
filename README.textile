@@ -9,3 +9,9 @@ The ones below just have poor performance (although they give the answer in less
 * 0003 (primes)
 * 0005 (integer division)
 * 0010 (primes) EXTREME
+
+h1. Using control structures
+
+Trying to use always functional approach. But some of them I just couldn't do that.
+
+* 0013 (for, if)
