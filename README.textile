@@ -6,7 +6,7 @@ h1. Bad performance ones:
 
 The ones below just have poor performance (although they give the answer in less than 1 minute).
 
-* 3
-* 5
-* 9
-* 10
+* 0003
+* 0005
+* 0009
+* 0010
