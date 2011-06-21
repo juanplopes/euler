@@ -6,3 +6,4 @@ value = {n as long|seq(n).Count()}
 
 answer = range(1,1000000).Select(Convert.ToInt64).OrderByDescending(value).First()
 print answer
+assert answer == 837799
