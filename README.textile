@@ -9,6 +9,7 @@ The ones below just have poor performance (although they give the answer in less
 * 0003 (primes)
 * 0005 (integer division)
 * 0010 (primes) EXTREME
+* 0014 (volume, repeated ops)
 
 h1. Using control structures
 

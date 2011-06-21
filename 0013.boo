@@ -122,4 +122,4 @@ aggregate = {x as int**, c as callable(int*, int*) as int*|v=x.First();x.Skip(1)
 answer = make(aggregate(numbers.Select(convert), sum))
 
 print answer
-#assert answer == 76576500
+assert answer == '5537376230'
