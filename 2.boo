@@ -1,4 +1,4 @@
-import System.Linq.Enumerable from System.Core
+import System.Linq.Enumerable
 a, b = (0, 1)
 next_fib = {x as int|a,b=(a+b,a); return a}
 is_even = {x as int|x%2==0}
