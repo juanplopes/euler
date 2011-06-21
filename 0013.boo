@@ -116,7 +116,7 @@ def sum(a as (int), b as (int)) as int*:
 to_int = {x|cast(int, x) - cast(int, char('0'))}
 convert = {x as char*|x.Select(to_int).Reverse().ToArray()}
 make = {x as int*|string.Join('', x.Reverse().Take(10).Select(Convert.ToString).ToArray())}
-aggregate = {x as int**, c as callable(int*, int*) as int*|v=x.First();x.Skip(1).Select({a|v=c(v,a).ToArray()}).Count();return v}
+aggregate = {x as (int)*, c as callable(int*, int*) as int*|v=x.First();x.Skip(1).Select({a|v=c(v,a).ToArray()}).Count();return v}
 
 #numbers.Select(convert).Take(3)
 answer = make(aggregate(numbers.Select(convert), sum))
