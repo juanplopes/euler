@@ -6,7 +6,11 @@ h1. Bad performance ones:
 
 The ones below just have poor performance (although they give the answer in less than 1 minute).
 
-* 0003
-* 0005
-* 0009
-* 0010
+* 0003 (primes)
+* 0005 (integer division)
+* 0009 (large pre-computation)
+* 0010 (primes) EXTREME
+
+h1. Medium performance ones:
+
+* 0007 (primes)
