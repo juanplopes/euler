@@ -1,9 +1,26 @@
 import System
 import System.Linq.Enumerable
 
-seq = {n as long|range(int.MaxValue).Select({i as int| (n&1 and n=3*n+1) or n/=2 }).TakeWhile({i|i!=1})}
-value = {n as long|seq(n).Count()}
+T = array(int, 1000000)
+def seq(n as long) as long:
+	if n<T.Length and T[n] > 0: return T[n]
+	if (n==0): return 1
+	if (n==1): return 0
+	if (n&1): d = seq(n*3+1) + 1
+	else: 	  d = seq(n/2) + 1
+	if n<T.Length: T[n] = d
+	return d
+	
 
-answer = range(1,1000000).Select(Convert.ToInt64).OrderByDescending(value).First()
+
+max_value = 0
+answer = 0
+
+for i in range(1,1000000):
+	temp = seq(i)
+	if temp > max_value:
+		max_value = temp
+		answer = i
+ 
 print answer
 assert answer == 837799
