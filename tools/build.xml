@@ -1,0 +1,52 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package"> 
+  <PropertyGroup> 
+    <BuildDir>$(MSBuildProjectDirectory)\build\</BuildDir>
+	<PackageDir>$(MSBuildProjectDirectory)\pkg\</PackageDir>
+	<DeployDir>$(MSBuildProjectDirectory)\..\</DeployDir>
+	
+    <SourceDir>$(MSBuildProjectDirectory)\src\</SourceDir>
+    <Configuration>Release</Configuration>
+    <Platform>x86</Platform>
+  </PropertyGroup>
+
+  <Import Project="util\msbuild\MSBuild.Community.Tasks.Targets"/>
+
+  
+  <ItemGroup>
+    <SolutionFile Include="$(SourceDir)\BooEulerTools.sln" />
+  </ItemGroup>
+  
+  <Target Name="Clean">
+    <MSBuild Projects="@(SolutionFile)" Targets="Clean" Properties="Configuration=$(Configuration);Platform=$(Platform);OutputPath=$(BuildDir)"/>
+    <DeleteTree Directories="$(BuildDir)" ContinueOnError="true"/>
+	<DeleteTree Directories="$(PackageDir)" ContinueOnError="true"/>
+  </Target>
+ 
+  <Target Name="Build">
+    <MSBuild Projects="@(SolutionFile)" Properties="Configuration=$(Configuration);Platform=$(Platform);OutputPath=$(BuildDir)"/>
+  </Target>
+
+  <Target Name="Rebuild">
+    <CallTarget Targets="Clean; Build"></CallTarget>
+  </Target>
+  
+  <Target Name="Package" DependsOnTargets="Rebuild">
+	<ItemGroup>
+      <MergeFiles Include="$(BuildDir)\boot.exe"/>
+      <MergeFiles Include="$(BuildDir)\*.dll"/>
+    </ItemGroup>
+    <MakeDir Directories="$(PackageDir)"/>
+    <ILMerge OutputFile="$(PackageDir)\boot.exe"
+            InputAssemblies="@(MergeFiles)"
+            ToolPath="util\ilmerge"
+            LogFile=""
+             />
+  </Target>
+   <Target Name="Deploy" DependsOnTargets="Package">
+	<ItemGroup>
+      <DeployFiles Include="$(PackageDir)\boot.exe"/>
+    </ItemGroup>
+    <MakeDir Directories="$(DeployDir)"/>
+	<Copy SourceFiles ="@(DeployFiles)" DestinationFolder="$(DeployDir)" />
+  </Target>
+</Project>
