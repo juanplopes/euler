@@ -21,4 +21,4 @@ def factorial(n as int) as int*:
 	
 answer = factorial(100).Sum()
 print answer
-#assert answer == 1074
+assert answer == 648
