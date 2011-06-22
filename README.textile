@@ -1,6 +1,6 @@
 h1. To run any example, just call:
 
-@boo/booi N.boo@ [where N is the problem number]
+@boot N.boo@ [where N is the problem number]
 
 h1. Bad performance ones:
 
