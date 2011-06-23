@@ -14,111 +14,43 @@ namespace BooEulerTool
     {
         static int Main(string[] args)
         {
-            if (args.Length == 0)
+            var files = GetFiles(args);
+
+            if (files.Length == 0)
             {
-                Console.WriteLine("specify input files");
-                return 1;
+                Console.WriteLine("no input files found");
+                return 2;
             }
 
+            var exit = Run(files, null);
+            //Console.ReadLine();
+            return exit;
+        }
+
+        private static string[] GetFiles(string[] args)
+        {
             var files = args.SelectMany(pattern =>
             {
                 var dir = Path.GetDirectoryName(pattern);
                 if (string.IsNullOrEmpty(dir)) dir = ".";
                 return Directory.GetFiles(dir, Path.GetFileName(pattern));
             }).ToArray();
-
-            Stopwatch totalTime = Stopwatch.StartNew();
-
-            long running = Run(files, 3000);
-
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Total: {0}ms Running: {1}ms", totalTime.ElapsedMilliseconds, running);
-            return 0;
+            return files;
         }
 
-        private static long Run(string[] files, int timeout)
+        private static int Run(string[] files, int? timeout)
         {
-            long running = 0;
             if (files.Length > 1)
-                running = RunMany(files, timeout);
+                return ManyRunner.Run(files, timeout ?? 5000);
             else if (files.Length == 1)
-                running = RunOne(files[0], timeout);
-            return running;
-        }
+                return OneRunner.Run(files[0], timeout ?? Timeout.Infinite);
 
-        public static long RunOne(string file, int timeout)
-        {
-            var compiler = new BooBatchCompiler();
-            Stopwatch run = new Stopwatch();
-            try
-            {
-                var action = compiler.Compile(file);
-                run.Start();
-                action(null);
-            }
-            catch (Exception e)
-            {
-                if (e is TargetInvocationException) e = (e as TargetInvocationException).InnerException;
-                Console.Error.WriteLine("Unhandled exception.");
-                while (e != null)
-                {
-                    Console.Error.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-                    if (e is CompilerError)
-                        Console.Error.WriteLine("++{0} {1}", (e as CompilerError).Code, (e as CompilerError).LexicalInfo);
-                    Console.Error.WriteLine(e.StackTrace);
-                    e = e.InnerException;
-                }
-            }
-            return run.ElapsedMilliseconds;
-            
+            return 2;
         }
 
 
-        public static long RunMany(string[] files, int timeout)
-        {
-            var compiler = new BooBatchCompiler();
-            var result = new CompilationResult();
-            long accum = 0;
-            foreach (var file in files)
-            {
-                Console.ForegroundColor = ConsoleColor.Gray;
 
-                Console.Write("{0,-10}", Path.GetFileName(file));
-                try
-                {
-                    var action = compiler.Compile(file);
-                    var stopwatch = Stopwatch.StartNew();
-                    string[] lines = new string[0];
 
-                    try
-                    {
-                        lines = result.Run(action, timeout);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e is TargetInvocationException) e = (e as TargetInvocationException).InnerException;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        lines = new[] { string.Format("({0}) {1}: {2}", result.LastRun.FirstOrDefault(), e.GetType().Name, e.Message) };
-                    }
-                    finally
-                    {
-                        accum += stopwatch.ElapsedMilliseconds;
-                    }
 
-                    Console.Write(" {0,6}ms", stopwatch.ElapsedMilliseconds);
-                    Console.Write(" {0}", lines.FirstOrDefault());
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(" {0}", lines.Length > 1 ? "(+)" : "");
-                    Console.WriteLine();
-                }
-                catch (Exception e)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(e.Message);
-                }
-            }
-            return accum;
-
-        }
     }
 }

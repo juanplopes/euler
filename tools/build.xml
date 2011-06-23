@@ -32,7 +32,7 @@
   
   <Target Name="Package" DependsOnTargets="Rebuild">
 	<ItemGroup>
-      <MergeFiles Include="$(BuildDir)\boot.exe"/>
+      <MergeFiles Include="$(BuildDir)\*.exe"/>
       <MergeFiles Include="$(BuildDir)\*.dll"/>
     </ItemGroup>
     <MakeDir Directories="$(PackageDir)"/>

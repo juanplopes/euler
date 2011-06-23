@@ -10,16 +10,20 @@ using System.Reflection;
 
 namespace BooEulerTool
 {
-    public class BooBatchCompiler
+    public class BooEulerCompiler
     {
         BooCompiler booc = new BooCompiler();
-        public BooBatchCompiler()
+        public BooEulerCompiler()
         {
             booc.Parameters.Pipeline = new CompileToMemory();
         }
 
         public Action<string[]> Compile(string file)
         {
+            var fileLines = File.ReadAllLines(file);
+            if (!fileLines.Any(x => x.StartsWith("print "))) throw new ArgumentException("must specify at least one 'print' statement");
+            if (!fileLines.Any(x => x.StartsWith("assert "))) throw new ArgumentException("must specify at least one 'assert' statement");
+
             booc.Parameters.Input.Clear();
             booc.Parameters.Input.Add(new FileInput(file));
             booc.Parameters.OutputType = CompilerOutputType.Library;

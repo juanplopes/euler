@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BooEulerTool</RootNamespace>
-    <AssemblyName>boot</AssemblyName>
+    <AssemblyName>BooRunner</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -69,8 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooBatchCompiler.cs" />
-    <Compile Include="CompilationResult.cs" />
+    <Compile Include="BooEulerCompiler.cs" />
+    <Compile Include="ManyRunner.cs" />
+    <Compile Include="OneRunner.cs" />
+    <Compile Include="RunnerResult.cs" />
+    <Compile Include="TimeoutRunner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
