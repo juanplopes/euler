@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Reflection;
+using Boo.Lang.Compiler;
 
 namespace BooEulerTool
 {
@@ -48,13 +49,12 @@ namespace BooEulerTool
         public static long RunOne(string file, int timeout)
         {
             var compiler = new BooBatchCompiler();
-
+            Stopwatch run = new Stopwatch();
             try
             {
                 var action = compiler.Compile(file);
-                Stopwatch run = Stopwatch.StartNew();
+                run.Start();
                 action(null);
-                return run.ElapsedMilliseconds;
             }
             catch (Exception e)
             {
@@ -63,11 +63,13 @@ namespace BooEulerTool
                 while (e != null)
                 {
                     Console.Error.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
+                    if (e is CompilerError)
+                        Console.Error.WriteLine("++{0} {1}", (e as CompilerError).Code, (e as CompilerError).LexicalInfo);
                     Console.Error.WriteLine(e.StackTrace);
                     e = e.InnerException;
                 }
             }
-            return 0;
+            return run.ElapsedMilliseconds;
             
         }
 
