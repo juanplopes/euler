@@ -2,10 +2,8 @@ h1. To run any example, just call:
 
 @boot N.boo@ [where N is the problem number]
 
-h1. Bad performance ones:
+eg. @boot 0015.boo@
 
-The ones below just have poor performance (although they give the answer in less than 1 minute).
+h1. To run all examples at once, just call:
 
-* 0003 (primes)
-* 0005 (integer division)
-* 0010 (primes) EXTREME
+@boot *.boo@
