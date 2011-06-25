@@ -72,6 +72,7 @@
     <Compile Include="BooEulerCompiler.cs" />
     <Compile Include="ManyRunner.cs" />
     <Compile Include="OneRunner.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="RunnerResult.cs" />
     <Compile Include="TimeoutRunner.cs" />
     <Compile Include="Program.cs" />

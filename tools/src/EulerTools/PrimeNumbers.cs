@@ -78,7 +78,7 @@ namespace EulerTools
         public IEnumerable<long> Factorize(long number)
         {
             long d, r;
-            foreach (int i in this.Limit((int)Math.Floor(Math.Sqrt(number))))
+            foreach (int i in this.Limit((int)Math.Sqrt(number)))
             {
                 if (number == 1) yield break;
 
@@ -110,7 +110,7 @@ namespace EulerTools
                 return _sieve[number];
             else
             {
-                foreach (int i in this.Limit((int)Math.Floor(Math.Sqrt(number))))
+                foreach (int i in this.Limit((int)Math.Sqrt(number)))
                     if (number % i == 0) return false;
 
                 return true;

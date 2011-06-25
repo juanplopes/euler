@@ -5,6 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 using Boo.Lang.Compiler;
+using System.IO;
 
 namespace BooEulerTool
 {
@@ -17,7 +18,9 @@ namespace BooEulerTool
             int exit = 0;
             try
             {
+                Console.Write("Compiling {0}...", Path.GetFileName(file));
                 var action = compiler.Compile(file);
+                Console.WriteLine(" OK, start!");
                 run.Start();
                 action(null);
             }

@@ -14,38 +14,27 @@ namespace BooEulerTool
     {
         static int Main(string[] args)
         {
-            var files = GetFiles(args);
+            var options = new Options(args);
 
-            if (files.Length == 0)
+            if (!options.Files.Any())
             {
                 Console.WriteLine("no input files found");
                 return 2;
             }
 
-            var exit = Run(files, null);
+            var exit = Run(options);
             //Console.ReadLine();
             return exit;
         }
 
-        private static string[] GetFiles(string[] args)
-        {
-            var files = args.SelectMany(pattern =>
-            {
-                var dir = Path.GetDirectoryName(pattern);
-                if (string.IsNullOrEmpty(dir)) dir = ".";
-                return Directory.GetFiles(dir, Path.GetFileName(pattern));
-            }).ToArray();
-            return files;
-        }
 
-        private static int Run(string[] files, int? timeout)
-        {
-            if (files.Length > 1)
-                return ManyRunner.Run(files, timeout ?? 5000);
-            else if (files.Length == 1)
-                return OneRunner.Run(files[0], timeout ?? Timeout.Infinite);
 
-            return 2;
+        private static int Run(Options option)
+        {
+            if ((option.Files.Length == 1 || option.ForceOne) && !option.ForceMany)
+                return option.Files.Select(x => OneRunner.Run(x, option.Timeout ?? Timeout.Infinite)).Max();
+            else
+                return ManyRunner.Run(option.Files, option.Timeout ?? 5000);
         }
 
 
