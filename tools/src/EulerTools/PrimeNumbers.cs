@@ -93,8 +93,8 @@ namespace EulerTools
                 }
 
             }
-
-            yield return number;
+            if (number != 1)
+                yield return number;
         }
 
         /// <summary>
