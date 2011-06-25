@@ -2,15 +2,24 @@ import System
 import System.Linq.Enumerable
 import EulerTools from boot
 
-attempts = (129,160,162,162,168,180,289,290,316,316,318,318,319,319,319,319,362,368,380,389,620,629,680,680,680,689,689,690,710,710,710,716,716,718,719,720,728,729,729,729,729,729,731,736,760,762,762,769,790,890)
+A = (129,160,162,162,168,180,289,290,316,316,318,318,319,319,319,319,362,368,380,389,620,629,680,680,680,689,689,690,710,710,710,716,716,718,719,720,728,729,729,729,729,729,731,736,760,762,762,769,790,890)
 
-def matches(a as int, b as int):
-	while(a>0):
-		if (b%10 == a%10): b/=10
-		a/=10
-	return b==0
+s = A[0].ToString();
 
-answer = range(int.MaxValue).First({x as int|attempts.All({y|matches(x,y)})})
+for i in range(1, A.Length):
+	s2 = A[i].ToString();
+	if s[0]==s2[2]:
+		s = s2 + s[1:]
+	elif s[s.Length-1]==s2[0]:    
+		s += s2[:2]
+	elif s[:2]==s2[1:]:  
+		s = s2[0] + s
+	elif s[s.Length-2:]==s2[:2]: 
+		s += s2[2]
+	else: 				  
+		s = s.Replace(s2[0]+""+s2[2], s2)
+
+answer = int.Parse(s)
 	
 print answer
 assert answer == 73162890
