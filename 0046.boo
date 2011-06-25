@@ -14,7 +14,6 @@ def isnot_goldbach(n as int):
 	return not primes.Limit(n).Any({p|TS[n-p]}) 
 
 odd_composites = range(3, L, 2).Where({x|not primes.IsPrime(x)})
-
 answer = odd_composites.First(isnot_goldbach)
 
 print answer
