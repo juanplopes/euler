@@ -1,30 +1,34 @@
 import System
 import System.Linq.Enumerable
 
-primes = (2, 3, 5, 7, 11, 13, 17)
+primes = (1, 2, 3, 5, 7, 11, 13, 17)
+value = array(int, 10)
+used = array(bool, 10)
 
-def kth_permutation(k as int):
-	n = 10
-	data = array(int, n)
-	for j in range(1, n+1):
-		data[n-j] = (k % j)
-		k /= j
+def valid_for(d as int):
+	return d<2 or (value[d-2] * 100 + value[d-1] * 10 + value[d]) % primes[d-2] == 0
 
-	data[n-1] = 0
-	for i in range(n-2, -1):
-		for j in range(i+1, n):
-			if data[j] >= data[i]: data[j] += 1
-	num as long = 0
-	for i in range(0, data.Length):
-		num = num*10+ data[i]
-	return num
-
-def have_property(n as long):
-	s = n.ToString("0000000000")
-	return range(7).All({i as int| int.Parse(s[i+1:i+4]) % primes[i] == 0})
-
-
-answer = range(3628800).Select(kth_permutation).Where(have_property).Sum()
+def make_number():
+	r as long = 0
+	for i in range(10):
+		r = r*10+value[i]
+	return r
+	
+def count(d as int) as long:
+	if d >= 10: 
+		return make_number()
+	
+	sum as long = 0
+	for i in range(10):
+		if not used[i]:
+			value[d] = i
+			used[i] = true
+			if valid_for(d): 
+				sum += count(d+1)
+			used[i] = false
+	return sum
+			
+answer = count(0)
 	
 print answer
 assert answer == 16695334890
