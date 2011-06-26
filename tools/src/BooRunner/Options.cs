@@ -12,6 +12,7 @@ namespace BooEulerTool
         public int? Timeout { get; private set; }
         public bool ForceOne { get; private set; }
         public bool ForceMany { get; private set; }
+        public bool Sort { get; private set; }
 
         public Options(string[] args)
         {
@@ -26,6 +27,7 @@ namespace BooEulerTool
                         break;
                     case "-fo": ForceOne = true; break;
                     case "-fm": ForceMany = true; break;
+                    case "-sort": Sort = true; break;
                     default:
                         files.Add(args[i]);
                         break;

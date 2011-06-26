@@ -8,57 +8,40 @@ namespace BooEulerTool
 {
     public class ManyRunner
     {
-        public static int Run(string[] files, int timeout)
+        public static int Run(string[] files, int timeout, bool sorted)
         {
             var compiler = new BooEulerCompiler();
-            long accum = 0;
-            int failed = 0;
-            int fColumn = files.Max(x => Path.GetFileName(x).Length) + 1;
-            foreach (var file in files)
+            var runner = new TimeoutRunner(timeout);
+
+            IList<RunnerResult> results = files.Select(x => new RunnerResult(x)).ToList();
+            var columns = results.Max(x => x.RecommendedWidth);
+            if (sorted)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
-
-                Console.Write("{0,-" + fColumn + "}", Path.GetFileName(file));
-                try
-                {
-                    var result = RunSingleOfMany(timeout, compiler, file);
-                    accum += (long)result.Elapsed.TotalMilliseconds;
-                    if (result.HasException) failed++;
-                    Console.WriteLine();
-                }
-                catch (Exception e)
-                {
-                    failed++;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-                }
-            }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("Total: {0} examples in {1}ms", files.Length, accum);
-            if (failed > 0) Console.Write("  Failed: {0}", failed);
-            Console.WriteLine();
-            return failed == 0 ? 0 : 3;
-        }
-
-        private static RunnerResult RunSingleOfMany(int timeout, BooEulerCompiler compiler, string file)
-        {
-            var runner = new TimeoutRunner();
-            var action = compiler.Compile(file);
-            var result = runner.Run(action, timeout);
-            Console.Write(" {0,6}ms", (long)result.Elapsed.TotalMilliseconds);
-
-            if (result.HasException)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(" ({0}) {1}: {2}", result.LastLine, result.Exception.GetType().Name, result.Exception.Message);
+                results = results.Select(x => x.RunWith(compiler, runner).PrintSilent())
+                    .OrderBy(x => x.HasException).ThenBy(x => x.Elapsed).ToList();
+                Console.Error.WriteLine();
+                foreach (var result in results)
+                    result.PrintFile(columns).PrintResult();
             }
             else
             {
-                Console.Write(" {0}", result.LastLine);
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(" {0}", result.HasMoreThanOneLine ? "(+)" : "");
+                results = results.Select(x => x.PrintFile(columns).RunWith(compiler, runner).PrintResult()).ToList();
             }
-            return result;
+
+
+            return PrintFinish(files, results);
         }
+        private static int PrintFinish(string[] files, IEnumerable<RunnerResult> results)
+        {
+            var failed = results.Where(x => x.HasException).Count();
+            var time = results.Select(x => x.Elapsed.TotalMilliseconds).Sum();
+
+            Console.Error.Write("Total: {0} examples in {1:0.0}ms", files.Length, time);
+            if (failed > 0) Console.Error.Write("  Failed: {0}", failed);
+            Console.Error.WriteLine();
+            return failed == 0 ? 0 : 3;
+        }
+
+
     }
 }

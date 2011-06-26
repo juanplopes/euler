@@ -18,7 +18,7 @@ namespace BooEulerTool
 
             if (!options.Files.Any())
             {
-                Console.WriteLine("no input files found");
+                Console.Error.WriteLine("no input files found");
                 return 2;
             }
 
@@ -34,7 +34,7 @@ namespace BooEulerTool
             if ((option.Files.Length == 1 || option.ForceOne) && !option.ForceMany)
                 return option.Files.Select(x => OneRunner.Run(x, option.Timeout ?? Timeout.Infinite)).Max();
             else
-                return ManyRunner.Run(option.Files, option.Timeout ?? 5000);
+                return ManyRunner.Run(option.Files, option.Timeout ?? 5000, option.Sort);
         }
 
 

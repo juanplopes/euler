@@ -18,9 +18,9 @@ namespace BooEulerTool
             int exit = 0;
             try
             {
-                Console.Write("Compiling {0}...", Path.GetFileName(file));
+                Console.Error.Write("Compiling {0}...", Path.GetFileName(file));
                 var action = compiler.Compile(file);
-                Console.WriteLine(" OK, start!");
+                Console.Error.WriteLine(" OK, start!");
                 run.Start();
                 action(null);
             }
@@ -39,7 +39,7 @@ namespace BooEulerTool
                 exit = 3;
             }
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Time: {0}ms", run.ElapsedMilliseconds);
+            Console.Error.WriteLine("Time: {0}ms", run.ElapsedMilliseconds);
             return exit;
         }
     }

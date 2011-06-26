@@ -11,7 +11,14 @@ namespace BooEulerTool
 {
     public class TimeoutRunner
     {
-        public RunnerResult Run(Action<string[]> action, int timeout)
+        int timeout;
+
+        public TimeoutRunner(int timeout)
+        {
+            this.timeout = timeout;
+        }
+
+        public RunnerResult Run(string file, Action<string[]> action)
         {
             using (var stream = new MemoryStream())
             {
@@ -31,7 +38,7 @@ namespace BooEulerTool
                     lines = FinishStream(stream, writer);
                     Console.SetOut(defOut);
                 }
-                return new RunnerResult(sw.Elapsed, lines, ex);
+                return new RunnerResult(file, sw.Elapsed, lines, ex);
             }
         }
 
