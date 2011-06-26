@@ -79,12 +79,12 @@ namespace EulerTools
                 yield return number;
         }
 
-        public bool IsPrime(int number)
+        public bool IsPrime(long number)
         {
             if (number < 0) return false;
 
             if (number < _sieve.Length)
-                return _sieve[number];
+                return _sieve[(int)number];
             else
             {
                 foreach (int i in this.Limit((int)Math.Sqrt(number)))

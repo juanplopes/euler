@@ -6,13 +6,15 @@ import EulerTools from boot
 primes = PrimeNumbers()
 
 def to_dictionary(n as int):
-	d = Dictionary[of int, int]()
-	for g in primes.Factorize(n).GroupBy({k|return k}):
-		d[g.Key] = g.Count()
-		
+	d = List[of int]()
+	last = 1
+	for g in primes.Factorize(n):
+		if last == g: d[d.Count-1]*=g; last=g
+		else: d.Add(g); last=g
 	return d
 
-F = range(200000).Select(to_dictionary).ToArray()	
+F = range(134050).Select(to_dictionary).ToArray()
+
 def is_good(a as int):
 	k = 4
 	numbers = range(a, a+k).Select({n as int|F[n]}).ToArray()
