@@ -2,18 +2,16 @@ import System
 import System.Linq.Enumerable
 import EulerTools from boot
 
-primes = PrimeNumbers()
+def gcd(a as long, b as long):
+	while(b): a, b = (b, a%b)
+	return a;
 
-T = matrix(int, 21)
-
+def lcm(a as long, b as long):
+	return a*b/gcd(a,b)
+	
+answer as long = 1
 for i in range(1, 21):
-	for v in primes.Factorize(i).GroupBy({x|return x}):
-		T[v.Key] = Math.Max(T[v.Key], v.Count())
-
-answer = 1
-for i in range(1, 21):
-	if (T[i] > 0):
-		answer *= Math.Pow(i, T[i])
+	answer = lcm(answer, i)
 
 print answer
 assert answer == 232792560
