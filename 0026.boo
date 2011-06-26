@@ -15,7 +15,7 @@ def rec(d as int):
 	return c
 
 max = 0
-for i in primes.Limit(999):
+for i in primes.Until(999):
 	r = rec(i)
 	if (r > max):
 		max = r

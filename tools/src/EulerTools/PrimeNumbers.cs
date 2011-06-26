@@ -25,10 +25,10 @@ namespace EulerTools
             bits[0] = true;
             bits[1] = true;
 
-            foreach(var prime in primes.Limit((int)Math.Sqrt(until)))
-                for (int i = prime * 2; i < until; i+=prime)
+            foreach (var prime in primes.Until((int)Math.Sqrt(until)))
+                for (int i = prime * 2; i < until; i += prime)
                     bits[i] = true;
-            
+
             return bits.Not();
         }
 
@@ -38,12 +38,25 @@ namespace EulerTools
             _cache = new List<int>(EnumerateSieve(sieve));
         }
 
-        public IEnumerable<int> Limit(int maxPrime)
+        public IEnumerable<int> Until(int maxPrime)
         {
             return this.TakeWhile(x => x <= maxPrime);
         }
 
         public int CachedCount { get { return _cache.Count; } }
+        public IEnumerable<int> Cache
+        {
+            get
+            {
+                foreach (var item in _cache)
+                    yield return item;
+            }
+        }
+
+        public PrimeNumbers Expand(int until)
+        {
+            return new PrimeNumbers(this, until);
+        }
 
         private static IEnumerable<int> EnumerateSieve(BitArray sieve)
         {
@@ -60,7 +73,7 @@ namespace EulerTools
         public IEnumerable<long> Factorize(long number)
         {
             long d, r;
-            foreach (int i in this.Limit((int)Math.Sqrt(number)))
+            foreach (int i in this.Until((int)Math.Sqrt(number)))
             {
                 if (number == 1) yield break;
 
@@ -87,7 +100,7 @@ namespace EulerTools
                 return _sieve[(int)number];
             else
             {
-                foreach (int i in this.Limit((int)Math.Sqrt(number)))
+                foreach (int i in this.Until((int)Math.Sqrt(number)))
                     if (number % i == 0) return false;
 
                 return true;

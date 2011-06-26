@@ -4,7 +4,7 @@ import System.Collections.Generic
 import EulerTools from boot
 
 primes = PrimeNumbers(1e6)
-cache = primes.Limit(1e6).ToArray()
+cache = primes.Cache.ToArray()
 sum = array(long, cache.Length+1)
 sum[0] = 0
 
