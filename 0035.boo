@@ -3,7 +3,7 @@ import System.Linq.Enumerable
 import EulerTools from boot
 
 pow10 = (1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8)
-primes = PrimeNumbers()
+primes = PrimeNumbers(1000000)
 def rotate(n as int, log as int):
 	return n/10+pow10[log]*(n%10)
 
