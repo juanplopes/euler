@@ -9,10 +9,6 @@ def decypher(key as (int)):
 		x = bytes[i] ^ key[i%key.Length]
 		sum += x
 		if x < 32 or x > 122: return -1
-		if x > 34 and x < 39: return -1
-		if x == char('/'): return -1
-		if x == 64: return -1
-		if x > 90 and x < 97: return -1
 
 	return sum
 		
