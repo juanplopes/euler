@@ -9,7 +9,6 @@ def decypher(key as (int)):
 		x = bytes[i] ^ key[i%key.Length]
 		sum += x
 		if x < 32 or x > 122: return -1
-
 	return sum
 		
 lowercase = range(97, 97+26)
