@@ -1,23 +1,32 @@
 import System
 import System.Linq.Enumerable
 
-E = array(int, 600)
-E[0] = 1
-E[1] = 1
-E[89] = 89
-SQR = (0, 1, 4, 9, 16, 25, 36, 49, 64, 81)
 def ends_in(a as int) as int:
-	if (a < E.Length and E[a] != 0): return E[a]
+	if (a==0): return 1
 	sum = 0
-	n = a
-	while(a):
-		sum += SQR[a%10]
-		a/=10
-	r = ends_in(sum)
-	if (n < E.Length):
-		E[n] = r
-	return r
-		
-answer = range(1e7).Count({x|ends_in(x) == 89})
+	while a not in (1, 89):
+		sum = 0
+		while(a):
+			sum += (a%10)**2
+			a/=10
+		a = sum
+	return a
+
+lead_to = range(600).Select(ends_in).ToArray()
+count = array(int, 600)
+count[0] = 1
+
+for i in range(7):
+	new_count = array(int, 600)
+	for j in range(10):
+		for k in range(600):
+			if (count[k] > 0):
+				new_count[k+j*j] += count[k]
+	count = new_count
+
+answer = 0
+for i in range(600):
+	if (lead_to[i] == 89):
+		answer += count[i]
 print answer
 assert answer == 8581146
