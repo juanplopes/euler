@@ -28,7 +28,6 @@ namespace BooEulerTool
                 results = results.Select(x => x.PrintFile(columns).RunWith(compiler, runner).PrintResult()).ToList();
             }
 
-
             return PrintFinish(files, results);
         }
         private static int PrintFinish(string[] files, IEnumerable<RunnerResult> results)
