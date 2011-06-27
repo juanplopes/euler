@@ -1,16 +1,15 @@
 import System
 import System.Linq.Enumerable
 
-sqr = {x as int|x*x}
-compute_c = {a,b|cast(int, Math.Sqrt(sqr(a)+sqr(b)))}
-valid = {a,b,c|sqr(a)+sqr(b)==sqr(c)}
+a=0.0;b=0.0;c=0.0
+for i in range(int.MaxValue):
+	a = i
+	b = (1e6 - 2000*a) / (2000 - 2.0*a)
+	c = Math.Sqrt(a**2+b**2)
+	if b == cast(int, b) and c == cast(int, c) and a < b and b < c:
+		break
 
-all_triplets = [(a,b,compute_c(a,b)) for a in range(1, 1000) for b in range(a+1,1000)]
-valid_triplets = all_triplets.OfType[of (int)]().Where({x|valid(x[0],x[1],x[2])})
-
-one = valid_triplets.First({x as (int)|x[0]+x[1]+x[2]==1000})
-
-answer = one[0]*one[1]*one[2]
+answer = a*b*c
 
 print answer
 assert answer == 31875000

@@ -1,12 +1,12 @@
 import System.Linq.Enumerable
 
-def convert(n as int):
+def is_palindrome(n as int):
+	a = 0
 	while(n>0):
-		yield n%10
+		a = a*10+ n%10
 		n/=10
-
-def is_palindrome(x):
-	return convert(x).SequenceEqual(convert(x).Reverse())
+		if (a==n): return true
+	return false
 
 numbers = [a*b for a in range(100, 1000) for b in range(a, 1000)]
 
