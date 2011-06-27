@@ -4,7 +4,7 @@ import EulerTools from boot
 
 primes = PrimeNumbers()
 def divisors_count(n as int):
-	factors = primes.Factorize(n).GroupBy({x|return x})
+	factors = primes.Factorize(n).GroupBy({x|(x)})
 	r = 1
 	for g in factors:
 		r *= g.Count() + 1

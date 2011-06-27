@@ -4,7 +4,6 @@ import EulerTools from boot
 
 primes = PrimeNumbers()
 
-
 n, p = (1, 0)
 for side in range(3, 100000, 2):
 	for i in range(4):

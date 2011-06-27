@@ -1,7 +1,7 @@
 import System
 import System.Linq.Enumerable
 
-T as (long, 2)  = matrix(long, 21, 21)
+T = matrix(long, 21, 21)
 for i in range(21): 
 	T[i,0] = 1
 	T[0,i] = 1
