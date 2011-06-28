@@ -2,11 +2,11 @@ import System
 import System.Linq.Enumerable
 import EulerTools from boot
 
-def num_digits(n as IntX):
+def num_digits(n as Number):
 	return n.ToString().Length
 
-n = IntX(1)
-d = IntX(2)
+n = Number(1)
+d = Number(2)
 
 answer = 0
 for i in range(1000):

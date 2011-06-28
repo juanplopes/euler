@@ -3,11 +3,11 @@ import System.Linq.Enumerable
 import EulerTools from boot
 	
 def factorial(n as int) as int*:
-	one = BigInteger(1L)
+	one = Number(1L)
 	for i in range(1,n+1):
 		one = one * i
 	while one > 0:
-		yield (one % 10).IntValue()
+		yield cast(int, one % 10)
 		one /= 10
 
 	

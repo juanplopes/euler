@@ -32,13 +32,13 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Determines <see cref="IntX" /> object with lower length.
+		/// Determines <see cref="Number" /> object with lower length.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="smallerInt">Resulting smaller big integer (by length only).</param>
 		/// <param name="biggerInt">Resulting bigger big integer (by length only).</param>
-		static public void GetMinMaxLengthObjects(IntX int1, IntX int2, out IntX smallerInt, out IntX biggerInt)
+		static public void GetMinMaxLengthObjects(Number int1, Number int2, out Number smallerInt, out Number biggerInt)
 		{
 			if (int1._length < int2._length)
 			{

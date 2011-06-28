@@ -70,7 +70,7 @@ namespace EulerTools
 		/// <returns>Current parser instance.</returns>
 		static public IParser GetCurrentParser()
 		{
-			return GetParser(IntX.GlobalSettings.ParseMode);
+			return GetParser(Number.GlobalSettings.ParseMode);
 		}
 
 		#endregion Methods

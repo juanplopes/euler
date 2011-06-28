@@ -67,7 +67,7 @@ namespace EulerTools
 		/// <returns>Current divider instance.</returns>
 		static public IDivider GetCurrentDivider()
 		{
-			return GetDivider(IntX.GlobalSettings.DivideMode);
+			return GetDivider(Number.GlobalSettings.DivideMode);
 		}
 
 		#endregion Methods

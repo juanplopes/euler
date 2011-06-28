@@ -29,7 +29,7 @@ namespace EulerTools
 		#endregion Constructor
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="startIndex">Index inside string from which to start.</param>
@@ -93,7 +93,7 @@ namespace EulerTools
 				IMultiplier multiplier = MultiplyManager.GetCurrentMultiplier();
 
 				// Here base in needed power will be stored
-				IntX baseInt = null;
+				Number baseInt = null;
 
 				// Temporary variables used on swapping
 				uint[] tempDigits;

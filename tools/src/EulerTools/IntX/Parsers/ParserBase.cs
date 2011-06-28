@@ -6,7 +6,7 @@ namespace EulerTools
 {
 	/// <summary>
 	/// Base class for parsers.
-	/// Contains default implementations of parse operation over <see cref="IntX" /> instances.
+	/// Contains default implementations of parse operation over <see cref="Number" /> instances.
 	/// </summary>
 	abstract internal class ParserBase : IParser
 	{
@@ -40,7 +40,7 @@ namespace EulerTools
 		#endregion Constructor
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
@@ -50,7 +50,7 @@ namespace EulerTools
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
 		/// <exception cref="ArgumentException"><paramref name="numberBase" /> is less then 2 or more then 16.</exception>
 		/// <exception cref="FormatException"><paramref name="value" /> is not in valid format.</exception>
-		virtual public IntX Parse(string value, uint numberBase, IDictionary<char, uint> charToDigits, bool checkFormat)
+		virtual public Number Parse(string value, uint numberBase, IDictionary<char, uint> charToDigits, bool checkFormat)
 		{
 			// Exceptions
 			if (value == null)
@@ -118,12 +118,12 @@ namespace EulerTools
 			for (; startIndex <= endIndex && value[startIndex] == '0'; ++startIndex) ;
 
 			// Return zero if length is zero
-			if (startIndex > endIndex) return new IntX();
+			if (startIndex > endIndex) return new Number();
 
 			// Determine length of new digits array and create new IntX object with given length
 			int valueLength = endIndex - startIndex + 1;
 			uint digitsLength = (uint)System.Math.Ceiling(System.Math.Log(numberBase) / Constants.DigitBaseLog * valueLength);
-			IntX newInt = new IntX(digitsLength, negative);
+			Number newInt = new Number(digitsLength, negative);
 
 			// Now we have only (in)valid string which consists from numbers only.
 			// Parse it
@@ -133,7 +133,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="startIndex">Index inside string from which to start.</param>

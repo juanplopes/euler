@@ -6,14 +6,14 @@ namespace EulerTools
 	internal interface IDivider
 	{
 		/// <summary>
-		/// Divides one <see cref="IntX" /> by another.
+		/// Divides one <see cref="Number" /> by another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="modRes">Remainder big integer.</param>
 		/// <param name="resultFlags">Which operation results to return.</param>
 		/// <returns>Divident big integer.</returns>
-		IntX DivMod(IntX int1, IntX int2, out IntX modRes, DivModResultFlags resultFlags);
+		Number DivMod(Number int1, Number int2, out Number modRes, DivModResultFlags resultFlags);
 
 		/// <summary>
 		/// Divides two big integers.

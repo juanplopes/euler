@@ -3,7 +3,7 @@ using System;
 namespace EulerTools
 {
 	/// <summary>
-	/// Converts <see cref="IntX"/> digits to/from byte array.
+	/// Converts <see cref="Number"/> digits to/from byte array.
 	/// </summary>
 	
 	static public class DigitConverter
@@ -11,10 +11,10 @@ namespace EulerTools
 		/// <summary>
 		/// Converts big integer digits to bytes.
 		/// </summary>
-		/// <param name="digits"><see cref="IntX" /> digits.</param>
+		/// <param name="digits"><see cref="Number" /> digits.</param>
 		/// <returns>Resulting bytes.</returns>
 		/// <remarks>
-		/// Digits can be obtained using <see cref="IntX.GetInternalState" /> method.
+		/// Digits can be obtained using <see cref="Number.GetInternalState" /> method.
 		/// </remarks>
 		static public byte[] ToBytes(uint[] digits)
 		{
@@ -32,9 +32,9 @@ namespace EulerTools
 		/// Converts bytes to big integer digits.
 		/// </summary>
 		/// <param name="bytes">Bytes.</param>
-		/// <returns>Resulting <see cref="IntX" /> digits.</returns>
+		/// <returns>Resulting <see cref="Number" /> digits.</returns>
 		/// <remarks>
-		/// Big integer can be created from digits using <see cref="IntX(uint[], bool)" /> constructor.
+		/// Big integer can be created from digits using <see cref="Number(uint[], bool)" /> constructor.
 		/// </remarks>
 		static public uint[] FromBytes(byte[] bytes)
 		{

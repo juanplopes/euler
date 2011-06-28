@@ -3,7 +3,7 @@ using System;
 namespace EulerTools
 {
 	/// <summary>
-	/// <see cref="IntX" /> instance settings.
+	/// <see cref="Number" /> instance settings.
 	/// </summary>
 	sealed public class IntXSettings
 	{
@@ -28,8 +28,8 @@ namespace EulerTools
 		#region Public properties
 
 		/// <summary>
-		/// To string conversion mode used in this <see cref="IntX" /> instance.
-		/// Set to value from <see cref="IntX.GlobalSettings" /> by default.
+		/// To string conversion mode used in this <see cref="Number" /> instance.
+		/// Set to value from <see cref="Number.GlobalSettings" /> by default.
 		/// </summary>
 		public ToStringMode ToStringMode
 		{
@@ -48,7 +48,7 @@ namespace EulerTools
 
 		/// <summary>
 		/// If true then each operation is ended with big integer normalization.
-		/// Set to value from <see cref="IntX.GlobalSettings" /> by default.
+		/// Set to value from <see cref="Number.GlobalSettings" /> by default.
 		/// </summary>
 		public bool AutoNormalize
 		{

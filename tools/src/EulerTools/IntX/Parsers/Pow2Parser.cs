@@ -8,13 +8,13 @@ namespace EulerTools
 	sealed internal class Pow2Parser : IParser
 	{
 		// Not needed in this implementation
-		public IntX Parse(string value, uint numberBase, IDictionary<char, uint> charToDigits, bool checkFormat)
+		public Number Parse(string value, uint numberBase, IDictionary<char, uint> charToDigits, bool checkFormat)
 		{
 			return null;
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="startIndex">Index inside string from which to start.</param>

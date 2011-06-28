@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EulerTools
 {
 	/// <summary>
-	/// Helps to work with <see cref="IntX" /> string representations.
+	/// Helps to work with <see cref="Number" /> string representations.
 	/// </summary>
 	static internal class StrRepHelper
 	{

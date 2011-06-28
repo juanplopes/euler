@@ -1,7 +1,7 @@
 namespace EulerTools
 {
 	/// <summary>
-	/// Contains helping methods for operations over <see cref="IntX" /> digits as arrays.
+	/// Contains helping methods for operations over <see cref="Number" /> digits as arrays.
 	/// </summary>
 	static internal class DigitOpHelper
 	{
@@ -220,7 +220,7 @@ namespace EulerTools
 		#region Compare operation
 
 		/// <summary>
-		/// Compares 2 <see cref="IntX" /> objects represented by digits only (not taking sign into account).
+		/// Compares 2 <see cref="Number" /> objects represented by digits only (not taking sign into account).
 		/// Returns "-1" if <paramref name="digits1" /> &lt; <paramref name="digits2" />, "0" if equal and "1" if &gt;.
 		/// </summary>
 		/// <param name="digits1">First big integer digits.</param>
@@ -240,7 +240,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Compares 2 <see cref="IntX" /> objects represented by pointers only (not taking sign into account).
+		/// Compares 2 <see cref="Number" /> objects represented by pointers only (not taking sign into account).
 		/// Returns "-1" if <paramref name="digitsPtr1" /> &lt; <paramref name="digitsPtr2" />, "0" if equal and "1" if &gt;.
 		/// </summary>
 		/// <param name="digitsPtr1">First big integer digits.</param>

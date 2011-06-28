@@ -2,7 +2,7 @@ namespace EulerTools
 {
 	/// <summary>
 	/// Contains helping methods for work with FHT (Fast Hartley Transform).
-	/// FHT is a better alternative of FFT (Fast Fourier Transform) - at least for <see cref="IntX" />.
+	/// FHT is a better alternative of FFT (Fast Fourier Transform) - at least for <see cref="Number" />.
 	/// </summary>
 	static unsafe internal class FhtHelper
 	{
@@ -69,7 +69,7 @@ namespace EulerTools
 		#region Data conversion methods
 
 		/// <summary>
-		/// Converts <see cref="IntX" /> digits into real representation (used in FHT).
+		/// Converts <see cref="Number" /> digits into real representation (used in FHT).
 		/// </summary>
 		/// <param name="digits">Big integer digits.</param>
 		/// <param name="length"><paramref name="digits" /> length.</param>
@@ -84,7 +84,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Converts <see cref="IntX" /> digits into real representation (used in FHT).
+		/// Converts <see cref="Number" /> digits into real representation (used in FHT).
 		/// </summary>
 		/// <param name="digitsPtr">Big integer digits.</param>
 		/// <param name="length"><paramref name="digitsPtr" /> length.</param>
@@ -143,7 +143,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Converts real digits representation (result of FHT) into usual <see cref="IntX" /> digits.
+		/// Converts real digits representation (result of FHT) into usual <see cref="Number" /> digits.
 		/// </summary>
 		/// <param name="array">Real digits representation.</param>
 		/// <param name="length"><paramref name="array" /> length.</param>
@@ -159,7 +159,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Converts real digits representation (result of FHT) into usual <see cref="IntX" /> digits.
+		/// Converts real digits representation (result of FHT) into usual <see cref="Number" /> digits.
 		/// </summary>
 		/// <param name="slice">Real digits representation.</param>
 		/// <param name="length"><paramref name="slice" /> length.</param>

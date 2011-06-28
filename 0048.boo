@@ -2,11 +2,11 @@ import System
 import System.Linq.Enumerable
 import EulerTools from boot
 
-answer as BigInteger = 0
-mod as BigInteger = 10000000000
+answer as Number = 0
+mod as Number = 10000000000
+
 for i as long in range(1, 1001):
-	ii = BigInteger(i)
-	answer += ii.ModPow(ii, mod)
+	answer += Number(i).Pow(i, mod)
 answer %= mod
 	
 print answer

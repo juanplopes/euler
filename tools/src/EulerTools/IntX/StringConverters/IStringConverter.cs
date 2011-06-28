@@ -6,13 +6,13 @@ namespace EulerTools
 	internal interface IStringConverter
 	{
 		/// <summary>
-		/// Returns string representation of <see cref="IntX" /> object in given base.
+		/// Returns string representation of <see cref="Number" /> object in given base.
 		/// </summary>
 		/// <param name="intX">Big integer to convert.</param>
 		/// <param name="numberBase">Base of system in which to do output.</param>
 		/// <param name="alphabet">Alphabet which contains chars used to represent big integer, char position is coresponding digit value.</param>
 		/// <returns>Object string representation.</returns>
-		string ToString(IntX intX, uint numberBase, char[] alphabet);
+		string ToString(Number intX, uint numberBase, char[] alphabet);
 		
 		/// <summary>
 		/// Converts digits from internal representaion into given base.

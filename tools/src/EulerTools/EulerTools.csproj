@@ -60,7 +60,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BigInteger.cs" />
     <Compile Include="IntX\Bits.cs" />
     <Compile Include="IntX\DigitConverter.cs" />
     <Compile Include="IntX\Dividers\AutoNewtonDivider.cs" />
@@ -68,7 +67,7 @@
     <Compile Include="IntX\Dividers\DivideManager.cs" />
     <Compile Include="IntX\Dividers\DividerBase.cs" />
     <Compile Include="IntX\Dividers\IDivider.cs" />
-    <Compile Include="IntX\IntX.cs" />
+    <Compile Include="IntX\Number.cs" />
     <Compile Include="IntX\Multipliers\AutoFhtMultiplier.cs" />
     <Compile Include="IntX\Multipliers\ClassicMultiplier.cs" />
     <Compile Include="IntX\Multipliers\IMultiplier.cs" />

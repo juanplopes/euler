@@ -4,12 +4,12 @@ namespace EulerTools
 {
 	/// <summary>
 	/// Base class for dividers.
-	/// Contains default implementation of divide operation over <see cref="IntX" /> instances.
+	/// Contains default implementation of divide operation over <see cref="Number" /> instances.
 	/// </summary>
 	abstract internal class DividerBase : IDivider
 	{
 		/// <summary>
-		/// Divides one <see cref="IntX" /> by another.
+		/// Divides one <see cref="Number" /> by another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
@@ -18,7 +18,7 @@ namespace EulerTools
 		/// <returns>Divident big integer.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="int1" /> or <paramref name="int2" /> is a null reference.</exception>
 		/// <exception cref="DivideByZeroException"><paramref name="int2" /> equals zero.</exception>
-		virtual public IntX DivMod(IntX int1, IntX int2, out IntX modRes, DivModResultFlags resultFlags)
+		virtual public Number DivMod(Number int1, Number int2, out Number modRes, DivModResultFlags resultFlags)
 		{
 			// Null reference exceptions
 			if (ReferenceEquals(int1, null))
@@ -43,14 +43,14 @@ namespace EulerTools
 			// Special situation: check if int1 equals zero; in this case zero is always returned
 			if (int1._length == 0)
 			{
-				modRes = modNeeded ? new IntX() : null;
-				return divNeeded ? new IntX() : null;
+				modRes = modNeeded ? new Number() : null;
+				return divNeeded ? new Number() : null;
 			}
 
 			// Special situation: check if int2 equals one - nothing to divide in this case
 			if (int2._length == 1 && int2._digits[0] == 1)
 			{
-				modRes = modNeeded ? new IntX() : null;
+				modRes = modNeeded ? new Number() : null;
 				return divNeeded ? int2._negative ? -int1 : +int1 : null;
 			}
 
@@ -61,13 +61,13 @@ namespace EulerTools
 			int compareResult = DigitOpHelper.Cmp(int1._digits, int1._length, int2._digits, int2._length);
 			if (compareResult < 0)
 			{
-				modRes = modNeeded ? new IntX(int1) : null;
-				return divNeeded ? new IntX() : null;
+				modRes = modNeeded ? new Number(int1) : null;
+				return divNeeded ? new Number() : null;
 			}
 			else if (compareResult == 0)
 			{
-				modRes = modNeeded ? new IntX() : null;
-				return divNeeded ? new IntX(resultNegative ? -1 : 1) : null;
+				modRes = modNeeded ? new Number() : null;
+				return divNeeded ? new Number(resultNegative ? -1 : 1) : null;
 			}
 
 			//
@@ -75,16 +75,16 @@ namespace EulerTools
 			//
 
 			// Prepare divident (if needed)
-			IntX divRes = null;
+			Number divRes = null;
 			if (divNeeded)
 			{
-				divRes = new IntX(int1._length - int2._length + 1U, resultNegative);
+				divRes = new Number(int1._length - int2._length + 1U, resultNegative);
 			}
 
 			// Prepare mod (if needed)
 			if (modNeeded)
 			{
-				modRes = new IntX(int1._length + 1U, int1._negative);
+				modRes = new Number(int1._length + 1U, int1._negative);
 			}
 			else
 			{

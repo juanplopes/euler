@@ -3,7 +3,7 @@ using System;
 namespace EulerTools
 {
 	/// <summary>
-	/// <see cref="IntX" /> global settings.
+	/// <see cref="Number" /> global settings.
 	/// </summary>
 	sealed public class IntXGlobalSettings
 	{
@@ -24,7 +24,7 @@ namespace EulerTools
 		#region Public properties
 
 		/// <summary>
-		/// Multiply operation mode used in all <see cref="IntX" /> instances.
+		/// Multiply operation mode used in all <see cref="Number" /> instances.
 		/// Set to auto-FHT by default.
 		/// </summary>
 		public MultiplyMode MultiplyMode
@@ -43,7 +43,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Divide operation mode used in all <see cref="IntX" /> instances.
+		/// Divide operation mode used in all <see cref="Number" /> instances.
 		/// Set to auto-Newton by default.
 		/// </summary>
 		public DivideMode DivideMode
@@ -62,7 +62,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Parse mode used in all <see cref="IntX" /> instances.
+		/// Parse mode used in all <see cref="Number" /> instances.
 		/// Set to Fast by default.
 		/// </summary>
 		public ParseMode ParseMode
@@ -81,7 +81,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// To string conversion mode used in all <see cref="IntX" /> instances.
+		/// To string conversion mode used in all <see cref="Number" /> instances.
 		/// Set to Fast by default.
 		/// </summary>
 		public ToStringMode ToStringMode

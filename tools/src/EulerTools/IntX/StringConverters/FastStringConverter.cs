@@ -66,7 +66,7 @@ namespace EulerTools
 
 			// Generate all needed pows of numberBase in stack
 			Stack baseIntStack = new Stack(resultLengthLog2);
-			IntX baseInt = null;
+			Number baseInt = null;
 			for (int i = 0; i < resultLengthLog2; ++i)
 			{
 				baseInt = baseInt == null ? numberBase : multiplier.Multiply(baseInt, baseInt);
@@ -100,7 +100,7 @@ namespace EulerTools
 					ptr1end = resultPtr1 + resultLength;
 
 					// Get baseInt from stack and fix it too
-					baseInt = (IntX)baseIntStack.Pop();
+					baseInt = (Number)baseIntStack.Pop();
 					fixed (uint* baseIntPtr = baseInt._digits)
 					{
 						// Cycle thru all digits and their lengths

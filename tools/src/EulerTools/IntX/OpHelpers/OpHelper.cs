@@ -3,7 +3,7 @@ using System;
 namespace EulerTools
 {
 	/// <summary>
-	/// Contains helping methods for operations over <see cref="IntX" />.
+	/// Contains helping methods for operations over <see cref="Number" />.
 	/// </summary>
 	static internal class OpHelper
 	{
@@ -16,20 +16,20 @@ namespace EulerTools
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Resulting big integer.</returns>
 		/// <exception cref="ArgumentException"><paramref name="int1" /> or <paramref name="int2" /> is too big for add operation.</exception>
-		static public IntX Add(IntX int1, IntX int2)
+		static public Number Add(Number int1, Number int2)
 		{
 			// Process zero values in special way
-			if (int2._length == 0) return new IntX(int1);
+			if (int2._length == 0) return new Number(int1);
 			if (int1._length == 0)
 			{
-				IntX x = new IntX(int2);
+				Number x = new Number(int2);
 				x._negative = int1._negative; // always get sign of the first big integer
 				return x;
 			}
 
 			// Determine big int with lower length
-			IntX smallerInt;
-			IntX biggerInt;
+			Number smallerInt;
+			Number biggerInt;
 			DigitHelper.GetMinMaxLengthObjects(int1, int2, out smallerInt, out biggerInt);
 
 			// Check for add operation possibility
@@ -39,7 +39,7 @@ namespace EulerTools
 			}
 
 			// Create new big int object of needed length
-			IntX newInt = new IntX(biggerInt._length + 1, int1._negative);
+			Number newInt = new Number(biggerInt._length + 1, int1._negative);
 
 			// Do actual addition
 			newInt._length = DigitOpHelper.Add(
@@ -65,17 +65,17 @@ namespace EulerTools
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Resulting big integer.</returns>
-		static public IntX Sub(IntX int1, IntX int2)
+		static public Number Sub(Number int1, Number int2)
 		{
 			// Process zero values in special way
-			if (int1._length == 0) return new IntX(int2._digits, true);
-			if (int2._length == 0) return new IntX(int1);
+			if (int1._length == 0) return new Number(int2._digits, true);
+			if (int2._length == 0) return new Number(int1);
 
 			// Determine lower big int (without sign)
-			IntX smallerInt;
-			IntX biggerInt;
+			Number smallerInt;
+			Number biggerInt;
 			int compareResult = DigitOpHelper.Cmp(int1._digits, int1._length, int2._digits, int2._length);
-			if (compareResult == 0) return new IntX(); // integers are equal
+			if (compareResult == 0) return new Number(); // integers are equal
 			if (compareResult < 0)
 			{
 				smallerInt = int1;
@@ -88,7 +88,7 @@ namespace EulerTools
 			}
 
 			// Create new big int object
-			IntX newInt = new IntX(biggerInt._length, ReferenceEquals(int1, smallerInt) ^ int1._negative);
+			Number newInt = new Number(biggerInt._length, ReferenceEquals(int1, smallerInt) ^ int1._negative);
 
 			// Do actual subtraction
 			newInt._length = DigitOpHelper.Sub(
@@ -109,7 +109,7 @@ namespace EulerTools
 		#region Add/Subtract operation - common methods
 
 		/// <summary>
-		/// Adds/subtracts one <see cref="IntX" /> to/from another.
+		/// Adds/subtracts one <see cref="Number" /> to/from another.
 		/// Determines which operation to use basing on operands signs.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
@@ -117,7 +117,7 @@ namespace EulerTools
 		/// <param name="subtract">Was subtraction initially.</param>
 		/// <returns>Add/subtract operation result.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="int1" /> or <paramref name="int2" /> is a null reference.</exception>
-		static public IntX AddSub(IntX int1, IntX int2, bool subtract)
+		static public Number AddSub(Number int1, Number int2, bool subtract)
 		{
 			// Exceptions
 			if (ReferenceEquals(int1, null))
@@ -145,7 +145,7 @@ namespace EulerTools
 		/// <param name="multiplyMode">Multiply mode set explicitly.</param>
 		/// <returns>Number in given power.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		static public IntX Pow(IntX value, uint power, MultiplyMode multiplyMode)
+		static public Number Pow(Number value, uint power, MultiplyMode multiplyMode)
 		{
 			// Exception
 			if (ReferenceEquals(value, null))
@@ -157,10 +157,10 @@ namespace EulerTools
 			if (power == 0) return 1;
 
 			// Return the number itself from a power of one
-			if (power == 1) return new IntX(value);
+			if (power == 1) return new Number(value);
 
 			// Return zero for a zero
-			if (value._length == 0) return new IntX();
+			if (value._length == 0) return new Number();
 
 			// Get first one bit
 			int msb = Bits.Msb(power);
@@ -169,7 +169,7 @@ namespace EulerTools
 			IMultiplier multiplier = MultiplyManager.GetMultiplier(multiplyMode);
 
 			// Do actual raising
-			IntX res = value;
+			Number res = value;
 			for (uint powerMask = 1U << (msb - 1); powerMask != 0; powerMask >>= 1)
 			{
 				// Always square
@@ -184,12 +184,59 @@ namespace EulerTools
 			return res;
 		}
 
+        /// <summary>
+        /// Returns a specified big integer raised to the specified power.
+        /// </summary>
+        /// <param name="value">Number to raise.</param>
+        /// <param name="power">Power.</param>
+        /// <param name="multiplyMode">Multiply mode set explicitly.</param>
+        /// <returns>Number in given power.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
+        static public Number Pow(Number value, uint power, Number mod, MultiplyMode multiplyMode)
+        {
+            // Exception
+            if (ReferenceEquals(value, null))
+            {
+                throw new ArgumentNullException("value");
+            }
+
+            // Return one for zero pow
+            if (power == 0) return 1;
+
+            // Return the number itself from a power of one
+            if (power == 1) return new Number(value) % mod;
+
+            // Return zero for a zero
+            if (value._length == 0) return new Number();
+
+            // Get first one bit
+            int msb = Bits.Msb(power);
+
+            // Get multiplier
+            IMultiplier multiplier = MultiplyManager.GetMultiplier(multiplyMode);
+
+            // Do actual raising
+            Number res = value;
+            for (uint powerMask = 1U << (msb - 1); powerMask != 0; powerMask >>= 1)
+            {
+                // Always square
+                res = multiplier.Multiply(res, res) % mod;
+
+                // Maybe mul
+                if ((power & powerMask) != 0)
+                {
+                    res = multiplier.Multiply(res, value) % mod;
+                }
+            }
+            return res;
+        }
+
 		#endregion Power operation
 
 		#region Compare operation
 
 		/// <summary>
-		/// Compares 2 <see cref="IntX" /> objects.
+		/// Compares 2 <see cref="Number" /> objects.
 		/// Returns "-2" if any argument is null, "-1" if <paramref name="int1" /> &lt; <paramref name="int2" />,
 		/// "0" if equal and "1" if &gt;.
 		/// </summary>
@@ -198,7 +245,7 @@ namespace EulerTools
 		/// <param name="throwNullException">Raises or not <see cref="NullReferenceException" />.</param>
 		/// <returns>Comparsion result.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="int1" /> or <paramref name="int2" /> is a null reference and <paramref name="throwNullException" /> is set to true.</exception>
-		static public int Cmp(IntX int1, IntX int2, bool throwNullException)
+		static public int Cmp(Number int1, Number int2, bool throwNullException)
 		{
 			// If one of the operands is null, throw exception or return -2
 			bool isNull1 = ReferenceEquals(int1, null);
@@ -224,13 +271,13 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object to int.
+		/// Compares <see cref="Number" /> object to int.
 		/// Returns "-1" if <paramref name="int1" /> &lt; <paramref name="int2" />, "0" if equal and "1" if &gt;.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>Comparsion result.</returns>
-		static public int Cmp(IntX int1, int int2)
+		static public int Cmp(Number int1, int int2)
 		{
 			// Special processing for zero
 			if (int2 == 0) return int1._length == 0 ? 0 : (int1._negative ? -1 : 1);
@@ -250,14 +297,14 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object to unsigned int.
+		/// Compares <see cref="Number" /> object to unsigned int.
 		/// Returns "-1" if <paramref name="int1" /> &lt; <paramref name="int2" />, "0" if equal and "1" if &gt;.
 		/// For internal use.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsigned integer.</param>
 		/// <returns>Comparsion result.</returns>
-		static public int Cmp(IntX int1, uint int2)
+		static public int Cmp(Number int1, uint int2)
 		{
 			// Special processing for zero
 			if (int2 == 0) return int1._length == 0 ? 0 : (int1._negative ? -1 : 1);
@@ -274,7 +321,7 @@ namespace EulerTools
 		#region Shift operation
 
 		/// <summary>
-		/// Shifts <see cref="IntX" /> object.
+		/// Shifts <see cref="Number" /> object.
 		/// Determines which operation to use basing on shift sign.
 		/// </summary>
 		/// <param name="intX">Big integer.</param>
@@ -282,7 +329,7 @@ namespace EulerTools
 		/// <param name="toLeft">If true the shifting to the left.</param>
 		/// <returns>Bitwise shift operation result.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="intX" /> is a null reference.</exception>
-		static public IntX Sh(IntX intX, long shift, bool toLeft)
+		static public Number Sh(Number intX, long shift, bool toLeft)
 		{
 			// Exceptions
 			if (ReferenceEquals(intX, null))
@@ -291,10 +338,10 @@ namespace EulerTools
 			}
 
 			// Zero can't be shifted
-			if (intX._length == 0) return new IntX();
+			if (intX._length == 0) return new Number();
 
 			// Can't shift on zero value
-			if (shift == 0) return new IntX(intX);
+			if (shift == 0) return new Number(intX);
 
 			// Determine real bits count and direction
 			ulong bitCount;
@@ -307,7 +354,7 @@ namespace EulerTools
 			ulong intXBitCount = (ulong)(intX._length - 1) * Constants.DigitBitCount + (ulong)msb + 1UL;
 
 			// If shifting to the right and shift is too big then return zero
-			if (!toLeft && bitCount >= intXBitCount) return new IntX();
+			if (!toLeft && bitCount >= intXBitCount) return new Number();
 
 			// Calculate new bit count
 			ulong newBitCount = toLeft ? intXBitCount + bitCount : intXBitCount - bitCount;
@@ -321,7 +368,7 @@ namespace EulerTools
 			// Get exact length of new big integer (no normalize is ever needed here).
 			// Create new big integer with given length
 			uint newLength = (uint)(newBitCount / Constants.DigitBitCount + (newBitCount % Constants.DigitBitCount == 0 ? 0UL : 1UL));
-			IntX newInt = new IntX(newLength, intX._negative);
+			Number newInt = new Number(newLength, intX._negative);
 
 			// Get full and small shift values
 			uint fullDigits = (uint)(bitCount / Constants.DigitBitCount);

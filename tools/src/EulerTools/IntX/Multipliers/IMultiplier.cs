@@ -11,7 +11,7 @@ namespace EulerTools
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Resulting big integer.</returns>
-		IntX Multiply(IntX int1, IntX int2);
+		Number Multiply(Number int1, Number int2);
 		
 		/// <summary>
 		/// Multiplies two big integers represented by their digits.

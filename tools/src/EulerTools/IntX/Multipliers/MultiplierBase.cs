@@ -4,7 +4,7 @@ namespace EulerTools
 {
 	/// <summary>
 	/// Base class for multipliers.
-	/// Contains default implementation of multiply operation over <see cref="IntX" /> instances.
+	/// Contains default implementation of multiply operation over <see cref="Number" /> instances.
 	/// </summary>
 	abstract internal class MultiplierBase : IMultiplier
 	{
@@ -16,7 +16,7 @@ namespace EulerTools
 		/// <returns>Resulting big integer.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="int1" /> or <paramref name="int2" /> is a null reference.</exception>
 		/// <exception cref="ArgumentException"><paramref name="int1" /> or <paramref name="int2" /> is too big for multiply operation.</exception>
-		virtual public IntX Multiply(IntX int1, IntX int2)
+		virtual public Number Multiply(Number int1, Number int2)
 		{
 			// Exceptions
 			if (ReferenceEquals(int1, null))
@@ -29,7 +29,7 @@ namespace EulerTools
 			}
 
 			// Special behavior for zero cases
-			if (int1._length == 0 || int2._length == 0) return new IntX();
+			if (int1._length == 0 || int2._length == 0) return new Number();
 
 			// Get new big integer length and check it
 			ulong newLength = (ulong)int1._length + int2._length;
@@ -39,7 +39,7 @@ namespace EulerTools
 			}
 
 			// Create resulting big int
-			IntX newInt = new IntX((uint)newLength, int1._negative ^ int2._negative);
+			Number newInt = new Number((uint)newLength, int1._negative ^ int2._negative);
 
 			// Perform actual digits multiplication
 			newInt._length = Multiply(int1._digits, int1._length, int2._digits, int2._length, newInt._digits);

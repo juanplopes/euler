@@ -5,7 +5,7 @@ namespace EulerTools
 {
 	/// <summary>
 	/// Base class for ToString converters.
-	/// Contains default implementations of convert operation over <see cref="IntX" /> instances.
+	/// Contains default implementations of convert operation over <see cref="Number" /> instances.
 	/// </summary>
 	abstract internal class StringConverterBase : IStringConverter
 	{
@@ -29,14 +29,14 @@ namespace EulerTools
 		#endregion Constructor
 
 		/// <summary>
-		/// Returns string representation of <see cref="IntX" /> object in given base.
+		/// Returns string representation of <see cref="Number" /> object in given base.
 		/// </summary>
 		/// <param name="intX">Big integer to convert.</param>
 		/// <param name="numberBase">Base of system in which to do output.</param>
 		/// <param name="alphabet">Alphabet which contains chars used to represent big integer, char position is coresponding digit value.</param>
 		/// <returns>Object string representation.</returns>
 		/// <exception cref="ArgumentException"><paramref name="numberBase" /> is less then 2 or <paramref name="intX" /> is too big to fit in string.</exception>
-		virtual public string ToString(IntX intX, uint numberBase, char[] alphabet)
+		virtual public string ToString(Number intX, uint numberBase, char[] alphabet)
 		{
 			// Test base
 			if (numberBase < 2 || numberBase > 65536)

@@ -5,7 +5,7 @@ namespace EulerTools
 	#region enum DivModResults
 
 	/// <summary>
-	/// <see cref="IntX" /> divide results to return.
+	/// <see cref="Number" /> divide results to return.
 	/// </summary>
 	[Flags]
 	internal enum DivModResultFlags
@@ -25,7 +25,7 @@ namespace EulerTools
 	#region enum MultiplyMode
 
 	/// <summary>
-	/// Big integers multiply mode used in <see cref="IntX" />.
+	/// Big integers multiply mode used in <see cref="Number" />.
 	/// </summary>
 	public enum MultiplyMode
 	{
@@ -47,7 +47,7 @@ namespace EulerTools
 	#region enum DivideMode
 
 	/// <summary>
-	/// Big integers divide mode used in <see cref="IntX" />.
+	/// Big integers divide mode used in <see cref="Number" />.
 	/// </summary>
 	public enum DivideMode
 	{
@@ -69,7 +69,7 @@ namespace EulerTools
 	#region enum ParseMode
 
 	/// <summary>
-	/// Big integers parsing mode used in <see cref="IntX" />.
+	/// Big integers parsing mode used in <see cref="Number" />.
 	/// </summary>
 	public enum ParseMode
 	{
@@ -91,7 +91,7 @@ namespace EulerTools
 	#region enum ToStringMode
 
 	/// <summary>
-	/// Big integers to string conversion mode used in <see cref="IntX" />.
+	/// Big integers to string conversion mode used in <see cref="Number" />.
 	/// </summary>
 	public enum ToStringMode
 	{

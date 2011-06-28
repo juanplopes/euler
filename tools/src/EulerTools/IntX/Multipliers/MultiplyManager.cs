@@ -67,7 +67,7 @@ namespace EulerTools
 		/// <returns>Current multiplier instance.</returns>
 		static public IMultiplier GetCurrentMultiplier()
 		{
-			return GetMultiplier(IntX.GlobalSettings.MultiplyMode);
+			return GetMultiplier(Number.GlobalSettings.MultiplyMode);
 		}
 
 		#endregion Methods

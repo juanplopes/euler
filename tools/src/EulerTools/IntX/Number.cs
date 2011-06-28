@@ -39,9 +39,9 @@ namespace EulerTools
 	/// Numeric class which represents arbitrary-precision integers.
 	/// (c) Andriy Kozachuk a.k.a. Oyster [dev.oyster@gmail.com] 2005-2010
 	/// </summary>
-	sealed public class IntX :
-		IEquatable<IntX>, IEquatable<int>, IEquatable<uint>, IEquatable<long>, IEquatable<ulong>,
-		IComparable, IComparable<IntX>, IComparable<int>, IComparable<uint>, IComparable<long>, IComparable<ulong>
+	sealed public class Number :
+		IEquatable<Number>, IEquatable<int>, IEquatable<uint>, IEquatable<long>, IEquatable<ulong>,
+		IComparable, IComparable<Number>, IComparable<int>, IComparable<uint>, IComparable<long>, IComparable<ulong>
 	{
 #if DEBUG
 
@@ -78,13 +78,13 @@ namespace EulerTools
 		/// <summary>
 		/// Creates new big integer with zero value.
 		/// </summary>
-		public IntX() : this(0) {}
+		public Number() : this(0) {}
 
 		/// <summary>
 		/// Creates new big integer from integer value.
 		/// </summary>
 		/// <param name="value">Integer value to create big integer from.</param>
-		public IntX(int value)
+		public Number(int value)
 		{
 			if (value == 0)
 			{
@@ -106,7 +106,7 @@ namespace EulerTools
 		/// </summary>
 		/// <param name="value">Unsigned integer value to create big integer from.</param>
 		
-		public IntX(uint value)
+		public Number(uint value)
 		{
 			if (value == 0)
 			{
@@ -125,7 +125,7 @@ namespace EulerTools
 		/// Creates new big integer from long value.
 		/// </summary>
 		/// <param name="value">Long value to create big integer from.</param>
-		public IntX(long value)
+		public Number(long value)
 		{
 			if (value == 0)
 			{
@@ -146,7 +146,7 @@ namespace EulerTools
 		/// </summary>
 		/// <param name="value">Unsigned long value to create big integer from.</param>
 		
-		public IntX(ulong value)
+		public Number(ulong value)
 		{
 			if (value == 0)
 			{
@@ -163,11 +163,11 @@ namespace EulerTools
 		/// Creates new big integer from array of it's "digits".
 		/// Digit with lower index has less weight.
 		/// </summary>
-		/// <param name="digits">Array of <see cref="IntX" /> digits.</param>
+		/// <param name="digits">Array of <see cref="Number" /> digits.</param>
 		/// <param name="negative">True if this number is negative.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="digits" /> is a null reference.</exception>
 		
-		public IntX(uint[] digits, bool negative)
+		public Number(uint[] digits, bool negative)
 		{
 			// Exceptions
 			if (digits == null)
@@ -180,24 +180,24 @@ namespace EulerTools
 
 
 		/// <summary>
-		/// Creates new <see cref="IntX" /> from string.
+		/// Creates new <see cref="Number" /> from string.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
-		public IntX(string value)
+		public Number(string value)
 		{
-			IntX intX = Parse(value);
+			Number intX = Parse(value);
 			InitFromIntX(intX);
 		}
 
 		/// <summary>
-		/// Creates new <see cref="IntX" /> from string.
+		/// Creates new <see cref="Number" /> from string.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
 		
-		public IntX(string value, uint numberBase)
+		public Number(string value, uint numberBase)
 		{
-			IntX intX = Parse(value, numberBase);
+			Number intX = Parse(value, numberBase);
 			InitFromIntX(intX);
 		}
 
@@ -207,7 +207,7 @@ namespace EulerTools
 		/// </summary>
 		/// <param name="value">Value to copy from.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		public IntX(IntX value)
+		public Number(Number value)
 		{
 			// Exceptions
 			if (value == null)
@@ -226,7 +226,7 @@ namespace EulerTools
 		/// </summary>
 		/// <param name="length">Desired digits length.</param>
 		/// <param name="negative">Desired integer sign.</param>
-		internal IntX(uint length, bool negative)
+		internal Number(uint length, bool negative)
 		{
 			_digits = new uint[_length = length];
 			_negative = negative;
@@ -238,11 +238,11 @@ namespace EulerTools
 		/// 
 		/// For internal use.
 		/// </summary>
-		/// <param name="digits">Array of <see cref="IntX" /> digits.</param>
+		/// <param name="digits">Array of <see cref="Number" /> digits.</param>
 		/// <param name="negative">True if this number is negative.</param>
 		/// <param name="length">Length to use for internal digits array.</param>
 		/// <exception cref="ArgumentNullException"><paramref name="digits" /> is a null reference.</exception>
-		internal IntX(uint[] digits, bool negative, uint length)
+		internal Number(uint[] digits, bool negative, uint length)
 		{
 			// Exceptions
 			if (digits == null)
@@ -258,7 +258,7 @@ namespace EulerTools
 		#region Static public properties
 
 		/// <summary>
-		/// <see cref="IntX" /> global settings.
+		/// <see cref="Number" /> global settings.
 		/// </summary>
 		static public IntXGlobalSettings GlobalSettings
 		{
@@ -270,7 +270,7 @@ namespace EulerTools
 		#region Public properties
 
 		/// <summary>
-		/// <see cref="IntX" /> instance settings.
+		/// <see cref="Number" /> instance settings.
 		/// </summary>
 		public IntXSettings Settings
 		{
@@ -284,58 +284,58 @@ namespace EulerTools
 		#region operator==
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if their internal state is equal.
+		/// Compares two <see cref="Number" /> objects and returns true if their internal state is equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if equals.</returns>
-		static public bool operator ==(IntX int1, IntX int2)
+		static public bool operator ==(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, false) == 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if their internal state is equal.
+		/// Compares <see cref="Number" /> object with integer and returns true if their internal state is equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if equals.</returns>
-		static public bool operator ==(IntX int1, int int2)
+		static public bool operator ==(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) == 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if their internal state is equal.
+		/// Compares integer with <see cref="Number" /> object and returns true if their internal state is equal.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if equals.</returns>
-		static public bool operator ==(int int1, IntX int2)
+		static public bool operator ==(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) == 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsinged integer and returns true if their internal state is equal.
+		/// Compares <see cref="Number" /> object with unsinged integer and returns true if their internal state is equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsinged integer.</param>
 		/// <returns>True if equals.</returns>
 		
-		static public bool operator ==(IntX int1, uint int2)
+		static public bool operator ==(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) == 0;
 		}
 
 		/// <summary>
-		/// Compares unsinged integer with <see cref="IntX" /> object and returns true if their internal state is equal.
+		/// Compares unsinged integer with <see cref="Number" /> object and returns true if their internal state is equal.
 		/// </summary>
 		/// <param name="int1">First unsinged integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if equals.</returns>
 		
-		static public bool operator ==(uint int1, IntX int2)
+		static public bool operator ==(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) == 0;
 		}
@@ -345,58 +345,58 @@ namespace EulerTools
 		#region operator!=
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if their internal state is not equal.
+		/// Compares two <see cref="Number" /> objects and returns true if their internal state is not equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if not equals.</returns>
-		static public bool operator !=(IntX int1, IntX int2)
+		static public bool operator !=(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, false) != 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if their internal state is not equal.
+		/// Compares <see cref="Number" /> object with integer and returns true if their internal state is not equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if not equals.</returns>
-		static public bool operator !=(IntX int1, int int2)
+		static public bool operator !=(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) != 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if their internal state is not equal.
+		/// Compares integer with <see cref="Number" /> object and returns true if their internal state is not equal.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if not equals.</returns>
-		static public bool operator !=(int int1, IntX int2)
+		static public bool operator !=(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) != 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsigned integer and returns true if their internal state is not equal.
+		/// Compares <see cref="Number" /> object with unsigned integer and returns true if their internal state is not equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsigned integer.</param>
 		/// <returns>True if not equals.</returns>
 		
-		static public bool operator !=(IntX int1, uint int2)
+		static public bool operator !=(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) != 0;
 		}
 
 		/// <summary>
-		/// Compares unsigned integer with <see cref="IntX" /> object and returns true if their internal state is not equal.
+		/// Compares unsigned integer with <see cref="Number" /> object and returns true if their internal state is not equal.
 		/// </summary>
 		/// <param name="int1">First unsigned integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if not equals.</returns>
 		
-		static public bool operator !=(uint int1, IntX int2)
+		static public bool operator !=(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) != 0;
 		}
@@ -406,58 +406,58 @@ namespace EulerTools
 		#region operator>
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if first is greater.
+		/// Compares two <see cref="Number" /> objects and returns true if first is greater.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater.</returns>
-		static public bool operator >(IntX int1, IntX int2)
+		static public bool operator >(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, true) > 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if first is greater.
+		/// Compares <see cref="Number" /> object with integer and returns true if first is greater.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if first is greater.</returns>
-		static public bool operator >(IntX int1, int int2)
+		static public bool operator >(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) > 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if first is greater.
+		/// Compares integer with <see cref="Number" /> object and returns true if first is greater.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater.</returns>
-		static public bool operator >(int int1, IntX int2)
+		static public bool operator >(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) < 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsigned integer and returns true if first is greater.
+		/// Compares <see cref="Number" /> object with unsigned integer and returns true if first is greater.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsigned integer.</param>
 		/// <returns>True if first is greater.</returns>
 		
-		static public bool operator >(IntX int1, uint int2)
+		static public bool operator >(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) > 0;
 		}
 
 		/// <summary>
-		/// Compares unsigned integer with <see cref="IntX" /> object and returns true if first is greater.
+		/// Compares unsigned integer with <see cref="Number" /> object and returns true if first is greater.
 		/// </summary>
 		/// <param name="int1">First unsigned integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater.</returns>
 		
-		static public bool operator >(uint int1, IntX int2)
+		static public bool operator >(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) < 0;
 		}
@@ -467,58 +467,58 @@ namespace EulerTools
 		#region operator>=
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if first is greater or equal.
+		/// Compares two <see cref="Number" /> objects and returns true if first is greater or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater or equal.</returns>
-		static public bool operator >=(IntX int1, IntX int2)
+		static public bool operator >=(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, true) >= 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if first is greater or equal.
+		/// Compares <see cref="Number" /> object with integer and returns true if first is greater or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if first is greater or equal.</returns>
-		static public bool operator >=(IntX int1, int int2)
+		static public bool operator >=(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) >= 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if first is greater or equal.
+		/// Compares integer with <see cref="Number" /> object and returns true if first is greater or equal.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater or equal.</returns>
-		static public bool operator >=(int int1, IntX int2)
+		static public bool operator >=(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) <= 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsinged integer and returns true if first is greater or equal.
+		/// Compares <see cref="Number" /> object with unsinged integer and returns true if first is greater or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsinged integer.</param>
 		/// <returns>True if first is greater or equal.</returns>
 		
-		static public bool operator >=(IntX int1, uint int2)
+		static public bool operator >=(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) >= 0;
 		}
 
 		/// <summary>
-		/// Compares unsinged integer with <see cref="IntX" /> object and returns true if first is greater or equal.
+		/// Compares unsinged integer with <see cref="Number" /> object and returns true if first is greater or equal.
 		/// </summary>
 		/// <param name="int1">First unsinged integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is greater or equal.</returns>
 		
-		static public bool operator >=(uint int1, IntX int2)
+		static public bool operator >=(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) <= 0;
 		}
@@ -528,58 +528,58 @@ namespace EulerTools
 		#region operator<
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if first is lighter.
+		/// Compares two <see cref="Number" /> objects and returns true if first is lighter.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter.</returns>
-		static public bool operator <(IntX int1, IntX int2)
+		static public bool operator <(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, true) < 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if first is lighter.
+		/// Compares <see cref="Number" /> object with integer and returns true if first is lighter.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if first is lighter.</returns>
-		static public bool operator <(IntX int1, int int2)
+		static public bool operator <(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) < 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if first is lighter.
+		/// Compares integer with <see cref="Number" /> object and returns true if first is lighter.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter.</returns>
-		static public bool operator <(int int1, IntX int2)
+		static public bool operator <(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) > 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsinged integer and returns true if first is lighter.
+		/// Compares <see cref="Number" /> object with unsinged integer and returns true if first is lighter.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsinged integer.</param>
 		/// <returns>True if first is lighter.</returns>
 		
-		static public bool operator <(IntX int1, uint int2)
+		static public bool operator <(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) < 0;
 		}
 
 		/// <summary>
-		/// Compares unsinged integer with <see cref="IntX" /> object and returns true if first is lighter.
+		/// Compares unsinged integer with <see cref="Number" /> object and returns true if first is lighter.
 		/// </summary>
 		/// <param name="int1">First unsinged integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter.</returns>
 		
-		static public bool operator <(uint int1, IntX int2)
+		static public bool operator <(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) > 0;
 		}
@@ -589,58 +589,58 @@ namespace EulerTools
 		#region operator<=
 
 		/// <summary>
-		/// Compares two <see cref="IntX" /> objects and returns true if first is lighter or equal.
+		/// Compares two <see cref="Number" /> objects and returns true if first is lighter or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter or equal.</returns>
-		static public bool operator <=(IntX int1, IntX int2)
+		static public bool operator <=(Number int1, Number int2)
 		{
 			return OpHelper.Cmp(int1, int2, true) <= 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with integer and returns true if first is lighter or equal.
+		/// Compares <see cref="Number" /> object with integer and returns true if first is lighter or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second integer.</param>
 		/// <returns>True if first is lighter or equal.</returns>
-		static public bool operator <=(IntX int1, int int2)
+		static public bool operator <=(Number int1, int int2)
 		{
 			return OpHelper.Cmp(int1, int2) <= 0;
 		}
 
 		/// <summary>
-		/// Compares integer with <see cref="IntX" /> object and returns true if first is lighter or equal.
+		/// Compares integer with <see cref="Number" /> object and returns true if first is lighter or equal.
 		/// </summary>
 		/// <param name="int1">First integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter or equal.</returns>
-		static public bool operator <=(int int1, IntX int2)
+		static public bool operator <=(int int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) >= 0;
 		}
 
 		/// <summary>
-		/// Compares <see cref="IntX" /> object with unsinged integer and returns true if first is lighter or equal.
+		/// Compares <see cref="Number" /> object with unsinged integer and returns true if first is lighter or equal.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second unsinged integer.</param>
 		/// <returns>True if first is lighter or equal.</returns>
 		
-		static public bool operator <=(IntX int1, uint int2)
+		static public bool operator <=(Number int1, uint int2)
 		{
 			return OpHelper.Cmp(int1, int2) <= 0;
 		}
 
 		/// <summary>
-		/// Compares unsinged integer with <see cref="IntX" /> object and returns true if first is lighter or equal.
+		/// Compares unsinged integer with <see cref="Number" /> object and returns true if first is lighter or equal.
 		/// </summary>
 		/// <param name="int1">First unsinged integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>True if first is lighter or equal.</returns>
 		
-		static public bool operator <=(uint int1, IntX int2)
+		static public bool operator <=(uint int1, Number int2)
 		{
 			return OpHelper.Cmp(int2, int1) >= 0;
 		}
@@ -650,23 +650,23 @@ namespace EulerTools
 		#region operator+ and operator-
 
 		/// <summary>
-		/// Adds one <see cref="IntX" /> object to another.
+		/// Adds one <see cref="Number" /> object to another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Addition result.</returns>
-		static public IntX operator +(IntX int1, IntX int2)
+		static public Number operator +(Number int1, Number int2)
 		{
 			return OpHelper.AddSub(int1, int2, false);
 		}
 
 		/// <summary>
-		/// Subtracts one <see cref="IntX" /> object from another.
+		/// Subtracts one <see cref="Number" /> object from another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Subtraction result.</returns>
-		static public IntX operator -(IntX int1, IntX int2)
+		static public Number operator -(Number int1, Number int2)
 		{
 			return OpHelper.AddSub(int1, int2, true);
 		}
@@ -676,12 +676,12 @@ namespace EulerTools
 		#region operator*
 
 		/// <summary>
-		/// Multiplies one <see cref="IntX" /> object on another.
+		/// Multiplies one <see cref="Number" /> object on another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Multiply result.</returns>
-		static public IntX operator *(IntX int1, IntX int2)
+		static public Number operator *(Number int1, Number int2)
 		{
 			return MultiplyManager.GetCurrentMultiplier().Multiply(int1, int2);
 		}
@@ -691,26 +691,26 @@ namespace EulerTools
 		#region operator/ and operator%
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object by another.
+		/// Divides one <see cref="Number" /> object by another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Division result.</returns>
-		static public IntX operator /(IntX int1, IntX int2)
+		static public Number operator /(Number int1, Number int2)
 		{
-			IntX modRes;
+			Number modRes;
 			return DivideManager.GetCurrentDivider().DivMod(int1, int2, out modRes, DivModResultFlags.Div);
 		}
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object by another and returns division modulo.
+		/// Divides one <see cref="Number" /> object by another and returns division modulo.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <returns>Modulo result.</returns>
-		static public IntX operator %(IntX int1, IntX int2)
+		static public Number operator %(Number int1, Number int2)
 		{
-			IntX modRes;
+			Number modRes;
 			DivideManager.GetCurrentDivider().DivMod(int1, int2, out modRes, DivModResultFlags.Mod);
 			return modRes;
 		}
@@ -720,23 +720,23 @@ namespace EulerTools
 		#region operator<< and operator>>
 
 		/// <summary>
-		/// Shifts <see cref="IntX" /> object on selected bits count to the left.
+		/// Shifts <see cref="Number" /> object on selected bits count to the left.
 		/// </summary>
 		/// <param name="intX">Big integer.</param>
 		/// <param name="shift">Bits count.</param>
 		/// <returns>Shifting result.</returns>
-		static public IntX operator <<(IntX intX, int shift)
+		static public Number operator <<(Number intX, int shift)
 		{
 			return OpHelper.Sh(intX, shift, true);
 		}
 
 		/// <summary>
-		/// Shifts <see cref="IntX" /> object on selected bits count to the right.
+		/// Shifts <see cref="Number" /> object on selected bits count to the right.
 		/// </summary>
 		/// <param name="intX">Big integer.</param>
 		/// <param name="shift">Bits count.</param>
 		/// <returns>Shifting result.</returns>
-		static public IntX operator >>(IntX intX, int shift)
+		static public Number operator >>(Number intX, int shift)
 		{
 			return OpHelper.Sh(intX, shift, false);
 		}
@@ -746,12 +746,12 @@ namespace EulerTools
 		#region +, -, ++, -- unary operators
 
 		/// <summary>
-		/// Returns the same <see cref="IntX" /> value.
+		/// Returns the same <see cref="Number" /> value.
 		/// </summary>
 		/// <param name="value">Initial value.</param>
 		/// <returns>The same value, but new object.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		static public IntX operator +(IntX value)
+		static public Number operator +(Number value)
 		{
 			// Exception
 			if (ReferenceEquals(value, null))
@@ -759,16 +759,16 @@ namespace EulerTools
 				throw new ArgumentNullException("value");
 			}
 
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		/// <summary>
-		/// Returns the same <see cref="IntX" /> value, but with other sign.
+		/// Returns the same <see cref="Number" /> value, but with other sign.
 		/// </summary>
 		/// <param name="value">Initial value.</param>
 		/// <returns>The same value, but with other sign.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		static public IntX operator -(IntX value)
+		static public Number operator -(Number value)
 		{
 			// Exception
 			if (ReferenceEquals(value, null))
@@ -776,7 +776,7 @@ namespace EulerTools
 				throw new ArgumentNullException("value");
 			}
 
-			IntX newValue = new IntX(value);
+			Number newValue = new Number(value);
 			if (newValue._length != 0)
 			{
 				newValue._negative = !newValue._negative;
@@ -785,12 +785,12 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns increased <see cref="IntX" /> value.
+		/// Returns increased <see cref="Number" /> value.
 		/// </summary>
 		/// <param name="value">Initial value.</param>
 		/// <returns>Increased value.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		static public IntX operator ++(IntX value)
+		static public Number operator ++(Number value)
 		{
 			// Exception
 			if (ReferenceEquals(value, null))
@@ -802,12 +802,12 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns decreased <see cref="IntX" /> value.
+		/// Returns decreased <see cref="Number" /> value.
 		/// </summary>
 		/// <param name="value">Initial value.</param>
 		/// <returns>Decreased value.</returns>
 		/// <exception cref="ArgumentNullException"><paramref name="value" /> is a null reference.</exception>
-		static public IntX operator --(IntX value)
+		static public Number operator --(Number value)
 		{
 			// Exception
 			if (ReferenceEquals(value, null))
@@ -825,56 +825,56 @@ namespace EulerTools
 		#region To IntX (Implicit)
 
 		/// <summary>
-		/// Implicitly converts <see cref="Int32" /> to <see cref="IntX" />.
+		/// Implicitly converts <see cref="Int32" /> to <see cref="Number" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
-		static public implicit operator IntX(int value)
+		static public implicit operator Number(int value)
 		{
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		/// <summary>
-		/// Implicitly converts <see cref="UInt32" /> to <see cref="IntX" />.
+		/// Implicitly converts <see cref="UInt32" /> to <see cref="Number" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public implicit operator IntX(uint value)
+		static public implicit operator Number(uint value)
 		{
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		/// <summary>
-		/// Implicitly converts <see cref="UInt16" /> to <see cref="IntX" />.
+		/// Implicitly converts <see cref="UInt16" /> to <see cref="Number" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public implicit operator IntX(ushort value)
+		static public implicit operator Number(ushort value)
 		{
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		/// <summary>
-		/// Implicitly converts <see cref="Int64" /> to <see cref="IntX" />.
+		/// Implicitly converts <see cref="Int64" /> to <see cref="Number" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
-		static public implicit operator IntX(long value)
+		static public implicit operator Number(long value)
 		{
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		/// <summary>
-		/// Implicitly converts <see cref="UInt64" /> to <see cref="IntX" />.
+		/// Implicitly converts <see cref="UInt64" /> to <see cref="Number" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public implicit operator IntX(ulong value)
+		static public implicit operator Number(ulong value)
 		{
-			return new IntX(value);
+			return new Number(value);
 		}
 
 		#endregion To IntX (Implicit)
@@ -882,23 +882,23 @@ namespace EulerTools
 		#region From IntX (Explicit)
 
 		/// <summary>
-		/// Explicitly converts <see cref="IntX" /> to <see cref="int" />.
+		/// Explicitly converts <see cref="Number" /> to <see cref="int" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
-		static public explicit operator int(IntX value)
+		static public explicit operator int(Number value)
 		{
 			int res = (int)(uint)value;
 			return value._negative ? -res : res;
 		}
 
 		/// <summary>
-		/// Explicitly converts <see cref="IntX" /> to <see cref="uint" />.
+		/// Explicitly converts <see cref="Number" /> to <see cref="uint" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public explicit operator uint(IntX value)
+		static public explicit operator uint(Number value)
 		{
 			if (value == null)
 			{
@@ -910,23 +910,23 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Explicitly converts <see cref="IntX" /> to <see cref="long" />.
+		/// Explicitly converts <see cref="Number" /> to <see cref="long" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
-		static public explicit operator long(IntX value)
+		static public explicit operator long(Number value)
 		{
 			long res = (long)(ulong)value;
 			return value._negative ? -res : res;
 		}
 
 		/// <summary>
-		/// Explicitly converts <see cref="IntX" /> to <see cref="ulong" />.
+		/// Explicitly converts <see cref="Number" /> to <see cref="ulong" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public explicit operator ulong(IntX value)
+		static public explicit operator ulong(Number value)
 		{
 			ulong res = (uint)value;
 			if (value._length > 1)
@@ -937,12 +937,12 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Explicitly converts <see cref="IntX" /> to <see cref="ushort" />.
+		/// Explicitly converts <see cref="Number" /> to <see cref="ushort" />.
 		/// </summary>
 		/// <param name="value">Value to convert.</param>
 		/// <returns>Conversion result.</returns>
 		
-		static public explicit operator ushort(IntX value)
+		static public explicit operator ushort(Number value)
 		{
 			return (ushort)(uint)value;
 		}
@@ -958,13 +958,13 @@ namespace EulerTools
 		#region Multiply
 
 		/// <summary>
-		/// Multiplies one <see cref="IntX" /> object on another.
+		/// Multiplies one <see cref="Number" /> object on another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="mode">Multiply mode set explicitly.</param>
 		/// <returns>Multiply result.</returns>
-		static public IntX Multiply(IntX int1, IntX int2, MultiplyMode mode)
+		static public Number Multiply(Number int1, Number int2, MultiplyMode mode)
 		{
 			return MultiplyManager.GetMultiplier(mode).Multiply(int1, int2);
 		}
@@ -974,47 +974,47 @@ namespace EulerTools
 		#region Divide/modulo
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object by another.
+		/// Divides one <see cref="Number" /> object by another.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="mode">Divide mode.</param>
 		/// <returns>Division result.</returns>
-		static public IntX Divide(IntX int1, IntX int2, DivideMode mode)
+		static public Number Divide(Number int1, Number int2, DivideMode mode)
 		{
-			IntX modRes;
+			Number modRes;
 			return DivideManager.GetDivider(mode).DivMod(int1, int2, out modRes, DivModResultFlags.Div);
 		}
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object by another and returns division modulo.
+		/// Divides one <see cref="Number" /> object by another and returns division modulo.
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="mode">Divide mode.</param>
 		/// <returns>Modulo result.</returns>
-		static public IntX Modulo(IntX int1, IntX int2, DivideMode mode)
+		static public Number Modulo(Number int1, Number int2, DivideMode mode)
 		{
-			IntX modRes;
+			Number modRes;
 			DivideManager.GetDivider(mode).DivMod(int1, int2, out modRes, DivModResultFlags.Mod);
 			return modRes;
 		}
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object on another.
+		/// Divides one <see cref="Number" /> object on another.
 		/// Returns both divident and remainder
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
 		/// <param name="int2">Second big integer.</param>
 		/// <param name="modRes">Remainder big integer.</param>
 		/// <returns>Division result.</returns>
-		static public IntX DivideModulo(IntX int1, IntX int2, out IntX modRes)
+		static public Number DivideModulo(Number int1, Number int2, out Number modRes)
 		{
 			return DivideManager.GetCurrentDivider().DivMod(int1, int2, out modRes, DivModResultFlags.Div | DivModResultFlags.Mod);
 		}
 
 		/// <summary>
-		/// Divides one <see cref="IntX" /> object on another.
+		/// Divides one <see cref="Number" /> object on another.
 		/// Returns both divident and remainder
 		/// </summary>
 		/// <param name="int1">First big integer.</param>
@@ -1022,7 +1022,7 @@ namespace EulerTools
 		/// <param name="modRes">Remainder big integer.</param>
 		/// <param name="mode">Divide mode.</param>
 		/// <returns>Division result.</returns>
-		static public IntX DivideModulo(IntX int1, IntX int2, out IntX modRes, DivideMode mode)
+		static public Number DivideModulo(Number int1, Number int2, out Number modRes, DivideMode mode)
 		{
 			return DivideManager.GetDivider(mode).DivMod(int1, int2, out modRes, DivModResultFlags.Div | DivModResultFlags.Mod);
 		}
@@ -1031,30 +1031,25 @@ namespace EulerTools
 
 		#region Pow
 
-		/// <summary>
-		/// Returns a specified big integer raised to the specified power.
-		/// </summary>
-		/// <param name="value">Number to raise.</param>
-		/// <param name="power">Power.</param>
-		/// <returns>Number in given power.</returns>
-		
-		static public IntX Pow(IntX value, uint power)
-		{
-			return OpHelper.Pow(value, power, GlobalSettings.MultiplyMode);
-		}
+        public Number Pow(uint power)
+        {
+            return OpHelper.Pow(this, power, GlobalSettings.MultiplyMode);
+        }
 
-		/// <summary>
-		/// Returns a specified big integer raised to the specified power.
-		/// </summary>
-		/// <param name="value">Number to raise.</param>
-		/// <param name="power">Power.</param>
-		/// <param name="multiplyMode">Multiply mode set explicitly.</param>
-		/// <returns>Number in given power.</returns>
-		
-		static public IntX Pow(IntX value, uint power, MultiplyMode multiplyMode)
-		{
-			return OpHelper.Pow(value, power, multiplyMode);
-		}
+        public Number Pow(uint power, MultiplyMode mode)
+        {
+            return OpHelper.Pow(this, power, mode);
+        }
+
+        public Number Pow(uint power, Number mod)
+        {
+            return OpHelper.Pow(this, power, mod, GlobalSettings.MultiplyMode);
+        }
+
+        public Number Pow(uint power, Number mod, MultiplyMode mode)
+        {
+            return OpHelper.Pow(this, power, mod, mode);
+        }
 
 		#endregion Pow
 
@@ -1063,7 +1058,7 @@ namespace EulerTools
 		#region ToString override
 
 		/// <summary>
-		/// Returns decimal string representation of this <see cref="IntX" /> object.
+		/// Returns decimal string representation of this <see cref="Number" /> object.
 		/// </summary>
 		/// <returns>Decimal number in string.</returns>
 		override public string ToString()
@@ -1072,7 +1067,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns string representation of this <see cref="IntX" /> object in given base.
+		/// Returns string representation of this <see cref="Number" /> object in given base.
 		/// </summary>
 		/// <param name="numberBase">Base of system in which to do output.</param>
 		/// <returns>Object string representation.</returns>
@@ -1083,7 +1078,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns string representation of this <see cref="IntX" /> object in given base.
+		/// Returns string representation of this <see cref="Number" /> object in given base.
 		/// </summary>
 		/// <param name="numberBase">Base of system in which to do output.</param>
 		/// <param name="upperCase">Use uppercase for bases from 11 to 16 (which use letters A-F).</param>
@@ -1096,7 +1091,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns string representation of this <see cref="IntX" /> object in given base using custom alphabet.
+		/// Returns string representation of this <see cref="Number" /> object in given base using custom alphabet.
 		/// </summary>
 		/// <param name="numberBase">Base of system in which to do output.</param>
 		/// <param name="alphabet">Alphabet which contains chars used to represent big integer, char position is coresponding digit value.</param>
@@ -1114,71 +1109,71 @@ namespace EulerTools
 		#region Parsing methods
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object in decimal base.
+		/// Parses provided string representation of <see cref="Number" /> object in decimal base.
 		/// If number starts from "0" then it's treated as octal; if number starts fropm "0x"
 		/// then it's treated as hexadecimal.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <returns>Parsed object.</returns>
-		static public IntX Parse(string value)
+		static public Number Parse(string value)
 		{
 			return ParseManager.GetCurrentParser().Parse(value, 10U, Constants.BaseCharToDigits, true);
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
 		/// <returns>Parsed object.</returns>
 		
-		static public IntX Parse(string value, uint numberBase)
+		static public Number Parse(string value, uint numberBase)
 		{
 			return ParseManager.GetCurrentParser().Parse(value, numberBase, Constants.BaseCharToDigits, false);
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object using custom alphabet.
+		/// Parses provided string representation of <see cref="Number" /> object using custom alphabet.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
 		/// <param name="alphabet">Alphabet which contains chars used to represent big integer, char position is coresponding digit value.</param>
 		/// <returns>Parsed object.</returns>
 		
-		static public IntX Parse(string value, uint numberBase, string alphabet)
+		static public Number Parse(string value, uint numberBase, string alphabet)
 		{
 			return ParseManager.GetCurrentParser()
 				.Parse(value, numberBase, StrRepHelper.CharDictionaryFromAlphabet(alphabet, numberBase), false);
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object in decimal base.
+		/// Parses provided string representation of <see cref="Number" /> object in decimal base.
 		/// If number starts from "0" then it's treated as octal; if number starts fropm "0x"
 		/// then it's treated as hexadecimal.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="mode">Parse mode.</param>
 		/// <returns>Parsed object.</returns>
-		static public IntX Parse(string value, ParseMode mode)
+		static public Number Parse(string value, ParseMode mode)
 		{
 			return ParseManager.GetParser(mode).Parse(value, 10U, Constants.BaseCharToDigits, true);
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object.
+		/// Parses provided string representation of <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
 		/// <param name="mode">Parse mode.</param>
 		/// <returns>Parsed object.</returns>
 		
-		static public IntX Parse(string value, uint numberBase, ParseMode mode)
+		static public Number Parse(string value, uint numberBase, ParseMode mode)
 		{
 			return ParseManager.GetParser(mode).Parse(value, numberBase, Constants.BaseCharToDigits, false);
 		}
 
 		/// <summary>
-		/// Parses provided string representation of <see cref="IntX" /> object using custom alphabet.
+		/// Parses provided string representation of <see cref="Number" /> object using custom alphabet.
 		/// </summary>
 		/// <param name="value">Number as string.</param>
 		/// <param name="numberBase">Number base.</param>
@@ -1186,7 +1181,7 @@ namespace EulerTools
 		/// <param name="mode">Parse mode.</param>
 		/// <returns>Parsed object.</returns>
 		
-		static public IntX Parse(string value, uint numberBase, string alphabet, ParseMode mode)
+		static public Number Parse(string value, uint numberBase, string alphabet, ParseMode mode)
 		{
 			return ParseManager.GetParser(mode)
 				.Parse(value, numberBase, StrRepHelper.CharDictionaryFromAlphabet(alphabet, numberBase), false);
@@ -1197,17 +1192,17 @@ namespace EulerTools
 		#region IEquatable/Equals/GetHashCode implementation/overrides
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another big integer.
+		/// Returns equality of this <see cref="Number" /> with another big integer.
 		/// </summary>
 		/// <param name="n">Big integer to compare with.</param>
 		/// <returns>True if equals.</returns>
-		public bool Equals(IntX n)
+		public bool Equals(Number n)
 		{
 			return base.Equals(n) || this == n;
 		}
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another integer.
+		/// Returns equality of this <see cref="Number" /> with another integer.
 		/// </summary>
 		/// <param name="n">Integer to compare with.</param>
 		/// <returns>True if equals.</returns>
@@ -1217,7 +1212,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another unsigned integer.
+		/// Returns equality of this <see cref="Number" /> with another unsigned integer.
 		/// </summary>
 		/// <param name="n">Unsigned integer to compare with.</param>
 		/// <returns>True if equals.</returns>
@@ -1228,7 +1223,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another long integer.
+		/// Returns equality of this <see cref="Number" /> with another long integer.
 		/// </summary>
 		/// <param name="n">Long integer to compare with.</param>
 		/// <returns>True if equals.</returns>
@@ -1238,7 +1233,7 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another unsigned long integer.
+		/// Returns equality of this <see cref="Number" /> with another unsigned long integer.
 		/// </summary>
 		/// <param name="n">Unsigned long integer to compare with.</param>
 		/// <returns>True if equals.</returns>
@@ -1250,17 +1245,17 @@ namespace EulerTools
 
 
 		/// <summary>
-		/// Returns equality of this <see cref="IntX" /> with another object.
+		/// Returns equality of this <see cref="Number" /> with another object.
 		/// </summary>
 		/// <param name="obj">Object to compare with.</param>
 		/// <returns>True if equals.</returns>
 		override public bool Equals(object obj)
 		{
-			return obj is IntX && Equals((IntX)obj);
+			return obj is Number && Equals((Number)obj);
 		}
 
 		/// <summary>
-		/// Returns hash code for this <see cref="IntX" /> object.
+		/// Returns hash code for this <see cref="Number" /> object.
 		/// </summary>
 		/// <returns>Object hash code.</returns>
 		override public int GetHashCode()
@@ -1285,7 +1280,7 @@ namespace EulerTools
 		/// </summary>
 		/// <param name="n">Big integer to compare with.</param>
 		/// <returns>1 if object is bigger than <paramref name="n" />, -1 if object is smaller than <paramref name="n" />, 0 if they are equal.</returns>
-		public int CompareTo(IntX n)
+		public int CompareTo(Number n)
 		{
 			return OpHelper.Cmp(this, n, true);
 		}
@@ -1339,9 +1334,9 @@ namespace EulerTools
 		/// <returns>1 if object is bigger than <paramref name="obj" />, -1 if object is smaller than <paramref name="obj" />, 0 if they are equal.</returns>
 		public int CompareTo(object obj)
 		{
-			if (obj is IntX)
+			if (obj is Number)
 			{
-				return CompareTo((IntX)obj);
+				return CompareTo((Number)obj);
 			}
 			else if (obj is int)
 			{
@@ -1386,9 +1381,9 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Retrieves this <see cref="IntX" /> internal state as digits array and sign.
+		/// Retrieves this <see cref="Number" /> internal state as digits array and sign.
 		/// Can be used for serialization and other purposes.
-		/// Note: please use constructor instead to clone <see cref="IntX" /> object.
+		/// Note: please use constructor instead to clone <see cref="Number" /> object.
 		/// </summary>
 		/// <param name="digits">Digits array.</param>
 		/// <param name="negative">Is negative integer.</param>
@@ -1440,11 +1435,11 @@ namespace EulerTools
 		}
 
 		/// <summary>
-		/// Initializes class instance from another <see cref="IntX" /> value.
+		/// Initializes class instance from another <see cref="Number" /> value.
 		/// For internal use.
 		/// </summary>
 		/// <param name="value">Big integer value.</param>
-		void InitFromIntX(IntX value)
+		void InitFromIntX(Number value)
 		{
 			_digits = value._digits;
 			_length = value._length;

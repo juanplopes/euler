@@ -80,7 +80,7 @@ namespace EulerTools
 			}
 
 			// Maybe check for validity using classic multiplication
-			if (IntX.GlobalSettings.ApplyFhtValidityCheck)
+			if (Number.GlobalSettings.ApplyFhtValidityCheck)
 			{
 				uint lowerDigitCount = System.Math.Min(length2, System.Math.Min(length1, Constants.FhtValidityCheckDigitCount));
 

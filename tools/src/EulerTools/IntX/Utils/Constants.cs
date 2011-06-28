@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace EulerTools
 {
 	/// <summary>
-	/// Constants used in <see cref="IntX" /> and helping classes.
+	/// Constants used in <see cref="Number" /> and helping classes.
 	/// </summary>
 	static internal class Constants
 	{
@@ -82,13 +82,13 @@ namespace EulerTools
 		#region FHT constants
 		
 		/// <summary>
-		/// <see cref="IntX" /> length from which FHT is used (in auto-FHT mode).
+		/// <see cref="Number" /> length from which FHT is used (in auto-FHT mode).
 		/// Before this length usual multiply algorithm works faster.
 		/// </summary>
 		public const uint AutoFhtLengthLowerBound = 1U << 9;
 		
 		/// <summary>
-		/// <see cref="IntX" /> length 'till which FHT is used (in auto-FHT mode).
+		/// <see cref="Number" /> length 'till which FHT is used (in auto-FHT mode).
 		/// After this length using of FHT may be unsafe due to big precision errors.
 		/// </summary>
 		public const uint AutoFhtLengthUpperBound = 1U << 26;
@@ -103,13 +103,13 @@ namespace EulerTools
 		#region Newton constants
 
 		/// <summary>
-		/// <see cref="IntX" /> length from which Newton approach is used (in auto-Newton mode).
+		/// <see cref="Number" /> length from which Newton approach is used (in auto-Newton mode).
 		/// Before this length usual divide algorithm works faster.
 		/// </summary>
 		public const uint AutoNewtonLengthLowerBound = 1U << 13;
 
 		/// <summary>
-		/// <see cref="IntX" /> length 'till which Newton approach is used (in auto-Newton mode).
+		/// <see cref="Number" /> length 'till which Newton approach is used (in auto-Newton mode).
 		/// After this length using of fast division may be slow.
 		/// </summary>
 		public const uint AutoNewtonLengthUpperBound = 1U << 26;
@@ -119,13 +119,13 @@ namespace EulerTools
 		#region Parsing constants
 
 		/// <summary>
-		/// <see cref="IntX" /> length from which fast parsing is used (in Fast parsing mode).
+		/// <see cref="Number" /> length from which fast parsing is used (in Fast parsing mode).
 		/// Before this length usual parsing algorithm works faster.
 		/// </summary>
 		public const uint FastParseLengthLowerBound = 32;
 		
 		/// <summary>
-		/// <see cref="IntX" /> length 'till which fast parsing is used (in Fast parsing mode).
+		/// <see cref="Number" /> length 'till which fast parsing is used (in Fast parsing mode).
 		/// After this length using of parsing will be slow.
 		/// </summary>
 		public const uint FastParseLengthUpperBound = uint.MaxValue;
@@ -135,13 +135,13 @@ namespace EulerTools
 		#region ToString convertion constants
 		
 		/// <summary>
-		/// <see cref="IntX" /> length from which fast convertion is used (in Fast convert mode).
+		/// <see cref="Number" /> length from which fast convertion is used (in Fast convert mode).
 		/// Before this length usual convertion algorithm works faster.
 		/// </summary>
 		public const uint FastConvertLengthLowerBound = 16;
 		
 		/// <summary>
-		/// <see cref="IntX" /> length 'till which fast convertion is used (in Fast convert mode).
+		/// <see cref="Number" /> length 'till which fast convertion is used (in Fast convert mode).
 		/// After this length using of convertion will be slow.
 		/// </summary>
 		public const uint FastConvertLengthUpperBound = uint.MaxValue;
@@ -149,12 +149,12 @@ namespace EulerTools
 		#endregion ToString convertion constants
 		
 		/// <summary>
-		/// Count of bits in one <see cref="IntX" /> digit.
+		/// Count of bits in one <see cref="Number" /> digit.
 		/// </summary>
 		public const int DigitBitCount = 32;
 		
 		/// <summary>
-		/// Maximum count of bits which can fit in <see cref="IntX" />.
+		/// Maximum count of bits which can fit in <see cref="Number" />.
 		/// </summary>
 		public const ulong MaxBitCount = uint.MaxValue * 32UL;
 		

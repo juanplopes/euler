@@ -6,7 +6,7 @@ namespace EulerTools
 	sealed internal class Pow2StringConverter : IStringConverter
 	{
 		// Not needed in this implementation
-		public string ToString(IntX intX, uint numberBase, char[] alphabet)
+		public string ToString(Number intX, uint numberBase, char[] alphabet)
 		{
 			return null;
 		}
