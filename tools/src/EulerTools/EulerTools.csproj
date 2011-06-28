@@ -49,6 +49,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +61,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BigInteger.cs" />
+    <Compile Include="IntX\Bits.cs" />
+    <Compile Include="IntX\DigitConverter.cs" />
+    <Compile Include="IntX\Dividers\AutoNewtonDivider.cs" />
+    <Compile Include="IntX\Dividers\ClassicDivider.cs" />
+    <Compile Include="IntX\Dividers\DivideManager.cs" />
+    <Compile Include="IntX\Dividers\DividerBase.cs" />
+    <Compile Include="IntX\Dividers\IDivider.cs" />
+    <Compile Include="IntX\IntX.cs" />
+    <Compile Include="IntX\Multipliers\AutoFhtMultiplier.cs" />
+    <Compile Include="IntX\Multipliers\ClassicMultiplier.cs" />
+    <Compile Include="IntX\Multipliers\IMultiplier.cs" />
+    <Compile Include="IntX\Multipliers\MultiplierBase.cs" />
+    <Compile Include="IntX\Multipliers\MultiplyManager.cs" />
+    <Compile Include="IntX\OpHelpers\DigitHelper.cs" />
+    <Compile Include="IntX\OpHelpers\DigitOpHelper.cs" />
+    <Compile Include="IntX\OpHelpers\FhtHelper.cs" />
+    <Compile Include="IntX\OpHelpers\NewtonHelper.cs" />
+    <Compile Include="IntX\OpHelpers\OpHelper.cs" />
+    <Compile Include="IntX\OpHelpers\StrRepHelper.cs" />
+    <Compile Include="IntX\Parsers\ClassicParser.cs" />
+    <Compile Include="IntX\Parsers\FastParser.cs" />
+    <Compile Include="IntX\Parsers\IParser.cs" />
+    <Compile Include="IntX\Parsers\ParseManager.cs" />
+    <Compile Include="IntX\Parsers\ParserBase.cs" />
+    <Compile Include="IntX\Parsers\Pow2Parser.cs" />
+    <Compile Include="IntX\Settings\IntXGlobalSettings.cs" />
+    <Compile Include="IntX\Settings\IntXSettings.cs" />
+    <Compile Include="IntX\StringConverters\ClassicStringConverter.cs" />
+    <Compile Include="IntX\StringConverters\FastStringConverter.cs" />
+    <Compile Include="IntX\StringConverters\IStringConverter.cs" />
+    <Compile Include="IntX\StringConverters\Pow2StringConverter.cs" />
+    <Compile Include="IntX\StringConverters\StringConverterBase.cs" />
+    <Compile Include="IntX\StringConverters\StringConvertManager.cs" />
+    <Compile Include="IntX\Utils\ArrayPool.cs" />
+    <Compile Include="IntX\Utils\Constants.cs" />
+    <Compile Include="IntX\Utils\Enums.cs" />
+    <Compile Include="IntX\Utils\FhtMultiplicationException.cs" />
+    <Compile Include="IntX\Utils\Strings.Designer.cs" />
     <Compile Include="PrimeNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
@@ -72,6 +111,7 @@
     <None Include="Primes.bin" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="IntX\Utils\Strings.resx" />
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
