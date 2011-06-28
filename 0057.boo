@@ -5,6 +5,8 @@ import EulerTools from boot
 def num_digits(n as Number):
 	return n.ToString().Length
 
+print Number(10000000).Pow(2).Length
+	
 n = Number(1)
 d = Number(2)
 

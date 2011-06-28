@@ -69,7 +69,8 @@ namespace EulerTools
 		internal uint _length; // big integer digits length
 		internal bool _negative; // big integer sign ("-" if true)
 
-		IntXSettings _settings = new IntXSettings(GlobalSettings);
+        public uint Length { get { return _length; } }
+        IntXSettings _settings = new IntXSettings(GlobalSettings);
 
 		#endregion Internal fields
 
