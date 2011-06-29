@@ -11,10 +11,10 @@ for i as long in range(10000):
 	if dic.ContainsKey(key): 
 		dic[key]+=1
 		if dic[key] == 5:
-			answer = firsts[key]**3
+			answer = firsts[key]
 			break
 	else:
-		firsts[key] = i
+		firsts[key] = cube
 		dic[key] = 1
 		
 print answer
