@@ -64,7 +64,8 @@ namespace BooEulerTool
                     threadEx = e;
                 }
             });
-            threadEx = threadEx ?? JoinWithTimeout(t, timeout);
+            var timeoutEx = JoinWithTimeout(t, timeout);
+            threadEx = timeoutEx ?? threadEx;
             return threadEx;
         }
 
