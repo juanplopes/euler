@@ -21,11 +21,11 @@ def is_bouncy(n as int):
 	return not (is_inc(n) or is_dec(n))
 
 c = 0
-i = 0
 for i in range(1, int.MaxValue):
 	if is_bouncy(i): c+=1
-	if (i-c)*100 == i: break
+	if (i-c)*100 == i: 
+		answer = i
+		break
 	
-answer = i
 print answer
 assert answer == 1587000
