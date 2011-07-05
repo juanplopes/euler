@@ -4,12 +4,12 @@ import System.Collections.Generic
 import EulerTools from boot
 
 primes = PrimeNumbers()
-K = array(int, 200000)
+K = array(int, 134043+4)
 
 for p in primes.Until(K.Length/2):
 	for i in range(p*2, K.Length, p):
 		K[i]+=1
-		
+
 answer=0
 while(true):
 	answer+=1
