@@ -98,6 +98,7 @@
     <Compile Include="IntX\Utils\Enums.cs" />
     <Compile Include="IntX\Utils\FhtMultiplicationException.cs" />
     <Compile Include="IntX\Utils\Strings.Designer.cs" />
+    <Compile Include="PrimeFactor.cs" />
     <Compile Include="PrimeNumbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
