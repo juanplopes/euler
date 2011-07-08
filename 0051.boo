@@ -15,18 +15,23 @@ def remake_as(number as int, new_number as int):
 			d+=1
 		r += D[c] * temp
 		c+=1
+	
+	#BLACK MAGIC
+	#only because numbers must be changed in groups of three
+	#because looping throught the wildcard otherwise will generate
+	#at least 3 multiples of 3 (10-3 = 7, at most)
 	if d!=3: return -1
 	return r
 	
 for i in range(56003, int.MaxValue):
 	count = 0
 	first_prime = 0
-	#print remake_as(i, 9)
+	
 	for j in range(10):
 		candidate = remake_as(i, j)
 		if candidate == -1:break
 		if primes.IsPrime(candidate):
-			#print ' ' + candidate
+			
 			count += 1
 			if count == 1:
 				first_prime = candidate
