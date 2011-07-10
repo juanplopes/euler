@@ -77,15 +77,17 @@ def is_two_pairs(hand as string*):
 	
 
 def player1_win(hands as (string)):
-	p1 = hands.Take(5).ToArray()
-	p2 = hands.Skip(5).Take(5).ToArray()
+	p1 = hands[0:5]
+	p2 = hands[5:10]
 	
-	funcs = (is_royal_flush,is_straight_flush,is_four_of_a_kind,is_full_house,is_flush,is_straight,
-			is_three_of_a_kind,is_two_pairs,is_one_pair,total_value)
+	funcs = (is_royal_flush, is_straight_flush, is_four_of_a_kind,
+			 is_full_house, is_flush,is_straight, is_three_of_a_kind,
+			 is_two_pairs,is_one_pair,total_value)
 
 	for func in funcs:
-		if func(p1) > func(p2): return true
-		if func(p1) < func(p2): return false
+		a,b = (func(p1), func(p2))
+		if a > b: return true
+		if a < b: return false
 
 	assert false
 
