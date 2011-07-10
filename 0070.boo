@@ -18,9 +18,9 @@ for p in primes.Until(4000):
 		if (r >= 1e7): break
 		phi = (p-1)*(q-1)
 		if same_digits(r, phi):
-			if r/cast(double, phi) < min:
-				#print p, q
-				min = r/cast(double, phi)
+			d = r/cast(double, phi)
+			if d < min:
+				min = d
 				answer = r
 print answer
 assert answer == 8319823
