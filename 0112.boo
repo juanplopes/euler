@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def is_it(n as int, f as int):
 	a = -1

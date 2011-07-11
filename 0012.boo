@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 primes = PrimeNumbers()
 def divisors_count(n as int):

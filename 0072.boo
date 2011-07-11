@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 L = 1e6+1
 T = range(L).ToList()

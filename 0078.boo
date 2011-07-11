@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools
 
 def pentagonal():
 	for i in range(1, int.MaxValue):

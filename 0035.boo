@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 pow10 = (1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8)
 primes = PrimeNumbers(1000000)

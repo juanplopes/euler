@@ -1,7 +1,6 @@
 import System
 import System.Linq.Enumerable
 import System.Collections.Generic
-import EulerTools from boot
 
 primes = PrimeNumbers()
 K = array(int, 134043+4)

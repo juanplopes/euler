@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def kth_permutation(n as int, k as int):
 	data = array(int, n)

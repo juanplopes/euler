@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def CF(n as int):
 	n1,d1 =(0,1)
@@ -17,11 +16,11 @@ def CF(n as int):
 
 def special_root(n as int, p as int):
 	b = CF(n).First()
-	L = (Number(1),Number(0))
-	T = (Number(b),Number(1))
+	L = (BigInteger(1),BigInteger(0))
+	T = (BigInteger(b),BigInteger(1))
 	for i in CF(n).Skip(1).Take(p*2):
 		L, T = (T, (i*T[0]+L[0], i*T[1]+L[1]))
-	return T[0] * Number(10).Pow(p) / T[1]
+	return T[0] * BigInteger(10).Pow(p) / T[1]
 
 def is_perfect(r as int, n as int):
 	return r*r == n

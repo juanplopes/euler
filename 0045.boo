@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 for x as long in range(286,100000):
 	c = (x**2 + x)/2

@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BooEulerTool</RootNamespace>
-    <AssemblyName>BooRunner</AssemblyName>
+    <AssemblyName>boot</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +41,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -47,6 +50,7 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Boo.Lang">
@@ -77,6 +81,60 @@
     <Compile Include="TimeoutRunner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\BigInteger.cs" />
+    <Compile Include="Tools\IntX\Bits.cs" />
+    <Compile Include="Tools\IntX\DigitConverter.cs" />
+    <Compile Include="Tools\IntX\Dividers\AutoNewtonDivider.cs" />
+    <Compile Include="Tools\IntX\Dividers\ClassicDivider.cs" />
+    <Compile Include="Tools\IntX\Dividers\DivideManager.cs" />
+    <Compile Include="Tools\IntX\Dividers\DividerBase.cs" />
+    <Compile Include="Tools\IntX\Dividers\IDivider.cs" />
+    <Compile Include="Tools\IntX\Multipliers\AutoFhtMultiplier.cs" />
+    <Compile Include="Tools\IntX\Multipliers\ClassicMultiplier.cs" />
+    <Compile Include="Tools\IntX\Multipliers\IMultiplier.cs" />
+    <Compile Include="Tools\IntX\Multipliers\MultiplierBase.cs" />
+    <Compile Include="Tools\IntX\Multipliers\MultiplyManager.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\DigitHelper.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\DigitOpHelper.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\FhtHelper.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\NewtonHelper.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\OpHelper.cs" />
+    <Compile Include="Tools\IntX\OpHelpers\StrRepHelper.cs" />
+    <Compile Include="Tools\IntX\Parsers\ClassicParser.cs" />
+    <Compile Include="Tools\IntX\Parsers\FastParser.cs" />
+    <Compile Include="Tools\IntX\Parsers\IParser.cs" />
+    <Compile Include="Tools\IntX\Parsers\ParseManager.cs" />
+    <Compile Include="Tools\IntX\Parsers\ParserBase.cs" />
+    <Compile Include="Tools\IntX\Parsers\Pow2Parser.cs" />
+    <Compile Include="Tools\IntX\Settings\IntXGlobalSettings.cs" />
+    <Compile Include="Tools\IntX\Settings\IntXSettings.cs" />
+    <Compile Include="Tools\IntX\StringConverters\ClassicStringConverter.cs" />
+    <Compile Include="Tools\IntX\StringConverters\FastStringConverter.cs" />
+    <Compile Include="Tools\IntX\StringConverters\IStringConverter.cs" />
+    <Compile Include="Tools\IntX\StringConverters\Pow2StringConverter.cs" />
+    <Compile Include="Tools\IntX\StringConverters\StringConverterBase.cs" />
+    <Compile Include="Tools\IntX\StringConverters\StringConvertManager.cs" />
+    <Compile Include="Tools\IntX\Utils\ArrayPool.cs" />
+    <Compile Include="Tools\IntX\Utils\Constants.cs" />
+    <Compile Include="Tools\IntX\Utils\Enums.cs" />
+    <Compile Include="Tools\IntX\Utils\FhtMultiplicationException.cs" />
+    <Compile Include="Tools\IntX\Utils\Strings.Designer.cs" />
+    <Compile Include="Tools\PrimeNumbers.cs" />
+    <Compile Include="Tools\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tools\IntX\Utils\Strings.resx" />
+    <EmbeddedResource Include="Tools\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Tools\Primes.bin" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def are_pandigital(a as int, b as int, c as int):
 	digits = array(int, 10)

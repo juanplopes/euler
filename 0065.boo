@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 D = array(int, 102)
 D[0] = 2
@@ -11,15 +10,15 @@ for i in range(1, 102):
 	else:
 		D[i] = 1
 
-def N(k as int) as Number:
-	n as Number = 0
-	d as Number = 1
+def N(k as int) as BigInteger:
+	n as BigInteger = 0
+	d as BigInteger = 1
 	for i in range(k, 0):
 		n,d= d, d*D[i]+n
 	return d*2+n
 
 def digits_of(k as int):
-	n as Number = N(k)
+	n as BigInteger = N(k)
 	while n>0:
 		yield cast(int, n%10)
 		n/=10

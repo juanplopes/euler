@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def is_pandigital(a as string):
 	if a.Length != 9: return false

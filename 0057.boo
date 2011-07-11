@@ -1,12 +1,11 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
-def num_digits(n as Number):
+def num_digits(n as BigInteger):
 	return n.ToString().Length
 
-n = Number(1)
-d = Number(2)
+n = BigInteger(1)
+d = BigInteger(2)
 
 answer = 0
 for i in range(1000):

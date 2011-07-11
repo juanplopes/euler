@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 	
 F = (1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880)
 T = array(int, 3e6)

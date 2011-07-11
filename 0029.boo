@@ -1,18 +1,17 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def list(a as int, b as int) as decimal*:
 	for i in range(2, a+1):
 		for j in range(2, b+1):
 			yield j*Math.Log(i)
 
-numbers = list(100,100).ToList()
-numbers.Sort()
+BigIntegers = list(100,100).ToList()
+BigIntegers.Sort()
 
 answer = 1
-for i in range(1,numbers.Count):
-	if (Math.Abs(numbers[i] - numbers[i-1]) > 1e-7f):
+for i in range(1,BigIntegers.Count):
+	if (Math.Abs(BigIntegers[i] - BigIntegers[i-1]) > 1e-7f):
 		answer++
 			
 print answer

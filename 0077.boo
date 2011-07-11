@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 primes = PrimeNumbers()
 T = matrix(int, 101, 101)

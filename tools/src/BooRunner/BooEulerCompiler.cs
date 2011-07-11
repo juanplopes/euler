@@ -27,6 +27,7 @@ namespace BooEulerTool
             booc.Parameters.Input.Clear();
             booc.Parameters.Input.Add(new FileInput(file));
             booc.Parameters.OutputType = CompilerOutputType.Library;
+            booc.Parameters.References.Add(Assembly.GetExecutingAssembly());
             var ctx = booc.Run();
             if (ctx.Errors.Count > 0)
                 throw ctx.Errors[0];

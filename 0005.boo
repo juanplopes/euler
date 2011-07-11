@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 def gcd(a as long, b as long):
 	while(b): a, b = (b, a%b)

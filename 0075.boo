@@ -1,6 +1,5 @@
 import System
 import System.Linq.Enumerable
-import EulerTools from boot
 
 L = 1.5e6+1
 SL = cast(int, Math.Sqrt(L))
