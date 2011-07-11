@@ -1,3 +1,11 @@
+"""
+Brute force making bignum add by hand. Using base-10 integer array as storage.
+Very silly, but does the job.
+
+Someone told me that 
+=CEILING( (1000 - 1 + LOG10(SQRT(5))) / LOG10((1+SQRT(5))/2),1)
+does the job faster, but I want to keep this original solution.
+"""
 import System
 import System.Linq.Enumerable
 

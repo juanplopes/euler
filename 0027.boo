@@ -1,3 +1,7 @@
+"""
+Almost brute force. Intelligent only to know that the best values for b are
+primes, since prime numbers are coprimes to all numbers before them.
+"""
 import System
 import System.Linq.Enumerable
 
@@ -10,8 +14,6 @@ for a in range(-1000, 1000):
 		if (n>max):
 			max = n
 			answer = a*b
-
-			
 			
 print answer
 assert answer == -59231

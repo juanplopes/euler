@@ -1,3 +1,7 @@
+"""
+Test all possible sum of two abundant numbers and store the results.
+Sum the numbers that doesn't have any results associated.
+"""
 import System
 import System.Linq.Enumerable
 

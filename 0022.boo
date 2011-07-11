@@ -1,3 +1,7 @@
+"""
+Sorts the array, then apply the rules. They're simple, I guess.
+"""
+
 import System
 import System.Linq.Enumerable
 

@@ -1,3 +1,9 @@
+"""
+Solves by doing successive divisions method and finding the recurring cycle when
+the remaining is 0 or 1.
+
+Tests only primes (that doesn't have fixed part in dizim).
+"""
 import System
 import System.Linq.Enumerable
 
