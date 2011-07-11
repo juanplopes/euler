@@ -1,3 +1,7 @@
+"""
+Pure brute force. Defines all pairs in all directions then searches for the
+greatest product.
+"""
 import System
 import System.Linq.Enumerable
 
@@ -27,19 +31,14 @@ A = (
 pairs = [(a,b) for a in range(0,20) for b in range(0, 20)]
 
 S  = [[(a+i,b) for i in range(0, 4) if a+i<20] for a as int, b as int in pairs]
-N  = [[(a-i,b) for i in range(0, 4) if a-i>=0] for a as int, b as int in pairs]
 E  = [[(a,b+i) for i in range(0, 4) if b+i<20] for a as int, b as int in pairs]
-W  = [[(a,b-i) for i in range(0, 4) if b-i>=0] for a as int, b as int in pairs]
 SE  = [[(a+i,b+i) for i in range(0, 4) if a+i<20 and b+i<20] for a as int, b as int in pairs]
-SW  = [[(a+i,b-i) for i in range(0, 4) if a+i<20 and b-i>=0] for a as int, b as int in pairs]
 NE  = [[(a-i,b+i) for i in range(0, 4) if a-i>=0 and b+i<20] for a as int, b as int in pairs]
-NW  = [[(a-i,b-i) for i in range(0, 4) if a-i>=0 and b-i>=0] for a as int, b as int in pairs]
 
 product = {x as (int)|x[0]*x[1]*x[2]*x[3]}
 make_sum = {x as List|product(x.Cast[of (int)]().Select({y|A[y[0]][y[1]]}).ToArray())}
 
-answer = (S+N+E+W+SE+SW+NE+NW).Cast[of List]().Where({x|x.Count == 4}).Select(make_sum).Max()
+answer = (S+E+SE+NE).Cast[of List]().Where({x|x.Count == 4}).Select(make_sum).Max()
 
-#print make_sum([(6+i,8+i) for i in range(0, 4)])
 print answer
 assert answer == 70600674

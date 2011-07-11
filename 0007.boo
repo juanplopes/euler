@@ -1,3 +1,6 @@
+"""
+Trivial prime discovery. Internally using Sieve of Eratosthenes.
+"""
 import System
 import System.Linq.Enumerable
 
