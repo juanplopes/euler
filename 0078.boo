@@ -1,24 +1,24 @@
 import System
 import System.Linq.Enumerable
+	
+P = array(int, 1000)
+for i in range(1, P.Length / 2):
+	P[2*i-2] = i*(3*i-1)/2
+	P[2*i-1] = -i*(-3*i-1)/2
 
-def pentagonal():
-	for i in range(1, int.MaxValue):
-		yield i*(3*i-1)/2
-		yield -i*(-3*i-1)/2
+T = array(int, 1e5)
 
-L = 1e5
-
-T = array(int, L)
 T[0] = 1
-for i in range(1, L):
-	s, sig, c = (0, 1, 0)
-	for k in pentagonal().TakeWhile({x as int|x<=i}):
-		s = (s + sig * T[i-k]) % 1e6
-		if (++c==2): c, sig = 0, -sig
-	if s==0: 
-		answer = i
-		break
-	T[i] = s
+answer = 0
+for answer in range(1, T.Length):
+	s, j = 0, 0
+
+	while P[j] <= answer:
+		s = (s + (1 if j%4<2 else -1) * T[answer-P[j]]) % 1e6
+		j++
+		
+	if s==0: break
+	T[answer] = s
 		
 print answer
 assert answer == 55374
