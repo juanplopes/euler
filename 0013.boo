@@ -1,7 +1,10 @@
+"""
+Uses BigInteger. No big deal.
+"""
 import System
 import System.Linq.Enumerable
 
-BigIntegers = (
+numbers = (
 '37107287533902102798797998220837590246510135740250',
 '46376937677490009712648124896970078050417018260538',
 '74324986199524741059474233309513058123726617309629',
@@ -103,23 +106,12 @@ BigIntegers = (
 '20849603980134001723930671666823555245252804609722',
 '53503534226472524250874054075591789781264330331690')
 
-def sum(a as (int), b as (int)) as int*:
-	flag = 0
-	for i in range(Math.Max(a.Length, b.Length)):
-		if i<a.Length: flag+=a[i]
-		if i<b.Length: flag+=b[i]
-		yield flag%10
-		flag /= 10
-	if (flag): yield flag
-		
 
-to_int = {x|cast(int, x) - cast(int, char('0'))}
-convert = {x as char*|x.Select(to_int).Reverse().ToArray()}
-make = {x as int*|string.Join('', x.Reverse().Take(10).Select(Convert.ToString).ToArray())}
-aggregate = {x as (int)*, c as callable(int*, int*) as int*|v=x.First();x.Skip(1).Select({a|v=c(v,a).ToArray()}).Count();return v}
+s = BigInteger(0)
+for i in numbers.Select({x|BigInteger(x)}):
+	s += i
 
-#BigIntegers.Select(convert).Take(3)
-answer = make(aggregate(BigIntegers.Select(convert), sum))
+answer = s.ToString()[0:10]
 
 print answer
 assert answer == '5537376230'

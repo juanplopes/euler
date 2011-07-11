@@ -1,3 +1,6 @@
+"""
+Brute force using .Net date handling.
+"""
 import System
 import System.Linq.Enumerable
 

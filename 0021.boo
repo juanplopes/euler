@@ -1,11 +1,17 @@
+"""
+Uses a sieve algorithm to sum all divisors for each number.
+For example. For number 2, it jumps 4, 6, 8, etc, adding 2 to divisors sum.
+And so on.
+"""
 import System
 import System.Linq.Enumerable
 
-def factors(n as int):
-	for x in range(1,n):
-		if n%x==0: yield x
+D = array(int, 10000)
 
-D = range(10000).Select({n|factors(n).Sum()}).ToArray()
+for i in range(1, 5000):
+	for j in range(i*2, 10000, i):
+		D[j] += i
+
 def d(i as int):
 	if (i<0 or i>=10000): return -1
 	return D[i]
@@ -13,7 +19,7 @@ def d(i as int):
 sum = 0
 for a in range(2,10000):
 	b = d(a)
-	if a==d(b) and b==d(a) and a != b:
+	if a==d(b) and a != b:
 		sum+=a
 
 answer = sum

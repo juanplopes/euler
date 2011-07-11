@@ -1,3 +1,7 @@
+"""
+Precalculated sizes for units, tens, hundreds and teens.
+Different calculation only for teen values (11~19)
+"""
 import System
 import System.Linq.Enumerable
 

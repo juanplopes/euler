@@ -1,3 +1,11 @@
+"""
+It known that if a number can be primary decomposed as
+n1*k1+n2*k2+...+nq*kq
+it has (k1+1)*(k2+1)*...*(kq+1) divisors.
+
+This solution uses this property to find the number of divisors.
+Then brute force.
+"""
 import System
 import System.Linq.Enumerable
 

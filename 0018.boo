@@ -1,3 +1,8 @@
+"""
+Dynamic programming. Runs from bottom to up, setting values of each line with
+the maximum each item can achieve.
+Then it's just to check the A[0][0] for the maximum.
+"""
 import System
 import System.Linq.Enumerable
 
@@ -18,13 +23,11 @@ A = (
 		(63,66,04,68,89,53,67,30,73,16,69,87,40,31),
 		(04,62,98,27,23,09,70,98,73,93,38,53,60,04,23)
 	)
-T as (int, 2) = matrix(int, 15, 15)
-T[0,0] = A[0][0]
-for i in range(0, 15-1):
-	for j in range(i+1):	
-		T[i+1,j] = Math.Max(T[i+1,j], T[i,j]+A[i+1][j])
-		T[i+1,j+1] = Math.Max(T[i+1,j+1], T[i,j]+A[i+1][j+1])
+
+for i in range(13, -1):
+	for j in range(i+1):
+		A[i][j] = Math.Max(A[i][j]+A[i+1][j+1], A[i][j]+A[i+1][j])
 	
-answer = range(15).Select({i as int|T[14,i]}).Max()
+answer = A[0][0]
 print answer
 assert answer == 1074

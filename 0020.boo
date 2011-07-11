@@ -1,3 +1,6 @@
+"""
+Brute force, using BigInteger.
+"""
 import System
 import System.Linq.Enumerable
 	

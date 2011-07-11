@@ -1,3 +1,7 @@
+"""
+Calculates sequence size using recurrence and memoization.
+Then checks for the greater.
+"""
 import System
 import System.Linq.Enumerable
 
@@ -11,8 +15,6 @@ def seq(n as long) as long:
 	if n<T.Length: T[n] = d
 	return d
 	
-
-
 max_value = 0
 answer = 0
 
