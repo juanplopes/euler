@@ -32,8 +32,7 @@ T[0, 0] = 1
 for i in range(1,8):
 	for j in range(10):
 		for k in range(600-j*j):
-			if (T[i-1, k] > 0):
-				T[i, k+j*j] = T[i, k+j*j] + T[i-1, k]
+			T[i, k+j*j] = T[i, k+j*j] + T[i-1, k]
 
 
 answer = 0
