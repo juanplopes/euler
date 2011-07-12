@@ -5,11 +5,11 @@ less than 600 will lead to (with all the iterations).
 
 Then, to know where each number up to ten million will lead (with only one
 iteration) we use a dynamic programming that stores in T[i, j], how many 
-numbers with "i" digits will lead to "j" after its first iteration. 
+numbers with upto "i" digits will lead to "j" after its first iteration. 
 It iterates in the number digits [1..7] and the possible number for each 
 position [0..9], instead of the number itself.
 
-So, for each number "i" less than 600, we sum count[i] if lead_to[i] == 89.
+So, for each number "i" less than 600, we sum T[7, i] if lead_to[i] == 89.
 */
 import System
 import System.Linq.Enumerable
