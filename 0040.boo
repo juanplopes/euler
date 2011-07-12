@@ -1,3 +1,14 @@
+"""
+Navigates through the regions of the decimal (1 digit, 2 digits, 3 digits)
+
+find_in returns:
+n = the number you stopped in, not the digit, the number (e.g. 123)
+d = the position inside the number you stopped, counting from the right to left
+    starting at 0
+f = the number of digits at the area you're at, starting at 0
+
+e.g. (456, 1, 2) means (456 / (10 ** (2 - 1)) % 10) = 5
+"""
 import System
 import System.Linq.Enumerable
 

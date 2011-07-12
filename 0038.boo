@@ -1,3 +1,6 @@
+"""
+Brute force. Not gotchas. Just being brute.
+"""
 import System
 import System.Linq.Enumerable
 

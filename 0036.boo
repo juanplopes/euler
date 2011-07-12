@@ -1,3 +1,8 @@
+"""
+Brute force. Just decompose in both bases and verify if it's equal to it's
+reverse. Eliminate even numbers as they can never palindromic (because 0 can
+never be the first digit of a binary number).
+"""
 import System
 import System.Linq.Enumerable
 

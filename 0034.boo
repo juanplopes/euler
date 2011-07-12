@@ -1,3 +1,6 @@
+"""
+Brute force. Try every number. Factorial for 0..9 is cached.
+"""
 import System
 import System.Linq.Enumerable
 
@@ -9,13 +12,13 @@ def terms(a as int):
 		a/=10
 
 		
-def factall(a as int):
+def factorial_sum(a as int):
 	return terms(a).Select({n|facts[n]}).Sum()
 
-def is_bolado(a as int):
-	return a == factall(a)
+def have_property(a as int):
+	return a == factorial_sum(a)
 	
-answer = range(3, 100000).Where(is_bolado).Sum()
+answer = range(3, 100000).Where(have_property).Sum()
 		
 print answer
 assert answer == 40730

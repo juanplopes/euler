@@ -1,3 +1,11 @@
+"""
+Rotate numbers by dividing it by 10 and adding the last number multipled by
+the log10 of the original number. 
+
+The prime list is initialized with 1 million, to make fast prime checks.
+
+All that remains is brute force.
+"""
 import System
 import System.Linq.Enumerable
 

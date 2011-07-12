@@ -1,3 +1,8 @@
+"""
+Create all possible fractions in form XX/YY. Check for special property
+eliminating trivial cases. Saves the product into aa/bb. Then, reduces the
+fraction using GCD.
+"""
 import System
 import System.Linq.Enumerable
 
