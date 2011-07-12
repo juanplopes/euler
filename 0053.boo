@@ -1,3 +1,11 @@
+"""
+Uses common combination recurrence:
+C(n,k) = C(n-1, k) * n / (n-k)
+
+Then solves it by dynamic programming.
+
+To avoid overflow, any result greater than 1 million is set to -1
+"""
 import System
 import System.Linq.Enumerable
 

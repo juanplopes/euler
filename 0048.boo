@@ -1,3 +1,8 @@
+"""
+Use "powmod" principle. 
+
+E.g.: (2^32)%100 == ((2^16)%100 * (2^16)%100) %100
+"""
 import System
 import System.Linq.Enumerable
 

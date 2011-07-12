@@ -29,7 +29,7 @@ def backtrack(d as int) as long:
 			value[d] = i
 			used[i] = true
 			if valid_for(d): 
-				sum += count(d+1)
+				sum += backtrack(d+1)
 			used[i] = false
 	return sum
 			
