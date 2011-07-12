@@ -1,3 +1,17 @@
+/*
+Partition problem again. But the original solution is O(n^2) and n can get big 
+in this problem.
+
+Now, instead of using the classic recurrence, we're gonna use integer partition
+with pentagonal numbers. It uses the reciprocal of Euler's function, and defines
+that:
+
+p(k) = p(k - 1) + p(k - 2) - p(k - 5) - p(k - 7) + p(k - 12) ...
+
+These values subtracted from k are the generalized pentagonal numbers, that are
+define by generating pentagonal numbers for n = 1, -1, 2, -2, ... We precompute 
+these numbers at P.
+*/
 import System
 import System.Linq.Enumerable
 	

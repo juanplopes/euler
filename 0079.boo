@@ -1,3 +1,8 @@
+/*
+We try to generate the shortest password by checking, for every char, if it
+already matches the current password. A greed algorithm. If not, we put it where
+it belongs: before or after or inside the current one.
+*/
 import System
 import System.Linq.Enumerable
 

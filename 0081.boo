@@ -1,3 +1,8 @@
+/*
+Dynamic programming recurrence.
+
+M(i,j) = min(M(i-1,j), M(i,j-1))
+*/
 import System
 import System.Linq.Enumerable
 

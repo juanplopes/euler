@@ -1,3 +1,8 @@
+/*
+Precalculate all the phi values using a sieve algorithm. Mostly Eratosthenes,
+but multiplying it by the phi factor (1-1/p) for each prime that composes the
+number.
+*/
 import System
 import System.Linq.Enumerable
 

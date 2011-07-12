@@ -1,6 +1,9 @@
+/*
+Trivial solution. Approaches 2/5 to 3/7 by adding both numberator and 
+denominator until the former reaches the maximum.
+*/
 import System
 import System.Linq.Enumerable
-
 
 an,ad = (2,5)
 bn,bd = (3,7)

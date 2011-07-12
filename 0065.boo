@@ -1,3 +1,10 @@
+/*
+Precompute in D all the values for the sequence upto a limit.
+
+Defines N, a function that returns the kth numerator for the e-continued frac.
+
+What remains is trivial.
+*/
 import System
 import System.Linq.Enumerable
 

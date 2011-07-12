@@ -1,3 +1,12 @@
+/*
+The minimum ratio n/phi(n) is achieved by having the greatest possible primes.
+Ths trivial case would be n being a prime number. But, phi(p) = p-1, and p-1
+would never be a permutation of p. So, the second case is n being a product
+of two primes p and q. So, it's phi will be (p-1)(q-1).
+
+Try, for every pair of primes, every product that leads to a permutated phi and
+checks for the minimum ratio.
+*/
 import System
 import System.Linq.Enumerable
 

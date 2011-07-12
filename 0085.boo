@@ -1,3 +1,10 @@
+/*
+The number of rectangles in a NxM rectangle is defined by
+sum(1..N) * sum(1..M)
+
+Cache those sums and for each possible rectangle, find the one who has the min
+absolute difference to 2e6.
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,3 +1,10 @@
+/*
+Recursive solution with memoization. Each recursion step constructs the next
+number and checks for the solution to it.
+
+Define the known solutions for problem stated numbers, they're the only stop
+cases.
+*/
 import System
 import System.Linq.Enumerable
 	

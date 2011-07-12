@@ -1,3 +1,12 @@
+/*
+Generates each square root by using continued fractions method, but with one
+modification: the resulting numerator is multiplied by 10^99, in order to shift
+the 99 digits (of the resulting convergent) after the period to before it. 
+Then, it's just a matter of doing the integer division and get the resulting 
+value as an integer.
+
+Obviously, it uses BigInteger.
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,3 +1,13 @@
+/*
+The problem's equation is known as Pell's equation.
+
+The fundamental solution is to find the first hi/k1 continued fraction for
+sqrt(D) that, letting x = h1 and y = h1, satisfies the equation. That's
+guaranteed to be the very first solution.
+
+Uses classic algorithm to generate continued fractions (CF) and calculate
+the convergents. Then, check if the value satisfies the equation.
+*/
 import System
 import System.Linq.Enumerable
 

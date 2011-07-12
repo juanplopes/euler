@@ -1,3 +1,10 @@
+/*
+Recursive solution that generates all the value and verifies if it's part of the
+solution.
+
+e.g. count(1/3,1/2) finds the "center" to be 2/5  and counts how many fractions
+there are for (1/3,2/5) and (2/5,1/2) plus 2/5 itself.
+*/
 import System
 import System.Linq.Enumerable
 

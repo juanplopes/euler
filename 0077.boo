@@ -1,3 +1,12 @@
+/*
+Classic integer partition recurrence, modified for only using prime numbers. 
+Uses memoization.
+
+p(n,m) means in how many ways can we partition "n" using at most the factor "m".
+
+The only difference to the classic algorithm is that we only consider prime
+numbers as being valid factors.
+*/
 import System
 import System.Linq.Enumerable
 
