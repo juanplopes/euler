@@ -1,3 +1,16 @@
+/*
+It is easy to prove that every number less than ten million is reduced to less
+than 600 in the first iteration. What we do is to calculate where every number
+less than 600 will lead to (with all the iterations).
+
+Then, to know where each number up to ten million will lead (with only one
+iteration) we use a dynamic programming that stores in count[i], how many 
+numbers will lead to "i" after its first iteration. It iterates in the number
+size [1..7] and the possible number for each position [0..9], 
+instead of the number itself.
+
+So, for each number "i" less than 600, we sum count[i] if lead_to[i] == 89.
+*/
 import System
 import System.Linq.Enumerable
 
