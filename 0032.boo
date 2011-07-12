@@ -1,3 +1,8 @@
+"""
+Brute force throught all possible mutiplications, keeping track of which have
+been used (array P). For each of them that results into a pandigital number,
+sums into answer.
+"""
 import System
 import System.Linq.Enumerable
 
