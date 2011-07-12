@@ -1,7 +1,7 @@
-"""
+/*
 Calculates sequence size using recurrence and memoization.
 Then checks for the greater.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

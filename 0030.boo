@@ -1,6 +1,6 @@
-"""
+/*
 Brute force, caching n^5. Ignore one-digit numbers.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

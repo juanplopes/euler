@@ -1,6 +1,6 @@
-"""
+/*
 Brute force with BigInteger.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

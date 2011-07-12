@@ -1,8 +1,8 @@
-"""
+/*
 Generate all pentagonal numbers upto 2500 and store in a hashtable. Then verify
 all pairs whose sum and difference are also pentagonal (using the hashtable).
 Get the minimum absolute value.
-"""
+*/
 import System
 import System.Collections.Generic
 import System.Linq.Enumerable

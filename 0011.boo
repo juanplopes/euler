@@ -1,7 +1,7 @@
-"""
+/*
 Pure brute force. Defines all pairs in all directions then searches for the
 greatest product.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

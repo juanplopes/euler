@@ -1,7 +1,7 @@
-"""
+/*
 Almost brute force. Intelligent only to know that the best values for b are
 primes, since prime numbers are coprimes to all numbers before them.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

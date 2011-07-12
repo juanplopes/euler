@@ -1,7 +1,7 @@
-"""
+/*
 Uses factoradic to create the kth permutation of size n.
 Creates it as an array then mounts the number.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

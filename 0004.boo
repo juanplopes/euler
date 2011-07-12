@@ -1,7 +1,7 @@
-"""
+/*
 Define is_palindrome predicate, by decomposing and recomposing reverselly.
 Then solve the rest by brute force.
-"""
+*/
 import System.Linq.Enumerable
 
 def is_palindrome(n as int):

@@ -1,6 +1,6 @@
-"""
+/*
 Brute force solution. Using generator.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

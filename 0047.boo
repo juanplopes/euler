@@ -1,10 +1,10 @@
-"""
+/*
 Cheat: store in K[i] the number of prime factors of each number i
 
 Get the first of a sequence with exactly 4 prime factors. They'll be distinct.
 
 Trust me.
-"""
+*/
 import System
 import System.Linq.Enumerable
 import System.Collections.Generic

@@ -1,4 +1,4 @@
-"""
+/*
 Reversed the triangle generation formula to become a triangle identification
 formula. So 
 
@@ -10,7 +10,7 @@ x = (sqrt(1+8*n)-1)/2
 
 If x is an integer value, we have a triangle number. Now it's just a matter
 of trying out all of them.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,9 +1,9 @@
-"""
+/*
 Dynamic Programming. Trivial one.
 T(x,0) = 1
 T(0,y) = 1
 T[x,y] = T(x-1, y) + T(x,y+1)
-"""
+*/
 import System
 import System.Linq.Enumerable
 

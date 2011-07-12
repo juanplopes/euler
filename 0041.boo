@@ -1,11 +1,11 @@
-"""
+/*
 Generate all indexed permutions of size 7 using factoradic. You may try with
 9 and 8 first, but will see it'll produce no primes.
 
 Generate them from the end to start, to ensure get the greatest value.
 
 Returns the first that is prime.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,6 +1,6 @@
-"""
+/*
 Brute force. Uses hashset for digits comparisons.
-"""
+*/
 import System
 import System.Linq.Enumerable
 import System.Collections.Generic

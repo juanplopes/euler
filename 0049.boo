@@ -1,7 +1,7 @@
-"""
+/*
 Test each number and it's 3330-based successors if they-re permutation and
 prime. If all, hooray, we have an answer. Brute force, I mean.
-"""
+*/
 
 import System
 import System.Linq.Enumerable

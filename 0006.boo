@@ -1,6 +1,6 @@
-"""
+/*
 Trivial solution. Using some LINQ, magic, but still trivial.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,6 +1,6 @@
-"""
+/*
 Mostly brute force. Even the reverse is by string reverse.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

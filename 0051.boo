@@ -1,4 +1,4 @@
-"""
+/*
 Aims to generate all possible masks. So, design a base-11 number system, that
 compreehends 0..9 and *. Iterate through all the numbers in that system, and
 for each number, create all possible decimal representations (remake_as), 
@@ -6,7 +6,7 @@ replacing * by a number from 0..9. If a mask can generate 8 different primes
 with calls to remake_as, then we found our answer.
 
 Uses some black magic (see comment below).
-"""
+*/
 import System
 import System.Linq.Enumerable
 import System.Collections.Generic

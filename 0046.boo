@@ -1,9 +1,9 @@
-"""
+/*
 Use sieve primality test. Cache numbers that are twice some square (TS).
 
 To verify if n have the property, try all primes until n, see if any difference
 is twice a square (using cached values).
-"""
+*/
 
 import System
 import System.Linq.Enumerable

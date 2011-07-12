@@ -1,9 +1,9 @@
-"""
+/*
 If a**b != x**y, then b*log(a) != y*log(x).
 List all possible values for that count and check the distinct ones.
 Although decimal comparison is stronger than double, it's still weak. 
 Do do this by sorting and checking the consecutive pairs with tolerance.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

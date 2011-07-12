@@ -1,8 +1,8 @@
-"""
+/*
 Generate permutations through backtracking, pruning invalid values (valid_for)
 during the process. So, the numbers that get to be created by make_number are 
 always used to sum it up.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

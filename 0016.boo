@@ -1,6 +1,6 @@
-"""
+/*
 Ad-hoc. Using BigInteger.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

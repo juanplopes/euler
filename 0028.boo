@@ -1,4 +1,4 @@
-"""
+/*
 Defines a function T, that mathematically generates all the numbers in the diag.
 
 eg.: T(1) = 3+5+7+9, T(2) = 13+17+21+25
@@ -9,7 +9,7 @@ spiral - 1.
 
 So, the last is x*x and the first is y*y+x-1. So the total for spiral is twice
 the sum of these values.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

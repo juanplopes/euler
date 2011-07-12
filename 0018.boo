@@ -1,8 +1,8 @@
-"""
+/*
 Dynamic programming. Runs from bottom to up, setting values of each line with
 the maximum each item can achieve.
 Then it's just to check the A[0][0] for the maximum.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

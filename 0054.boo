@@ -1,6 +1,6 @@
-"""
+/*
 Just rules evaluation. Old and boring rules evaluation.
-"""
+*/
 import System
 import System.Collections.Generic
 import System.Linq.Enumerable

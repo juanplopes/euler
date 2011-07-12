@@ -1,9 +1,9 @@
-"""
+/*
 Decompose the number into its decimal digits and verify on the way if all stages
 are prime. Do the same to the reverse of the reversed decompositon (got it?).
 
 Just another brute force, by the way.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

@@ -1,4 +1,4 @@
-"""
+/*
 Classic coin change problem. Used classic recurrence.
 K(i, j) means "in how many ways can I give a change of 'i' using at most the
 coin 'j'?". 
@@ -10,7 +10,7 @@ or (2) try with a smaller coin:
 K(i, j-1)
 
 The sum of these two alternatives gives the answer for a specific K(i,j)
-"""
+*/
 import System
 import System.Linq.Enumerable
 

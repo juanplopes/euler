@@ -1,4 +1,4 @@
-"""
+/*
 Replace n by triangle index in pentagonal and hexagonal formulae. That is:
 
 x = n(n+1)/2 (triangle)
@@ -10,7 +10,7 @@ answer.
 
 So, what we try is to generate a known value of x using a triangle formula and
 verifying if it satisfies the pengatonal and hexagonal too.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

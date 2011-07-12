@@ -1,8 +1,8 @@
-"""
+/*
 Uses a sieve algorithm to sum all divisors for each number.
 For example. For number 2, it jumps 4, 6, 8, etc, adding 2 to divisors sum.
 And so on.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

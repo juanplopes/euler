@@ -1,6 +1,6 @@
-"""
+/*
 Uses BigInteger. No big deal.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

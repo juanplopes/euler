@@ -1,6 +1,6 @@
-"""
+/*
 Enumerate all primes upto 2000000 using Sieve of Eratosthenes.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

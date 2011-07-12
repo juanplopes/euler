@@ -1,7 +1,7 @@
-"""
+/*
 The lowest integer that contains all the factors is defined by the product of
 all Lowest Common Multiplers (LCM) of all the factors.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

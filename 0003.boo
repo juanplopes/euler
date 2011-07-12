@@ -1,6 +1,6 @@
-"""
+/*
 Trivial integer factorization using Sieve of Eratosthenes.
-"""
+*/
 import System
 import System.Linq.Enumerable
 

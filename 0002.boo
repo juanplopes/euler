@@ -1,7 +1,7 @@
-"""
+/*
 Creates infinite fibonacci lazy list, using generator. 
 Then filters it using LINQ
-"""
+*/
 import System.Linq.Enumerable
 
 def fibs():

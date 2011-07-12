@@ -1,6 +1,6 @@
-"""
+/*
 Brute force. Try every number. Factorial for 0..9 is cached.
-"""
+*/
 import System
 import System.Linq.Enumerable
 
