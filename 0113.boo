@@ -1,3 +1,11 @@
+/*
+INC(x,y) means "how many numbers with x digits with last digit equals to y
+are increasing?". DEC(x,y) is the inverse. For each length x, there are 10
+numbers that are both increasing and decreasing.
+
+INC(x,y) = sum(INC(x-1, [x..9]))
+DEC(x,y) = sum(DEC(x-1, [0..x]))
+*/
 import System
 import System.Linq.Enumerable
 

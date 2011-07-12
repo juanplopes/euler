@@ -1,3 +1,10 @@
+/*
+Dynamic programming solution:
+
+To calculate T[n], the number of solutions for n units, we will try to put "j" 
+consecutive blocks starting at the position "k". And then solve the problem for 
+T[n-j-k-1]. -1 because two groups of blocks must have one space between.
+*/
 import System
 import System.Linq.Enumerable
 

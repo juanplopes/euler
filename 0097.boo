@@ -1,3 +1,6 @@
+/*
+Solving big power using "modpow".
+*/
 import System
 import System.Linq.Enumerable
 

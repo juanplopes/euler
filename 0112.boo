@@ -1,3 +1,6 @@
+/*
+Check bounciness by not being increasing nor decreasing. Brute force then.
+*/
 import System
 import System.Linq.Enumerable
 

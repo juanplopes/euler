@@ -1,3 +1,7 @@
+/*
+Classic point in triangle algorithm. Verify if the every triple has the same
+orientation.
+*/
 import System
 import System.Collections.Generic
 import System.Linq.Enumerable
