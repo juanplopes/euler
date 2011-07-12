@@ -1,3 +1,8 @@
+"""
+Try all possible words with three letters (a,b,c) and decypher the text.
+
+If all chars are between 32 and 122, it's our answer.
+"""
 import System
 import System.Linq.Enumerable
 

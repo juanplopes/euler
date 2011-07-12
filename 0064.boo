@@ -1,3 +1,8 @@
+"""
+Use common algorithm to create continuous fractions. Do it stopping before the
+point it starts to repeat. The answer includes the first parameter, so, instead
+of testing odds, we are testing the even.
+"""
 import System
 import System.Linq.Enumerable
 

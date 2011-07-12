@@ -1,3 +1,7 @@
+"""
+Just follow the rule to create all the fractions. n is the numerator (without
+the 1 +) d is the denominator.
+"""
 import System
 import System.Linq.Enumerable
 

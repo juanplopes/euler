@@ -1,3 +1,7 @@
+"""
+The base may be 1-digit, so it's possible to raise it to n and the result have
+n digits. Try the raises and see how many results are n-digit.
+"""
 import System
 import System.Linq.Enumerable
 

@@ -1,3 +1,11 @@
+"""
+Generate all cubes of numbers upto a limit. Sort the chars of the string 
+representation of the cube and call it the key. Store also who was the first
+cube that had this key.
+
+Do it until find a key that is associated to 5 cubes. Call the first cube of
+that key the answer.
+"""
 import System
 import System.Collections.Generic
 import System.Linq.Enumerable
