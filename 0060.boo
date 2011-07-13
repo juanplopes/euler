@@ -1,9 +1,9 @@
 /*
 Brute force solution. Precalculates all the primes and the possible relations
-about them. Uses Miller-Rabin primality test since the numbers can get really 
+they have. Uses Miller-Rabin primality test since the numbers can get really 
 big.
 
-Caches PP(i,j) "does the pair i,j have the property"
+Caches PP(i,j) "does the pair P(i),P(j) have the property"
 Caches LOG10(i) "log10(P(i))+1"
 
 What remains is pure brute force. With some pruning, but brute force.
