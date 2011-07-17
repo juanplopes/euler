@@ -5,10 +5,10 @@ Then filters it using LINQ
 import System.Linq.Enumerable
 
 def fibs():
-	a,b=(0,1)
-	while(true):
-		a,b=(a+b,a) 
-		yield a
+    a,b=(0,1)
+    while(true):
+        a,b=(a+b,a) 
+        yield a
 
 answer = fibs().Where({x|x%2==0}).TakeWhile({x|x<=4e6}).Sum()
 

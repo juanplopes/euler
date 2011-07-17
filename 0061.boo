@@ -22,46 +22,46 @@ import System.Linq.Enumerable
 formulae = ((1,1,2), (1,0,1), (3,-1,2), (2,-1,1), (5,-3,2), (3,-2,1))
 
 def generate(f as int):
-	a,b,c = formulae[f]
-	for n in range(int.MaxValue):
-		v = n*(a*n+b)/c
-		if v >= 1e4: break
-		if v >= 1e3 and v%100 > 9: yield v
+    a,b,c = formulae[f]
+    for n in range(int.MaxValue):
+        v = n*(a*n+b)/c
+        if v >= 1e4: break
+        if v >= 1e3 and v%100 > 9: yield v
 
 def check(f as int, x as int):
-	if x < 1000: return false
-	a,b,c = formulae[f]
-	n = (-b + Math.Sqrt(b*b + 4*a*c*x)) / (2.0*a)
-	return cast(int, n) == n
+    if x < 1000: return false
+    a,b,c = formulae[f]
+    n = (-b + Math.Sqrt(b*b + 4*a*c*x)) / (2.0*a)
+    return cast(int, n) == n
 
 def cycle(a as int, b as int):
-	return a%100*100+b/100
+    return a%100*100+b/100
 
 def kth_permutation(n as int, k as int):
-	data = array(int, n)
-	for j in range(1, n+1):
-		data[n-j] = (k % j)
-		k /= j
+    data = array(int, n)
+    for j in range(1, n+1):
+        data[n-j] = (k % j)
+        k /= j
 
-	data[n-1] = 0
-	for i in range(n-2, -1):
-		for j in range(i+1, n):
-			if data[j] >= data[i]: data[j] += 1
-	return data
-	
+    data[n-1] = 0
+    for i in range(n-2, -1):
+        for j in range(i+1, n):
+            if data[j] >= data[i]: data[j] += 1
+    return data
+    
 for k in range(5*4*3*2*1):
-	a,b,c,d,e = kth_permutation(5, k)
-	f = 5
-	for va in generate(a):
-		for vc in generate(c):
-			vb = cycle(va,vc)
-			if not check(b, vb): continue
-			for ve in generate(e):
-				vd = cycle(vc,ve)
-				if not check(d, vd): continue
-				vf = cycle(ve,va)
-				if not check(f, vf): continue
-				answer = va+vb+vc+vd+ve+vf
-	
+    a,b,c,d,e = kth_permutation(5, k)
+    f = 5
+    for va in generate(a):
+        for vc in generate(c):
+            vb = cycle(va,vc)
+            if not check(b, vb): continue
+            for ve in generate(e):
+                vd = cycle(vc,ve)
+                if not check(d, vd): continue
+                vf = cycle(ve,va)
+                if not check(f, vf): continue
+                answer = va+vb+vc+vd+ve+vf
+    
 print answer
 assert answer == 28684

@@ -12,8 +12,8 @@ primes = PrimeNumbers()
 
 answer = 1
 for i in primes:
-	if (answer*i > 1e6): break
-	answer *= i
-	
+    if (answer*i > 1e6): break
+    answer *= i
+    
 print answer
 assert answer == 510510

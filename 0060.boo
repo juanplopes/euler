@@ -53,26 +53,26 @@ def is_prime(n as int):
 
 
 for i in range(L):
-	for j in range(i+1,L):
-		PP[i,j] = is_prime(P[i] * LOG10[j] + P[j]) and is_prime(P[j] * LOG10[i] + P[i])
-		PP[j,i] = PP[i,j]
-		
+    for j in range(i+1,L):
+        PP[i,j] = is_prime(P[i] * LOG10[j] + P[j]) and is_prime(P[j] * LOG10[i] + P[i])
+        PP[j,i] = PP[i,j]
+        
 answer = int.MaxValue
 for a in range(L):
-	if answer < int.MaxValue: break
-	for b in range(a+1,L):
-		if answer < int.MaxValue: break
-		if not PP[a,b] or P[a]+P[b] >= answer: continue
-		for c in range(b+1, L):
-			if answer < int.MaxValue: break
-			if not PP[c,b] or not PP[c,a] or P[a]+P[b]+P[c] >= answer: continue
-			for d in range(c+1, L):
-				if answer < int.MaxValue: break
-				if not PP[d,c] or not PP[d,b] or not PP[d,a] or P[a]+P[b]+P[c]+P[d] >= answer: continue
-				for e in range(d+1, L):
-					if answer < int.MaxValue: break
-					if not PP[e,d] or not PP[e,c] or not PP[e,b] or not PP[e,a] or P[a]+P[b]+P[c]+P[d]+P[e] >= answer: continue
-					answer = P[a]+P[b]+P[c]+P[d]+P[e]
-		
+    if answer < int.MaxValue: break
+    for b in range(a+1,L):
+        if answer < int.MaxValue: break
+        if not PP[a,b] or P[a]+P[b] >= answer: continue
+        for c in range(b+1, L):
+            if answer < int.MaxValue: break
+            if not PP[c,b] or not PP[c,a] or P[a]+P[b]+P[c] >= answer: continue
+            for d in range(c+1, L):
+                if answer < int.MaxValue: break
+                if not PP[d,c] or not PP[d,b] or not PP[d,a] or P[a]+P[b]+P[c]+P[d] >= answer: continue
+                for e in range(d+1, L):
+                    if answer < int.MaxValue: break
+                    if not PP[e,d] or not PP[e,c] or not PP[e,b] or not PP[e,a] or P[a]+P[b]+P[c]+P[d]+P[e] >= answer: continue
+                    answer = P[a]+P[b]+P[c]+P[d]+P[e]
+        
 print answer
 assert answer == 26033

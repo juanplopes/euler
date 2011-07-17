@@ -11,10 +11,10 @@ numbers = ((519432,525806),(632382,518061),(78864,613712),(466580,530130),(78049
 answer = 1
 max = (0, 1)
 for i in range(numbers.Length):
-	n = numbers[i]
-	if (n[1] * Math.Log(n[0]) > max[1] * Math.Log(max[0])):
-		max = n
-		answer = i+1
-	
+    n = numbers[i]
+    if (n[1] * Math.Log(n[0]) > max[1] * Math.Log(max[0])):
+        max = n
+        answer = i+1
+    
 print answer
 assert answer == 709

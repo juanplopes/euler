@@ -109,7 +109,7 @@ numbers = (
 
 s = BigInteger(0)
 for i in numbers.Select({x|BigInteger(x)}):
-	s += i
+    s += i
 
 answer = s.ToString()[0:10]
 

@@ -20,17 +20,17 @@ T = array(long, cache.Length+1)
 T[0] = 0
 
 for i in range(1,cache.Length+1):
-	T[i] = T[i-1] + cache[i-1]
+    T[i] = T[i-1] + cache[i-1]
 
 max = 0
 for i in range(T.Length):
-	if i+max >= T.Length: continue
-	for j in range(i+max, T.Length):
-		k = T[j] - T[i]
-		if k>=1e6: break
-		if primes.IsPrime(k) and j-i > max:
-			max = j-i
-			answer = k
+    if i+max >= T.Length: continue
+    for j in range(i+max, T.Length):
+        k = T[j] - T[i]
+        if k>=1e6: break
+        if primes.IsPrime(k) and j-i > max:
+            max = j-i
+            answer = k
 
 print answer
 assert answer == 997651

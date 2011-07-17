@@ -9,18 +9,18 @@ import System.Linq.Enumerable
 D = array(int, 10000)
 
 for i in range(1, 5000):
-	for j in range(i*2, 10000, i):
-		D[j] += i
+    for j in range(i*2, 10000, i):
+        D[j] += i
 
 def d(i as int):
-	if (i<0 or i>=10000): return -1
-	return D[i]
+    if (i<0 or i>=10000): return -1
+    return D[i]
 
 sum = 0
 for a in range(2,10000):
-	b = d(a)
-	if a==d(b) and a != b:
-		sum+=a
+    b = d(a)
+    if a==d(b) and a != b:
+        sum+=a
 
 answer = sum
 print answer

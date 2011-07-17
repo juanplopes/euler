@@ -14,16 +14,16 @@ firsts = Dictionary[of string, long]()
 dic = Dictionary[of string, long]()
 
 for i as long in range(10000):
-	cube = i**3
-	key = string(cube.ToString().OrderBy({x|(x)}).ToArray())
-	if dic.ContainsKey(key): 
-		dic[key]+=1
-		if dic[key] == 5:
-			answer = firsts[key]
-			break
-	else:
-		firsts[key] = cube
-		dic[key] = 1
-		
+    cube = i**3
+    key = string(cube.ToString().OrderBy({x|(x)}).ToArray())
+    if dic.ContainsKey(key): 
+        dic[key]+=1
+        if dic[key] == 5:
+            answer = firsts[key]
+            break
+    else:
+        firsts[key] = cube
+        dic[key] = 1
+        
 print answer
 assert answer == 127035954683

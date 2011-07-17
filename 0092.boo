@@ -15,29 +15,29 @@ import System
 import System.Linq.Enumerable
 
 def ends_in(a as int) as int:
-	if (a==0): return 1
-	sum = 0
-	while a not in (1, 89):
-		sum = 0
-		while(a):
-			sum += (a%10)**2
-			a/=10
-		a = sum
-	return a
+    if (a==0): return 1
+    sum = 0
+    while a not in (1, 89):
+        sum = 0
+        while(a):
+            sum += (a%10)**2
+            a/=10
+        a = sum
+    return a
 
 lead_to = range(600).Select(ends_in).ToArray()
 T = matrix(int, 8, 600)
 T[0, 0] = 1
 
 for i in range(1,8):
-	for j in range(10):
-		for k in range(600-j*j):
-			T[i, k+j*j] = T[i, k+j*j] + T[i-1, k]
+    for j in range(10):
+        for k in range(600-j*j):
+            T[i, k+j*j] = T[i, k+j*j] + T[i-1, k]
 
 
 answer = 0
 for i in range(600):
-	if (lead_to[i] == 89):
-		answer += T[7, i]
+    if (lead_to[i] == 89):
+        answer += T[7, i]
 print answer
 assert answer == 8581146

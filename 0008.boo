@@ -10,8 +10,8 @@ to_int = {c as char|cast(int, c)-cast(int,char('0'))}
 product = {x as (int) | x[0] * x[1] * x[2]* x[3] * x[4]} #Aggregate failing :(
 
 def numbers():
-	for i in range(input.Length-5):
-		yield input.Substring(i, 5).Select(to_int).ToArray();
+    for i in range(input.Length-5):
+        yield input.Substring(i, 5).Select(to_int).ToArray();
 
 answer = numbers().Select(product).Max()
 
