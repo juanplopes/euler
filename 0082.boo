@@ -26,8 +26,7 @@ for i in range(1,L):
 def path(j as int, k as int, i as int) as int:
     a = Math.Min(i, k)
     b = Math.Max(i, k)
-    da = (M[a-1][j] if a > 0 else 0)
-    return M[b][j] - da
+    return M[b][j] - (M[a-1][j] if a > 0 else 0)
         
 T = matrix(int, L, L)
 
