@@ -10,7 +10,7 @@ import System.Linq.Enumerable
 
 L = 1e7
 D = array(short, L)
-for i as long in range(1,cast(int, Math.Sqrt(L))):
+for i in range(1,cast(int, Math.Sqrt(L))):
     D[i*i] += 1
     for j in range(i*i+i, L, i):
         D[j] += 2
