@@ -1,7 +1,7 @@
 /*
-Based on http://oeis.org/A143714
-
-Just summing up all values in this sequence
+Brute force. Tried all possible coordinates for ax,ay,bx,by. Verify if it is a
+right triangle by calculating the length of the sides and trying the three
+posible variable with each side length.
 */
 import System
 import System.Linq.Enumerable
