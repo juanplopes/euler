@@ -2,7 +2,8 @@
 Simple sieve to sum all the divisors for each value. Only computes divisors 
 up to sqrt(L), because of the pairity of the divisors.
 
-Then 
+Then the answer is found by searching for all computed values that meets the
+criteria.
 */
 import System
 import System.Linq.Enumerable
@@ -15,8 +16,8 @@ for i as long in range(1,cast(int, Math.Sqrt(L))):
         D[j] += 2
 
 answer = 0
-for i in range(1,L-1):        
-    if (D[i] == D[i+1]): 
+for i in range(1,L):        
+    if (D[i] == D[i-1]): 
         answer+=1
     
 print answer
