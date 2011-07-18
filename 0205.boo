@@ -1,9 +1,10 @@
 /*
-Simple sieve to sum all the divisors for each value. Only computes divisors 
-up to sqrt(L), because of the pairity of the divisors.
+Precomputes the probability of throwing i dice and the result summing j as an
+array P[i,j]. Calculates for build(9,4) "9 dice of 4 sides" and build(6,6), 
+analogous.
 
-Then the answer is found by searching for all computed values that meets the
-criteria.
+Then, for each possible throw of Pete, multiplies by the sum of the probability
+of all lesser throws of Colin.
 */
 import System
 import System.Linq.Enumerable
