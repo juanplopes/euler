@@ -7,7 +7,6 @@ Says that:
 a(n)=2*{2*a(n-1) + (-1)^n} - a(n-2) ; a(0)=1,a(1)=1.
 
 Just create the program to generate the sequence
-
 */
 import System
 import System.Linq.Enumerable
