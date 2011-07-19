@@ -33,6 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using BooRunner.Tools;
+using BooEulerTool.Tools.IntX.Utils;
 /// <summary>
 /// Numeric class which represents arbitrary-precision integers.
 /// (c) Andriy Kozachuk a.k.a. Oyster [dev.oyster@gmail.com] 2005-2010

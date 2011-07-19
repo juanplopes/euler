@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BooEulerTool.Tools.IntX.Utils;
 
 namespace BooRunner.Tools
 {

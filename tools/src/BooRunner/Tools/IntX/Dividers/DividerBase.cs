@@ -1,4 +1,5 @@
 using System;
+using BooEulerTool.Tools.IntX.Utils;
 
 namespace BooRunner.Tools
 {
