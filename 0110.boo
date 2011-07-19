@@ -40,7 +40,7 @@ import System.Linq.Enumerable
 
 primes = PrimeNumbers()
 
-L = 1e3 * 2
+L = 4e6 * 2
 K, T = BigInteger(1), BigInteger(1)
 N = 0
 
@@ -68,4 +68,4 @@ backtrack(0, int.MaxValue, 1, 1)
 
 answer = T
 print answer
-assert answer == 180180
+assert answer == 9350130049860600
