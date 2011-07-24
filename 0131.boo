@@ -1,5 +1,7 @@
 /*
 Check for prime numbers in sequence http://oeis.org/A003215
+
+More info at http://mathworld.wolfram.com/CubanPrime.html
 */
 import System
 import System.Linq.Enumerable

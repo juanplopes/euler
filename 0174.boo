@@ -16,10 +16,9 @@ import System.Linq.Enumerable
 T = array(int, 1e6+1)
 
 for i as long in range(2, 3e5):
-    for j as long in range(i-1, 0, -1):
+    for j as long in range(i-2, 0, -2):
         v = i*i - j*j
         if v > 1e6: break
-        if (i%2)!=(j%2): continue
         T[v] += 1
 
 answer = T.Count({x|x >= 1 and x <= 10})

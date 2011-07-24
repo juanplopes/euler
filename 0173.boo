@@ -12,10 +12,8 @@ import System.Linq.Enumerable
 
 answer = 0
 for i as long in range(2, 3e5):
-    for j as long in range(i-1, 0, -1):
-        v = i*i - j*j
-        if v > 1e6: break
-        if (i%2)!=(j%2): continue
+    for j as long in range(i-2, 0, -2):
+        if i*i - j*j > 1e6: break
         answer+=1
 
 print answer
