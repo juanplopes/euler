@@ -12,12 +12,12 @@ def have_property(p as BigInteger, d as BigInteger):
     return s == d
     
 def A():
-    for d in range(100):
-        for k in range(25):
+    for d in range(2,70):
+        for k in range(10):
             p = BigInteger(d).Pow(k)
-            if have_property(p, d): yield p
+            if have_property(p, d) and p >= 10: yield p
 
-list = A().Distinct().OrderBy({x|(x)}).Skip(10).ToList()
+list = A().Distinct().OrderBy({x|(x)}).ToList()
             
 answer = list[29]
 print answer
