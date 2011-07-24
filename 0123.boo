@@ -1,16 +1,27 @@
 /*
-TODO
+When n is even:
+
+(a-1)^n == ((a-1)^2)^n/2 == (a^2-2a+1) === -2a+1 mod a^2
+(a+1)^n == ((a+1)^2)^n/2 == (a^2+2a+1) === 2a+1 mod a^2
+
+(a-1)^n + (a+1)^n === 2 mod a^2
+
+When n is odd:
+
+The same, but multiplying by (a-1) and (a+1) factors, respectively.
+
+Which results in 2*a*n % (a^2)
+
+Then, it's just to test it for all odd primes above the known answer.
 */
 import System
 import System.Linq.Enumerable
 
 primes = PrimeNumbers(1e6).Cache.ToList()
 
-for n in range(7038, primes.Count):
-    p = BigInteger(primes[n-1])
-    ns = p*p
-    r = ((p-1).Pow(n, ns) + (p+1).Pow(n, ns)) % ns
-    if r > 1e10: 
+for n in range(7039, primes.Count, 2):
+    p = primes[n-1] cast long
+    if 2*n*p > 1e10: 
         answer = n
         break;
 
