@@ -11,7 +11,8 @@ import System.Linq.Enumerable
 expected = (1,2,3,4,5,6,7,8,9)
 
 def is_answer(n as long):
-    i = 9
+    i = 8
+    n /= 100
     while n:
         if n%10 != expected[i-1]: return false
         n/=100
