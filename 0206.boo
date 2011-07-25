@@ -1,32 +1,40 @@
 /*
-Recursive solution that generates all the value and verifies if it's part of the
-solution.
+Semi brute force.
 
-e.g. count(1/3,1/2) finds the "center" to be 2/5  and counts how many fractions
-there are for (1/3,2/5) and (2/5,1/2) plus 2/5 itself.
+Fact: Since the square ends in 0, it is divisible by 10. So, the base must also.
+We can assume then that the answer ends in "0". So, the square itself will be
+divisible by 100, ie, will end in "00"
+
+In this algorithm, we try to generate possible square roots for the target
+number. We try all numbers in form 1a2b3c4xxxxxxxxxx00 where x sequence can be
+any number. We map the first and the last square roots that results in each
+pattern and iterate through the values. The yield n*10 is because of the fact
+above.
 */
 import System
 import System.Linq.Enumerable
 
-expected = (1,2,3,4,5,6,7,8,9)
+expected = (1,2,3,4,5,6,7,8,9,0)
 
 def is_answer(n as long):
-    i = 8
-    n /= 100
+    i = 10
+    n = n*n
     while n:
         if n%10 != expected[i-1]: return false
         n/=100
         i--
     return i==0
 
-for i as long in range(10101010, 13890267):
-    a,b = i*10+3,i*10+7
-    if is_answer(a*a):
-        answer = a*10
-        break
-    if is_answer(b*b):
-        answer = b*10
-        break
-    
+def candidates():
+    for a in range(0,10):
+        for b in range(0,10):
+            for c in range(0,10):
+                base = (1020304+a*1e5+b*1e3+c*1e1) * 1e10L
+                start = Math.Sqrt(base) cast long
+                end = Math.Sqrt(base+1e10) cast long
+                for n as long in range(start,end):
+                    yield n*10
+
+answer = candidates().First(is_answer)
 print answer
 assert answer == 1389019170
