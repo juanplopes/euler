@@ -12,25 +12,25 @@ public class PrimeNumbers : IEnumerable<int>
     private BitArray _sieve;
     private IList<int> _cache;
 
-    public PrimeNumbers() : this(Resources.Primes) { }
+    public PrimeNumbers() : this(1 << 16) { }
+    public PrimeNumbers(int until) : this(MakeSieve(until)) { }
 
-    public PrimeNumbers(byte[] sieve) : this(new BitArray(sieve)) { }
-
-    public PrimeNumbers(int until) : this(new PrimeNumbers(), until) { }
-    public PrimeNumbers(PrimeNumbers primes, int until) : this(MakeSieve(primes, until)) { }
-
-    private static BitArray MakeSieve(PrimeNumbers primes, int until)
+    private static BitArray MakeSieve(int until)
     {
         until++;
-        var bits = new BitArray(until);
-        bits[0] = true;
-        bits[1] = true;
+        var n = (until - 3) / 2;
+        var limit = (int)Math.Sqrt(n);
+        var bits = new BitArray(n);
 
-        foreach (var prime in primes.Until((int)Math.Sqrt(until)).Skip(1))
-            for (int i = prime * 3; i < until; i += 2 * prime)
-                bits[i] = true;
+        for (int i = 0; i < limit; i++)
+        {
+            var k = i * 2 + 3;
+            if (!bits[i])
+                for (int j = i + k; j < n; j += k)
+                    bits[j] = true;
+        }
 
-        return bits.Not();
+        return bits;
     }
 
     public PrimeNumbers(BitArray sieve)
@@ -54,15 +54,11 @@ public class PrimeNumbers : IEnumerable<int>
         }
     }
 
-    public PrimeNumbers Expand(int until)
-    {
-        return new PrimeNumbers(this, until);
-    }
-
     private static IEnumerable<int> EnumerateSieve(BitArray sieve)
     {
+        yield return 2;
         for (int i = 0; i < sieve.Length; i++)
-            if ((i & 1) == 1 && sieve[i] || i == 2) yield return i;
+            if (!sieve[i]) yield return i * 2 + 3;
     }
 
     public IEnumerable<int> Factorize(int number)
@@ -95,11 +91,12 @@ public class PrimeNumbers : IEnumerable<int>
 
     public bool IsPrime(long number)
     {
-        if (number < 0) return false;
-        if ((number & 1) == 0 && number != 2) return false;
-
-        if (number < _sieve.Length)
-            return _sieve[(int)number];
+        if (number < 2) return false;
+        if (number == 2) return true;
+        if (number % 2 == 0) return false;
+        var test = (number - 3) / 2;
+        if (test < _sieve.Length)
+            return !_sieve[(int)test];
         else
         {
             foreach (int i in this.Until((int)Math.Sqrt(number)))
@@ -116,7 +113,7 @@ public class PrimeNumbers : IEnumerable<int>
         foreach (int i in _cache)
             yield return i;
 
-        for (int i = _sieve.Length; i < int.MaxValue; i++)
+        for (int i = _sieve.Length * 2 + 3; i < int.MaxValue; i++)
             if (IsPrime(i)) yield return i;
     }
 

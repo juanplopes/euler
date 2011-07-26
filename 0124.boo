@@ -8,9 +8,9 @@ Then, it's just a matter of ordering the list and finding the E(k).
 import System
 import System.Linq.Enumerable
 
-primes = PrimeNumbers()
-
+primes = PrimeNumbers(1e6)
 L = 1e5+1
+
 rad = array(int, L)
 for i in range(L): rad[i] = 1
 
