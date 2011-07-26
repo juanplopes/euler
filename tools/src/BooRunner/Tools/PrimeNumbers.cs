@@ -26,8 +26,8 @@ public class PrimeNumbers : IEnumerable<int>
         bits[0] = true;
         bits[1] = true;
 
-        foreach (var prime in primes.Until((int)Math.Sqrt(until)))
-            for (int i = prime * 2; i < until; i += prime)
+        foreach (var prime in primes.Until((int)Math.Sqrt(until)).Skip(1))
+            for (int i = prime * 3; i < until; i += 2 * prime)
                 bits[i] = true;
 
         return bits.Not();
@@ -62,7 +62,7 @@ public class PrimeNumbers : IEnumerable<int>
     private static IEnumerable<int> EnumerateSieve(BitArray sieve)
     {
         for (int i = 0; i < sieve.Length; i++)
-            if (sieve[i]) yield return i;
+            if ((i & 1) == 1 && sieve[i] || i == 2) yield return i;
     }
 
     public IEnumerable<int> Factorize(int number)
@@ -96,6 +96,7 @@ public class PrimeNumbers : IEnumerable<int>
     public bool IsPrime(long number)
     {
         if (number < 0) return false;
+        if ((number & 1) == 0 && number != 2) return false;
 
         if (number < _sieve.Length)
             return _sieve[(int)number];

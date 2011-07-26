@@ -1,6 +1,7 @@
 /*
 Simple sieve to sum all the divisors for each value. Only computes divisors 
-up to sqrt(L), because of the pairity of the divisors.
+up to sqrt(L), because of the pairity of the divisors, sums in pairs, except for
+squares, that only counts once.
 
 Then the answer is found by searching for all computed values that meets the
 criteria.
