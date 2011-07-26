@@ -11,11 +11,16 @@ import System.Linq.Enumerable
 
 L = 1e7
 D = array(short, L)
-for i in range(1,cast(int, Math.Sqrt(L))):
+
+D[1] = 1
+for i in range(2,cast(int, Math.Sqrt(L))):
     D[i*i] += 1
     for j in range(i*i+i, L, i):
         D[j] += 2
 
+for i in range(20):
+    print i, D[i]
+    
 answer = 0
 for i in range(1,L):     
     if (D[i] == D[i-1]): 
