@@ -16,7 +16,7 @@ for i in range(1,cast(int, Math.Sqrt(L))):
         D[j] += 2
 
 answer = 0
-for i in range(1,L):        
+for i in range(1,L):     
     if (D[i] == D[i-1]): 
         answer+=1
     
