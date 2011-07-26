@@ -24,18 +24,25 @@ digits must also be different of 0 (because it must have exactly n digits).
 The odd are a little more complicated. The center is always even, so we must
 force a carry from nearest digit of the right side. But it'll cause a carry on 
 the nearest digit on the left side, and it is dangerous. We must play with odd 
-and even pairs to make this happen. But if one of sides is even, that
-becomes complicated, because
+and even pairs to make this happen. I mean, we must have always one non-carry
+even pair to deposit the carry odd pair that comes before. But there's one 
+problem. But if the sides have even number of digits, we have a number of type:
+
+
+EOEO C OEOE
+
+Can you spot that if we have pair-digit sides, we cannot make the center-nearest
+digit to be odd without making the outer digits to be even? So, the least 
+significant digit will end up even. If we make the inverse:
 
 OEOE C EOEO
 
-See that if we have pair-digit sides, we cannot make the same odd-even plan for
-both sides? They aren't really symetric as odd-digit sides, see
-
-OEOEO C OEOEO
+This way, C will never get the carry and will endup as even.
 
 So, we can infer that for 2(2k)+1 there is no possible solution, but we can
-focus on 2(2k)+3 (like the above)
+focus on 2(2k)+3, like:
+
+OEOEO C OEOEO
 
 For this to happen, like said before, the center must receive carry from the
 right side. But it should not carry. All odd pairs must carry and all even
