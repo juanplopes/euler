@@ -18,9 +18,6 @@ for i in range(2,cast(int, Math.Sqrt(L))):
     for j in range(i*i+i, L, i):
         D[j] += 2
 
-for i in range(20):
-    print i, D[i]
-    
 answer = 0
 for i in range(1,L):     
     if (D[i] == D[i-1]): 
