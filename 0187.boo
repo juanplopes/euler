@@ -10,8 +10,7 @@ import System
 import System.Collections.Generic
 import System.Linq.Enumerable
 
-primes = PrimeNumbers(1e8/2).Cache.ToList()
-
+primes = PrimeNumbers(1e8/2, 1e6).Cache.ToList()
 answer = 0
 for i in range(primes.Count):
     if primes[i] >= 1e4: break

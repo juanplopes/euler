@@ -9,31 +9,41 @@ using BooEulerTool.Tools;
 
 public class PrimeNumbers : IEnumerable<int>
 {
-    private BitArray _sieve;
+    private bool[] _sieve;
     private IList<int> _cache;
 
     public PrimeNumbers() : this(1 << 16) { }
-    public PrimeNumbers(int until) : this(MakeSieve(until)) { }
+    public PrimeNumbers(int until) : this(until, 1 << 16) { }
+    public PrimeNumbers(int until, int step) : this(MakeSieve(until, step)) { }
 
-    private static BitArray MakeSieve(int until)
+    private static bool[] MakeSieve(int until, int step)
     {
         until++;
         var n = (until - 3) / 2;
         var limit = (int)Math.Sqrt(n);
-        var bits = new BitArray(n);
+        var bits = new bool[n];
 
-        for (int i = 0; i < limit; i++)
+        for (int b = 0; b < n; b += step)
         {
-            var k = i * 2 + 3;
-            if (!bits[i])
-                for (int j = i + k; j < n; j += k)
-                    bits[j] = true;
+            var end = Math.Min(n, b + step);
+            for (int i = 0; i < limit; i++)
+            {
+                var k = i * 2 + 3;
+                
+                var start = (b-i) / k * k + i;
+                if (start < b) start += k;
+                if (start < i + k) start = i + k;
+
+                if (!bits[i])
+                    for (int j = start; j < end; j += k)
+                        bits[j] = true;
+            }
         }
 
         return bits;
     }
 
-    public PrimeNumbers(BitArray sieve)
+    public PrimeNumbers(bool[] sieve)
     {
         _sieve = sieve;
         _cache = new List<int>(EnumerateSieve(sieve));
@@ -54,7 +64,7 @@ public class PrimeNumbers : IEnumerable<int>
         }
     }
 
-    private static IEnumerable<int> EnumerateSieve(BitArray sieve)
+    private static IEnumerable<int> EnumerateSieve(bool[] sieve)
     {
         yield return 2;
         for (int i = 0; i < sieve.Length; i++)
