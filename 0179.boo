@@ -9,7 +9,7 @@ criteria.
 import System
 import System.Linq.Enumerable
 
-L = 1e7
+L = 10**7
 D = array(short, L)
 
 D[1] = 1

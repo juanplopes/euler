@@ -12,7 +12,7 @@ problem 108, it would be good enough, but for 110, it would never finish
 We know that the solution is among the highly composite numbers, so we start by 
 defining the limits of the problem. That is, the first product of primes
 2*3*5*7*11... the 3*3*3*3*3... of the solution reaches what we want, ie, the
-double of the desired number 1e3*2 or 4e6*2. This is just to define upper bound
+double of the desired number 10**3*2 or 4*10**6*2. This is just to define upper bound
 limits for the future backtrack. In this preprocessing, we achieve K, T and N, 
 that means the upper bound number of solutions K for the upper bound n=T using 
 at most the prime indexed by N.
@@ -40,7 +40,7 @@ import System.Linq.Enumerable
 
 primes = PrimeNumbers()
 
-L = 4e6 * 2
+L = 4*10**6 * 2
 K, T = BigInteger(1), BigInteger(1)
 N = 0
 

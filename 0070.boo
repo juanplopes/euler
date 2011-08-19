@@ -23,7 +23,7 @@ min as double = int.MaxValue
 for p in primes.Until(4000):
     for q in primes.Until(4000):
         r = p*q
-        if (r >= 1e7): break
+        if (r >= 10**7): break
         phi = (p-1)*(q-1)
         if same_digits(r, phi):
             d = r/cast(double, phi)

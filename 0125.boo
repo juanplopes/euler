@@ -18,16 +18,16 @@ def is_palindrome(n as int):
         n/=10
     return a == d
 
-S = array(long, 1e4)
-for i in range(1, 1e4):
+S = array(long, 10**4)
+for i in range(1, 10**4):
     S[i] = S[i-1] + i*i
 
 total = 0L
-T = array(bool, 1e8)
-for i in range(1e4-2):
-    for j in range(i+2, 1e4):
+T = array(bool, 10**8)
+for i in range(10**4-2):
+    for j in range(i+2, 10**4):
         v = S[j] - S[i]
-        if v >=1e8: break
+        if v >=10**8: break
         if not T[v] and is_palindrome(v):
             T[v] = true
             total+=v

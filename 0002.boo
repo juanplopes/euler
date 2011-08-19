@@ -10,7 +10,7 @@ def fibs():
         a,b=(a+b,a) 
         yield a
 
-answer = fibs().Where({x|x%2==0}).TakeWhile({x|x<=4e6}).Sum()
+answer = fibs().Where({x|x%2==0}).TakeWhile({x|x<=4*10**6}).Sum()
 
 print answer
 assert answer == 4613732

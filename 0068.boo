@@ -21,7 +21,7 @@ def make_number(triples as ((int))):
 
             
     triples = triples.Skip(start).Concat(triples.Take(start)).ToArray()
-    numbers = triples.Select({x|string.Join('',x.Select(Convert.ToString).ToArray())})
+    numbers = triples.Select({x|string.Join('',x.Select({x|Convert.ToString(x)}).ToArray())})
     number = long.Parse(string.Join('', numbers.ToArray()))
     return number
 

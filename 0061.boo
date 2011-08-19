@@ -25,8 +25,8 @@ def generate(f as int):
     a,b,c = formulae[f]
     for n in range(int.MaxValue):
         v = n*(a*n+b)/c
-        if v >= 1e4: break
-        if v >= 1e3 and v%100 > 9: yield v
+        if v >= 10**4: break
+        if v >= 10**3 and v%100 > 9: yield v
 
 def check(f as int, x as int):
     if x < 1000: return false

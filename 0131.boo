@@ -6,7 +6,7 @@ More info at http://mathworld.wolfram.com/CubanPrime.html
 import System
 import System.Linq.Enumerable
 
-primes = PrimeNumbers(1e6)
+primes = PrimeNumbers(10**6)
 
 def A003215(L as int):
     a = 1L
@@ -15,6 +15,6 @@ def A003215(L as int):
         if a >= L: break
         yield a
 
-answer = A003215(1e6).Count(primes.IsPrime)
+answer = A003215(10**6).Count(primes.IsPrime)
 print answer
 assert answer == 173

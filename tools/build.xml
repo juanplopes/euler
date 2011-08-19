@@ -1,4 +1,4 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package"> 
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Deploy"> 
   <PropertyGroup> 
     <BuildDir>$(MSBuildProjectDirectory)\build\</BuildDir>
 	<PackageDir>$(MSBuildProjectDirectory)\pkg\</PackageDir>
@@ -30,23 +30,15 @@
     <CallTarget Targets="Clean; Build"></CallTarget>
   </Target>
   
-  <Target Name="Package" DependsOnTargets="Rebuild">
-	<ItemGroup>
-      <MergeFiles Include="$(BuildDir)\*.exe"/>
-      <MergeFiles Include="$(BuildDir)\*.dll"/>
-    </ItemGroup>
-    <MakeDir Directories="$(PackageDir)"/>
-    <ILMerge OutputFile="$(PackageDir)\boot.exe"
-            InputAssemblies="@(MergeFiles)"
-            ToolPath="util\ilmerge"
-            LogFile=""
-             />
-  </Target>
-   <Target Name="Deploy" DependsOnTargets="Package">
-	<ItemGroup>
-      <DeployFiles Include="$(PackageDir)\boot.exe"/>
-    </ItemGroup>
-    <MakeDir Directories="$(DeployDir)"/>
+  
+   <Target Name="Deploy" DependsOnTargets="Rebuild">
+    <CreateItem Include="$(BuildDir)\*.exe">
+      <Output ItemName="DeployFiles" TaskParameter="Include" />
+    </CreateItem>
+	<CreateItem Include="$(BuildDir)\*.dll">
+      <Output ItemName="DeployFiles" TaskParameter="Include" />
+    </CreateItem>
+	<MakeDir Directories="$(DeployDir)"/>
 	<Copy SourceFiles ="@(DeployFiles)" DestinationFolder="$(DeployDir)" />
   </Target>
 </Project>

@@ -25,7 +25,7 @@ def D(n as int):
     n, d, f = find_in(n-1)
     return r = (n/P10[f-d])%10
     
-answer = D(1e0) * D(1e1) * D(1e2) * D(1e3) * D(1e4) * D(1e5) * D(1e6)
+answer = D(10**0) * D(10**1) * D(10**2) * D(10**3) * D(10**4) * D(10**5) * D(10**6)
         
 print answer
 assert answer == 210

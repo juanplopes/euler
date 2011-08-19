@@ -14,7 +14,7 @@ import System
 import System.Linq.Enumerable
 import System.Collections.Generic
 
-primes = PrimeNumbers(1e6)
+primes = PrimeNumbers(10**6)
 cache = primes.Cache.ToArray()
 T = array(long, cache.Length+1)
 T[0] = 0
@@ -27,7 +27,7 @@ for i in range(T.Length):
     if i+max >= T.Length: continue
     for j in range(i+max, T.Length):
         k = T[j] - T[i]
-        if k>=1e6: break
+        if k>=10**6: break
         if primes.IsPrime(k) and j-i > max:
             max = j-i
             answer = k

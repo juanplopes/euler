@@ -29,9 +29,9 @@ def candidates():
     for a in range(0,10):
         for b in range(0,10):
             for c in range(0,10):
-                base = (1020304+a*1e5+b*1e3+c*1e1) * 1e10L
+                base = (1020304+a*10**5+b*10**3+c*10**1) * 10**10L
                 start = Math.Sqrt(base) cast long
-                end = Math.Sqrt(base+1e10) cast long
+                end = Math.Sqrt(base+10**10) cast long
                 for n as long in range(start,end):
                     yield n*10
 

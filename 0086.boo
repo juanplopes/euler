@@ -8,7 +8,7 @@ import System.Linq.Enumerable
 
 c = 0
 for m in range(3, int.MaxValue):
-    if c > 1e6: 
+    if c > 10**6: 
         answer = m-1
         break
     for ab in range(3, 2*m):

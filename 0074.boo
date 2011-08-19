@@ -9,7 +9,7 @@ import System
 import System.Linq.Enumerable
     
 F = (1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880)
-T = array(int, 3e6)
+T = array(int, 3*10**6)
 T[169] = 3
 T[1454] = 3
 T[363601] = 3
@@ -30,6 +30,6 @@ def count(n as int) as int:
     T[n] = r
     return r
 
-answer = range(1e6).Where({x as int|count(x)==60}).Count()
+answer = range(10**6).Where({x as int|count(x)==60}).Count()
 print answer
 assert answer == 402

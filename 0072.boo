@@ -6,7 +6,7 @@ number.
 import System
 import System.Linq.Enumerable
 
-L = 1e6+1
+L = 10**6+1
 T = range(L).ToList()
 for n in range(2, L):
   if T[n] == n:

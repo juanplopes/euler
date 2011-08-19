@@ -17,7 +17,7 @@ for i in range(int.MaxValue):
     p,q= 4*p + 2*Math.Pow(-1, i) - q, p
     a = p
     b = a + Math.Pow(-1, i)
-    if 2*a+b > 1e9: break
+    if 2*a+b > 10**9: break
     answer += 2*a+b
 
 print answer

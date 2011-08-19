@@ -13,7 +13,7 @@ import System.Linq.Enumerable
 
 primes = PrimeNumbers()
 L = 1051
-D = (1, 1e1, 1e2, 1e3, 1e4, 1e5)
+D = (1, 10**1, 10**2, 10**3, 10**4, 10**5)
 
 P = primes.Take(L).ToArray()
 LOG10 = P.Select({x|D[cast(int, Math.Log10(x))+1]}).ToArray()

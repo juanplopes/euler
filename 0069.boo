@@ -1,7 +1,7 @@
 /*
 The minimum possible totient, relative to a number n is composed by the product
 of the smallest possibile non-repeated primes. So, it's just a matter of 
-multiplying them until it reaches 1e6.
+multiplying them until it reaches 10**6.
 */
 import System
 import System.Linq.Enumerable
@@ -12,7 +12,7 @@ primes = PrimeNumbers()
 
 answer = 1
 for i in primes:
-    if (answer*i > 1e6): break
+    if (answer*i > 10**6): break
     answer *= i
     
 print answer

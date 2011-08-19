@@ -21,7 +21,7 @@ for n in range(1,101):
     for k in range(1,n):
         if (C[n-1, k] != -1):
             C[n,k] = C[n-1, k] * n / (n-k)
-            if (C[n,k] > 1e6): 
+            if (C[n,k] > 10**6): 
                 C[n,k] = -1
                 answer+=1
         else:

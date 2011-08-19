@@ -20,7 +20,7 @@ for i in range(1, P.Length / 2):
     P[2*i-2] = i*(3*i-1)/2
     P[2*i-1] = -i*(-3*i-1)/2
 
-T = array(int, 1e5)
+T = array(int, 10**5)
 
 T[0] = 1
 answer = 0
@@ -28,7 +28,7 @@ for answer in range(1, T.Length):
     s, j = 0, 0
 
     while P[j] <= answer:
-        s = (s + (1 if j%4<2 else -1) * T[answer-P[j]]) % 1e6
+        s = (s + (1 if j%4<2 else -1) * T[answer-P[j]]) % 10**6
         j++
         
     if s==0: break

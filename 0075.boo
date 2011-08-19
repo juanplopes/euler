@@ -15,7 +15,7 @@ e.g. (3,4,5) => (6, 8, 10), (9, 12, 15) and so on...
 import System
 import System.Linq.Enumerable
 
-L = 1.5e6+1
+L = 1.5*10**6+1
 SL = cast(int, Math.Sqrt(L))
 T = array(int, L)
 

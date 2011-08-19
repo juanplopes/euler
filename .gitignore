@@ -13,3 +13,7 @@ build/
 pkg/
 
 TestResults/
+
+*.userprefs
+*.pidb
+*.resources

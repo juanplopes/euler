@@ -17,11 +17,11 @@ Then, it's just to test it for all odd primes above the known answer.
 import System
 import System.Linq.Enumerable
 
-primes = PrimeNumbers(1e6).Cache.ToList()
+primes = PrimeNumbers(10**6).Cache.ToList()
 
 for n in range(7039, primes.Count, 2):
     p = primes[n-1] cast long
-    if 2*n*p > 1e10: 
+    if 2*n*p > 10**10: 
         answer = n
         break;
 

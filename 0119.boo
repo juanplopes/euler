@@ -18,7 +18,7 @@ def A():
     for d in range(2,70):
         for k as long in range(2, 10):
             p = Math.Pow(d, k)
-            if p > 1e18: break
+            if p > 10**18: break
             if have_property(p, d) and p >= 10: yield p
 
 list = A().ToList()

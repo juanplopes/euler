@@ -12,7 +12,7 @@ import System.Linq.Enumerable
 import System.Collections.Generic
 
 primes = PrimeNumbers()
-P10 = (1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8)
+P10 = (1, 10**1, 10**2, 10**3, 10**4, 10**5, 10**6, 10**7, 10**8)
 def remake_as(mask as int, number as int):
     result,count,wildcards,temp=(0,0,0,0)
     while(mask):

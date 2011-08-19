@@ -22,7 +22,7 @@ for i in range(M, L):
             
 
 for i in range(L):
-    if T[i] > 1e6:
+    if T[i] > 10**6:
         answer = i
         break
 

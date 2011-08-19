@@ -90,8 +90,8 @@ M = ((4445,2697,5115,718,2209,2212,654,4348,3079,6821,7668,3276,8874,4190,3785,2
 for i in range(80):
     for j in range(80):
         if i==0 and j==0: continue
-        a = i>0 and M[i-1][j] or 1e7
-        b = j>0 and M[i][j-1] or 1e7
+        a = i>0 and M[i-1][j] or 10**7
+        b = j>0 and M[i][j-1] or 10**7
         M[i][j] = M[i][j] + Math.Min(a,b)
 
 answer = M[79][79]    

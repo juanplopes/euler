@@ -29,17 +29,17 @@ def is_royal_flush(hand as string*):
 def is_straight(hand as string*):
     min = hand.Min(value)
     if hand.Select({x|value(x)-min}).Intersect((0L,1,2,3,4)).Count() == 5:
-        return 1e8 + total_value(hand)
+        return 10**8 + total_value(hand)
     return 0
 
 def is_flush(hand as string*):
     if are_same_suit(hand):
-        return 1e8 + total_value(hand)
+        return 10**8 + total_value(hand)
     return 0
     
 def is_straight_flush(hand as string*):
     if is_flush(hand) and is_straight(hand):
-        return 1e8 + total_value(hand)
+        return 10**8 + total_value(hand)
     return 0
     
 def group(hand as string*):
@@ -48,19 +48,19 @@ def group(hand as string*):
 def is_four_of_a_kind(hand as string*):
     this_value = group(hand).FirstOrDefault({x|x.Count()==4})
     if this_value != null:
-        return this_value.Key * 1e8 + total_value(hand)
+        return this_value.Key * 10**8 + total_value(hand)
     return 0
 
 def is_three_of_a_kind(hand as string*):
     this_value = group(hand).FirstOrDefault({x|x.Count()==3})
     if this_value != null:
-        return this_value.Key * 1e8 + total_value(hand)
+        return this_value.Key * 10**8 + total_value(hand)
     return 0
 
 def is_one_pair(hand as string*):
     this_value = group(hand).FirstOrDefault({x|x.Count()==2})
     if this_value != null:
-        return this_value.Key * 1e8 + total_value(hand)
+        return this_value.Key * 10**8 + total_value(hand)
     return 0
     
 def is_full_house(hand as string*):
@@ -68,14 +68,14 @@ def is_full_house(hand as string*):
     if grp.Count != 2: return 0
     if grp[0].Count() !=3: return 0
     if grp[1].Count() !=2: return 0
-    return (grp[0].Key*100 + grp[1].Key) * 1e8 + total_value(hand)
+    return (grp[0].Key*100 + grp[1].Key) * 10**8 + total_value(hand)
 
 def is_two_pairs(hand as string*):
     grp = group(hand).ToList()
     if grp.Count < 2: return 0
     if grp[0].Count() !=2: return 0
     if grp[1].Count() !=2: return 0
-    return (grp[0].Key*100 + grp[1].Key) * 1e8 + total_value(hand)
+    return (grp[0].Key*100 + grp[1].Key) * 10**8 + total_value(hand)
     
 
 def player1_win(hands as (string)):

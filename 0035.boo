@@ -9,7 +9,7 @@ All that remains is brute force.
 import System
 import System.Linq.Enumerable
 
-pow10 = (1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8)
+pow10 = (1, 10**1, 10**2, 10**3, 10**4, 10**5, 10**6, 10**7, 10**8)
 primes = PrimeNumbers(1000000)
 def rotate(n as int, log as int):
     return n/10+pow10[log]*(n%10)
