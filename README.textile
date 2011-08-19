@@ -1,9 +1,11 @@
+Prerequisite: have mono installed.
+
 h1. To run any example, just call:
 
-@boot N.boo@ [where N is the problem number]
+@./boot.exe N.boo@ [where N is the problem number]
 
-eg. @boot 0015.boo@
+eg. @./boot.exe 0015.boo@
 
 h1. To run all examples at once, just call:
 
-@boot *.boo@
+@./boot.exe *.boo@
