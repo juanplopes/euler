@@ -29,10 +29,11 @@ public class PrimeNumbers : IEnumerable<int>
             for (int i = 0; i < limit; i++)
             {
                 var k = i * 2 + 3;
-                
+                var kk = (k * k - 3) / 2;
+
                 var start = (b-i) / k * k + i;
                 if (start < b) start += k;
-                if (start < i + k) start = i + k;
+                if (start < kk) start = kk;
 
                 if (!bits[i])
                     for (int j = start; j < end; j += k)
