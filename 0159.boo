@@ -1,5 +1,9 @@
 /*
-TODO
+Precalculates all Digital Root Sum (D) up to 1.000.000
+
+Then backtracks all possible increasing factor sequence, checking if its drs
+is maximum. Prune the ones that aren't -- they are unable to increase further
+values.
 */
 import System
 import System.Linq.Enumerable
