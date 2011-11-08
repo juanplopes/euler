@@ -5,23 +5,29 @@ import System
 import System.Linq.Enumerable
 
 class Sudoku:
-    R = matrix(bool, 9, 10)
-    C = matrix(bool, 9, 10)
-    A = matrix(bool, 9, 10)
+    R = array(int, 9)
+    C = array(int, 9)
+    A = array(int, 9)
     N = array(int, 81)
     
-    def sets(x,y,a,i,v):
-        R[x,i] = v
-        C[y,i] = v
-        A[a,i] = v
-    
+    def on(x,y,a,i as int):
+        R[x] |= 1<<i
+        C[y] |= 1<<i
+        A[a] |= 1<<i
+
+    def off(x,y,a,i as int):
+        R[x] &= ~(1<<i)
+        C[y] &= ~(1<<i)
+        A[a] &= ~(1<<i)
+
+        
     def constructor(puzzle as string):
         for i in range(81):
             x,y = i/9,i%9
             area = x/3*3 + y/3
             number = Convert.ToInt32(puzzle[i].ToString())
             N[i] = number
-            sets(x,y,area,number,true)
+            on(x,y,area,number)
             
     def backtrack(k as int) as int:
         if k==81: return N[0] * 100 + N[1] * 10 + N[2]
@@ -30,16 +36,17 @@ class Sudoku:
         x,y = k/9,k%9
         area = x/3*3 + y/3
         for i in range(1, 10):
-            if R[x,i] or C[y,i] or A[area,i]: continue
+            bit = 1<<i
+            if R[x]&bit or C[y]&bit or A[area]&bit: continue
             
-            sets(x,y,area,i,true)
+            on(x,y,area,i)
             N[k] = i
             
             value = backtrack(k+1)
             if value: return value
             
             N[k] = 0
-            sets(x,y,area,i,false)
+            off(x,y,area,i)
 
             
         return 0
