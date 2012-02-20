@@ -6,6 +6,10 @@ equivalent:
 
 1 2 10 3 4 12 13 <=> 1 2 + 3 4 * / <=> (1 + 2) / (3 * 4)
 
+Gotta be careful to add at most 4 digits and 3 operators. Also, avoid adding
+an operator until there is 2 more digits than operators (to have what to
+operate).
+
 Then just executes the expression using a stack.
 */
 import System
