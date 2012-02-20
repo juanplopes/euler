@@ -7,7 +7,7 @@ Manipulating a little, we can get:
 2b²-2b = n²-n <=>
 2b²-2b-n²+n=0
 
-That is a quadratic diophantine equation. I solved it using the site below.
+That is a quadratic diophantine equation. Solved it using the site below.
 
 http://www.alpertron.com.ar/QUAD.HTM
 
@@ -21,8 +21,6 @@ Yn+1 = 4 Xn + 3 Yn - 3
 
 Then I just implemented it.
 */
-import System
-import System.Linq.Enumerable
 
 b,n=1L,1L
 while n<=1000000000000L:
