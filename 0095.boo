@@ -1,16 +1,11 @@
 /*
-Backtrack to create all possible reverse polish expressions.
+Generate next numbers in amicable chain through a sieve-like algorithm.
 
-Digits 10..13 represents the operations. So, the following expressions are
-equivalent:
+That is, for each pair of divisors a and b, sum a+b to a*b. Be careful with
+the squares.
 
-1 2 10 3 4 12 13 <=> 1 2 + 3 4 * / <=> (1 + 2) / (3 * 4)
-
-Gotta be careful to add at most 4 digits and 3 operators. Also, avoid adding
-an operator until there is 2 more digits than operators (to have what to
-operate).
-
-Then just executes the expression using a stack.
+Then, find all the strongly connected components through the classic algorithm
+and get the greater of them and find the minimum value in it.
 */
 import System
 import System.Collections.Generic
