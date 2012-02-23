@@ -6,7 +6,7 @@ Then, calculating the exact probability of taking, e.g.:
 
 1011
 
-1/2 * 2/3 * 1/4 * 1/4
+1/2 * 2/3 * 1/4 * 1/5
 
 Then only counts it as a valid probability if the bitcount (i.e. the quantity
 of blue discs taken) is greater than the half of total turns.
