@@ -48,7 +48,7 @@ def create(i as double):
 def apply(F as (double), n as double):
     res = 0.0
     for i in range(F.Length):
-        res += cast(long, F[i] * n**i)
+        res += F[i] * n**i
     return res
 
 answer = 0.0
