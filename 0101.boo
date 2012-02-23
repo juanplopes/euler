@@ -51,12 +51,12 @@ def create(i as double):
     return M
 
 def apply(F as (double), n as double):
-    res = BigInteger(0)
+    res = 0.0
     for i in range(F.Length):
         res += cast(long, F[i] * n**i)
     return res
 
-answer = BigInteger(0)
+answer = 0.0
 for i in range(1, 11):
     M = create(i)
     G = gauss(M)
