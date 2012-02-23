@@ -25,17 +25,12 @@ def poly(n as double):
 def gauss(M as (double, 2)):
     n, m = len(M,0), len(M,1)
     for i in range(n):
-        factor as double = M[i,i]
+        factor = M[i,i]
         for j in range(m):
             M[i,j] = M[i,j] / factor
 
-        for k in range(i+1, n):
-            factor = M[k,i]            
-            for j in range(m):
-                M[k,j] = M[k,j] - M[i,j]*factor
-
-    for i in range(n).Reverse():
-        for k in range(i):
+        for k in range(n):
+            if k==i: continue
             factor = M[k,i]            
             for j in range(m):
                 M[k,j] = M[k,j] - M[i,j]*factor
