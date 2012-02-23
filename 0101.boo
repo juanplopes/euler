@@ -14,7 +14,7 @@ We can, now solve this system by gaussian elimination and discover what are
 the coeficients a,b,c,d. All we have to do is make this process to all degrees
 required by the problem.
 
-Credits to the solution to Jacqueline Abreu (@JacAbreu)
+Credits for the solution to Jacqueline Abreu (@JacAbreu).
 */
 import System
 import System.Linq.Enumerable
