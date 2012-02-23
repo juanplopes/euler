@@ -64,7 +64,7 @@ for i in range(1, 11):
     for n in range(1,int.MaxValue):
         v1 = poly(n)
         v2 = apply(G, n)
-        if cast(long, v1)!=v2:
+        if v1!=v2:
             answer += v2
             break
             
