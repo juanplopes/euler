@@ -1,9 +1,6 @@
 /*
-Clever backtrack. Try, for each digit backwards fixing number of required 
-repetitions (tr).
-
-Then backtrack in a way that you only generate numbers with the correct
-ammout of repeated digits.
+Binary search. Try values of r between 1 and 1.0025 adjusting it to make
+sequence sum the required value.
 */
 import System
 import System.Linq.Enumerable
