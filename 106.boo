@@ -17,29 +17,30 @@ lesser, we say it need to be checked for equality.
 import System
 import System.Linq.Enumerable
 
-def need_count(m1 as int, m2 as int):
-    if m1&m2: return false
+def need_count(a as int, b as int):
+    if a&b: return false
     
-    c1,c2,b=0,0,0
-    neg=false
+    ca,cb,balance=0,0,0
+    need=false
 
-    while m1 or m2:
-        if m1&1:
-            c1+=1
-            b-=1
-        if m2&1:
-            c2+=1
-            b+=1
-        if b>0: neg=true
-        m1>>=1
-        m2>>=1
+    while a or b:
+        if a&1:
+            ca+=1
+            balance-=1
+        if b&1:
+            cb+=1
+            balance+=1
+        if balance>0: 
+            need=true
+        a>>=1
+        b>>=1
         
-    return c1==c2 and c1!=1 and neg
+    return ca==cb and ca!=1 and need
 
 answer = 0
 for a in range(1,2**12):
     for b in range(a+1,2**12):
-        if not a&b and need_count(a,b):
+        if need_count(a,b):
             answer += 1
 
 
