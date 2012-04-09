@@ -1,4 +1,12 @@
 /*
+We define the recurrence T(n,a,b) as "how many n-digit numbers ending in ab
+satisfy the required property". Given we know the answer for any T(n-1,i,a)
+(the recurrence assumption), the answer is the sum of every valid value of i
+(i.e, i+a+b <= 9) for n-1 digits. Simplified:
+
+T(0,0,0) = 1
+T(1,0,0) = 0 //to ensure no number has leading 0
+T(n,a,b) = sum(0<=i<=9, T(n-1,i,a))
 */
 import System
 import System.Linq.Enumerable
