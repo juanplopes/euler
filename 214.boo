@@ -19,6 +19,7 @@ T = array(int, L)
 S = array(int, L)
 for i in range(L):
     T[i] = i
+    
 for n in P:
     for k in range(n, L, n):
       T[k] *= 1.0 - 1.0/n;
