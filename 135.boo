@@ -1,24 +1,33 @@
 /*
+Given x,y and z are terms of a decreasing arithmetic progression, we can 
+redefine equation as 
+
+x^2+(x-a)^2+(x-2a)^2=n, 
+
+that can be written as:
+
+-(x-a)*(x-5a) = n
+
+For 'n' to stay positive, we need x-a to stay positive and x-5a to stay
+negative. Also, x-2a should also be positive. So, x/5 < a < x/2.
+
+We just loop through all possible values for x and a and count in T every found
+solution for every possible n.
 */
 import System
 import System.Collections.Generic
 import System.Linq.Enumerable
 
-def testd(a as int, b as int):
-    return (1 if 3*a>b and (a+b)%8==0 and (a-b)%2==0 else 0)
+T = array(int, 1000000)
 
-def testn(a as int, n as int):
-    if n%a!=0: return 0
-    b = n/a
-    if a==b: return testd(a,b)
-    return testd(a,b)+testd(b,a)
-
-def test(n as int):
-    return range(1,Math.Sqrt(n)+1).Select({a|testn(a,n)}).Sum() == 10
-
-answer = 0
-for n in range(1,1000000):
-    if test(n*4):
-        answer+=1
+for x in range(1, 1300000):
+    a = Math.Floor(x/5.0)+1
+    while x-2*a > 0:
+        n = -(x-a)*(x-5*a)
+        if n>=1000000: break
+        T[n] += 1
+        a += 1
+        
+answer = T.Count({x|x==10})
 print answer
 assert answer == 4989
