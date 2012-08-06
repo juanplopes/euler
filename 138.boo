@@ -31,22 +31,18 @@ import System
 import System.Linq.Enumerable
 import System.Math
 
-
-def abs(a as BigInteger, b as BigInteger) as (BigInteger):
-  return ((a, b) if a>=0 and b>=0 else (-a,-b))
-
 px, py = BigInteger(0), BigInteger(1L)
 lx, ly = BigInteger(0), BigInteger(-1L)
 
 answer = 0L
 for i in range(12):
-  px, py = -9*px -8*py -8, -10*px - 9*py -8
-  if px > 0 and py > 0:
-    answer += py
+    px, py = -9*px -8*py -8, -10*px - 9*py -8
+    if px > 0 and py > 0:
+        answer += py
     
-  lx, ly = -9*lx -8*ly +8, -10*lx - 9*ly +8
-  if lx > 0 and ly > 0:
-    answer += ly
+    lx, ly = -9*lx -8*ly +8, -10*lx - 9*ly +8
+    if lx > 0 and ly > 0:
+        answer += ly
 
 print answer
 assert answer == 1118049290473932L
